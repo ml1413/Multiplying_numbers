@@ -29,7 +29,7 @@ class RecyclerView(
     class MyHolder(view: View) : ViewHolder(view) {
         private val binding = ItemForRecyclerBinding.bind(view)
         fun initView(modelQuestions: ModelQuestions) {
-            binding.tv.text = modelQuestions.question
+            binding.tv.text = modelQuestions.questionOnTable
         }
     }
 }

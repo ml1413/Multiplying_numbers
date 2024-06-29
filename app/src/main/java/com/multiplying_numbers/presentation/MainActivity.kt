@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.multiplying_numbers.R
 import com.multiplying_numbers.databinding.ActivityMainBinding
+import com.multiplying_numbers.domain.models.ModelQuestions
 import com.multiplying_numbers.domain.usecase.GetListForDropDownMenuUseCase
 
 class MainActivity : AppCompatActivity() {
@@ -14,30 +15,51 @@ class MainActivity : AppCompatActivity() {
     private val getListForDropDownMenuUseCase by lazy {
         GetListForDropDownMenuUseCase()
     }
-    private val viewModel by lazy {
+    private val viewModelListItem by lazy {
         ViewModelProvider(this, ViewModelQuestionsFactory()).get(ViewModelQuestions::class.java)
+    }
+    private val viewModelItem by lazy {
+        ViewModelProvider(this).get(RandomItemForQuestionsScreenViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        viewModel.listQuestions.observe(this) { state ->
+        viewModelListItem.listQuestions.observe(this) { state ->
             when (state) {
                 ViewModelQuestions.StateQuestions.Initial -> {}
                 ViewModelQuestions.StateQuestions.Loading -> {}
                 is ViewModelQuestions.StateQuestions.Result -> {
-                    val list = state.list
-                    binding.rv.adapter = RecyclerView(listModel = list)
+                    val listModelQuestions = state.list
+
+                    addListInAdapterRecyclerView(list = listModelQuestions)
+
+                    viewModelItem.setItem(listItem = listModelQuestions)
+                }
+            }
+        }
+        viewModelItem.item.observe(this) { state ->
+            when (state) {
+                RandomItemForQuestionsScreenViewModel.StateItem.Initial -> {}
+                RandomItemForQuestionsScreenViewModel.StateItem.Loading -> {}
+                is RandomItemForQuestionsScreenViewModel.StateItem.ResultItem -> {
+                    val item = state.item
+                    binding.tvQuestions.text = item.questionSingle
                 }
             }
         }
 
         binding.tvAutoComplete.setOnItemClickListener { _, _, position, _ ->
+            viewModelItem.setInitial()
             val item = getListForDropDownMenuUseCase()[position]
-            viewModel.getList(modelQuestions = item)
+            viewModelListItem.getList(modelQuestions = item)
         }
 
+    }
+
+    private fun addListInAdapterRecyclerView(list: List<ModelQuestions>) {
+        binding.rv.adapter = RecyclerView(listModel = list)
     }
 
     override fun onResume() {
