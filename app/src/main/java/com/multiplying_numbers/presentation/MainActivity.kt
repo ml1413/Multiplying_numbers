@@ -3,12 +3,10 @@ package com.multiplying_numbers.presentation
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.multiplying_numbers.R
-import com.multiplying_numbers.data.repository.RepositoryListQuestionsImpl
-import com.multiplying_numbers.data.storage.GetListStorageImpl
 import com.multiplying_numbers.databinding.ActivityMainBinding
 import com.multiplying_numbers.domain.usecase.GetListForDropDownMenuUseCase
-import com.multiplying_numbers.domain.usecase.GetListQuestionsUseCase
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
@@ -16,25 +14,28 @@ class MainActivity : AppCompatActivity() {
     private val getListForDropDownMenuUseCase by lazy {
         GetListForDropDownMenuUseCase()
     }
-
-    private val storage
-            by lazy { GetListStorageImpl() }
-
-    private val repository
-            by lazy { RepositoryListQuestionsImpl(storage = storage) }
-
-    private val getListQuestionsUseCase
-            by lazy { GetListQuestionsUseCase(repository = repository) }
+    private val viewModel by lazy {
+        ViewModelProvider(this, ViewModelQuestionsFactory()).get(ViewModelQuestions::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(binding.root)
+
+        viewModel.listQuestions.observe(this) { state ->
+            when (state) {
+                ViewModelQuestions.StateQuestions.Initial -> {}
+                ViewModelQuestions.StateQuestions.Loading -> {}
+                is ViewModelQuestions.StateQuestions.Result -> {
+                    val list = state.list
+                    binding.rv.adapter = RecyclerView(listModel = list)
+                }
+            }
+        }
 
         binding.tvAutoComplete.setOnItemClickListener { _, _, position, _ ->
             val item = getListForDropDownMenuUseCase()[position]
-            val listQuestions = getListQuestionsUseCase(modelQuestions = item)
-            binding.rv.adapter = RecyclerView(listModel = listQuestions)
+            viewModel.getList(modelQuestions = item)
         }
 
     }
