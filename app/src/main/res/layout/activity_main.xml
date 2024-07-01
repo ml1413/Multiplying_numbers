@@ -28,6 +28,7 @@
             android:paddingStart="@dimen/margin_16dp"
             android:textSize="@dimen/_18sp"
             android:textStyle="bold"
+            android:text="@string/choice_table"
             tools:text="text" />
     </com.google.android.material.textfield.TextInputLayout>
 

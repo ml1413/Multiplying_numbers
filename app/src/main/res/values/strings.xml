@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Multiplying numbers</string>
     <string name="text_is_table_bottom">Victory</string>
+    <string name="choice_table">Choice table</string>
 </resources>

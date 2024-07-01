@@ -10,7 +10,7 @@ class GetListStorageImpl : Storage {
                 questionOnTable = "${modelQuestions.num}  *  $it  = ",
                 correctAnswer = modelQuestions.num * it
             ).let { model ->
-                model.copy(randomAnswer = model.correctAnswer + (0..3).random())
+                model.copy(randomAnswer = model.correctAnswer + (0..1).random())
             }
         }
         return list
