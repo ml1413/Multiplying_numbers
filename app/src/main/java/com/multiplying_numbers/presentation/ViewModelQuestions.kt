@@ -17,6 +17,18 @@ class ViewModelQuestions(
         _listQuestions.value = StateQuestions.Result(list = list)
     }
 
+    fun setAnswerItemIlist(item: ModelQuestions) {
+        val state = _listQuestions.value
+        if (state is StateQuestions.Result) {
+            val oldList = state.list
+            val newList = oldList.map {
+                if (it.id == item.id) item else it
+            }
+            _listQuestions.value = StateQuestions.Result(list = newList)
+        }
+
+    }
+
     sealed class StateQuestions() {
         object Initial : StateQuestions()
         object Loading : StateQuestions()

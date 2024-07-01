@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Multiplying numbers</string>
+    <string name="text_is_table_bottom">Victory</string>
 </resources>

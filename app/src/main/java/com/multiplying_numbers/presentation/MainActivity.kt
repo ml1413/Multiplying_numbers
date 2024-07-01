@@ -21,24 +21,43 @@ class MainActivity : AppCompatActivity() {
     private val viewModelItem by lazy {
         ViewModelProvider(this).get(RandomItemForQuestionsScreenViewModel::class.java)
     }
-
+    private var listModelQuestions: List<ModelQuestions>? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        viewModelListItem.listQuestions.observe(this) { state ->
-            when (state) {
-                ViewModelQuestions.StateQuestions.Initial -> {}
-                ViewModelQuestions.StateQuestions.Loading -> {}
-                is ViewModelQuestions.StateQuestions.Result -> {
-                    val listModelQuestions = state.list
+        observViewModelList()
+        observViewModelItem()
 
-                    addListInAdapterRecyclerView(list = listModelQuestions)
+        dropDownMenuListener()
+        fabYesListener()
+        fabNoListenr()
 
-                    viewModelItem.setItem(listItem = listModelQuestions)
-                }
-            }
+    }
+
+    private fun fabNoListenr() {
+        binding.fabNo.setOnClickListener {
+            viewModelItem.checkAnswerNo()
+            addItemInViewModelRandomItem(listModelQuestions)
         }
+    }
+
+    private fun fabYesListener() {
+        binding.fabYes.setOnClickListener {
+            viewModelItem.checkAnswerYes()
+            addItemInViewModelRandomItem(listModelQuestions)
+        }
+    }
+
+    private fun dropDownMenuListener() {
+        binding.tvAutoComplete.setOnItemClickListener { _, _, position, _ ->
+            viewModelItem.setInitial()
+            val item = getListForDropDownMenuUseCase()[position]
+            viewModelListItem.getList(modelQuestions = item)
+        }
+    }
+
+    private fun observViewModelItem() {
         viewModelItem.item.observe(this) { state ->
             when (state) {
                 RandomItemForQuestionsScreenViewModel.StateItem.Initial -> {}
@@ -47,19 +66,47 @@ class MainActivity : AppCompatActivity() {
                     val item = state.item
                     binding.tvQuestions.text = item.questionSingle
                 }
+
+                is RandomItemForQuestionsScreenViewModel.StateItem.Answer -> {
+                    val itemAnswer = state.item
+                    viewModelListItem.setAnswerItemIlist(item = itemAnswer)
+                    viewModelItem.setInitial()
+                }
+
+                RandomItemForQuestionsScreenViewModel.StateItem.Completed -> {
+                    binding.tvQuestions.text = getString(R.string.text_is_table_bottom)
+                }
             }
         }
-
-        binding.tvAutoComplete.setOnItemClickListener { _, _, position, _ ->
-            viewModelItem.setInitial()
-            val item = getListForDropDownMenuUseCase()[position]
-            viewModelListItem.getList(modelQuestions = item)
-        }
-
     }
 
-    private fun addListInAdapterRecyclerView(list: List<ModelQuestions>) {
-        binding.rv.adapter = RecyclerView(listModel = list)
+    private fun observViewModelList() {
+        viewModelListItem.listQuestions.observe(this) { state ->
+            when (state) {
+                ViewModelQuestions.StateQuestions.Initial -> {}
+                ViewModelQuestions.StateQuestions.Loading -> {}
+                is ViewModelQuestions.StateQuestions.Result -> {
+                    listModelQuestions = state.list
+
+                    addListInAdapterRecyclerView(list = listModelQuestions)
+
+                    addItemInViewModelRandomItem(listModelQuestions)
+                }
+            }
+        }
+    }
+
+    private fun addItemInViewModelRandomItem(listModelQuestions: List<ModelQuestions>?) {
+        listModelQuestions?.let {
+            viewModelItem.setItem(listItem = it)
+        }
+    }
+
+    private fun addListInAdapterRecyclerView(list: List<ModelQuestions>?) {
+        list?.let {
+            binding.rv.adapter = RecyclerView(listModel = it)
+        }
+
     }
 
     override fun onResume() {
