@@ -2,4 +2,9 @@
     <string name="app_name">Multiplying numbers</string>
     <string name="text_is_table_bottom">Victory</string>
     <string name="choice_table">Choice table</string>
+    <string name="result">Result</string>
+    <string name="time">Time</string>
+    <string name="error">Error</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

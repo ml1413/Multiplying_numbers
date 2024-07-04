@@ -8,7 +8,7 @@
     android:paddingStart="@dimen/margin_16dp"
     android:paddingVertical="8dp"
     android:id="@+id/tv_drop"
-    android:textSize="@dimen/_18sp"
+    android:textSize="@dimen/text_size_18sp"
     android:textStyle="bold"
     tools:text="text">
 

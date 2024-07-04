@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="_18sp">18sp</dimen>
+    <dimen name="text_size_18sp">18sp</dimen>
     <dimen name="margin_16dp">16dp</dimen>
     <dimen name="_32dp">32dp</dimen>
     <dimen name="_24sp">24sp</dimen>
+    <dimen name="cardElevation_8dp">8dp</dimen>
+    <dimen name="radius_card_view_8dp">8dp</dimen>
 </resources>
