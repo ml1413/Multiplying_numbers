@@ -1,14 +1,14 @@
-package com.multiplying_numbers.presentation.fragment
+package com.multiplying_numbers.presentation.fragment.list_fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.multiplying_numbers.databinding.FragmentListBinding
+import com.multiplying_numbers.presentation.fragment.MyViewModelProvider
 
 
 class ListFragment : Fragment() {
@@ -16,7 +16,7 @@ class ListFragment : Fragment() {
     private val listTablesViewModel by lazy {
         ViewModelProvider(
             requireActivity(),
-            ListTablesVMFactory()
+            MyViewModelProvider(MyViewModelProvider.ViewModelsFactory.ListTablesViewModel)
         ).get(ListTablesViewModel::class.java)
     }
 
@@ -43,8 +43,13 @@ class ListFragment : Fragment() {
                     binding.recyclerView.adapter =
                         RecyclerViewListsTables(
                             listsTables = state.listsTables,
-                            onItemClickListener = {
-                                Log.d("TAG1", "onViewCreated:  $it")
+                            onItemClickListener = { indexOf ->
+                                // put args in action
+                                val action =
+                                    ListFragmentDirections.actionListFragmentToTableFragment(indexOf)
+                                // navigate to fragment
+                                Navigation.findNavController(binding.root)
+                                    .navigate(action)
                             })
                 }
             }

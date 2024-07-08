@@ -1,4 +1,4 @@
-package com.multiplying_numbers.presentation.fragment
+package com.multiplying_numbers.presentation.fragment.list_fragment
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.multiplying_numbers.R
 import com.multiplying_numbers.databinding.ItemForRvGridBinding
-import com.multiplying_numbers.domain.models.ModelQuestions2
+import com.multiplying_numbers.domain.models.ModelQuestions
 
 class RecyclerViewListsTables(
-    private val listsTables: List<List<ModelQuestions2>>,
+    private val listsTables: List<List<ModelQuestions>>,
     val onItemClickListener: (Int) -> Unit = {}
 ) : RecyclerView.Adapter<RecyclerViewListsTables.MyTableHolder>() {
 
@@ -33,8 +33,8 @@ class RecyclerViewListsTables(
     class MyTableHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemForRvGridBinding.bind(view)
         fun initView(
-            listModels: List<ModelQuestions2>,
-            onItemClickListener: (List<ModelQuestions2>) -> Unit = {}
+            listModels: List<ModelQuestions>,
+            onItemClickListener: (List<ModelQuestions>) -> Unit = {}
         ) {
 
             val messageInTable = listModels[listModels[0].id - 1].questions

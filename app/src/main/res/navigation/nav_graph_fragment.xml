@@ -7,16 +7,23 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.multiplying_numbers.presentation.fragment.ListFragment"
+        android:name="com.multiplying_numbers.presentation.fragment.list_fragment.ListFragment"
         android:label="fragment_table"
-        tools:layout="@layout/fragment_list" >
+        tools:layout="@layout/fragment_list">
+
         <action
-            android:id="@+id/action_tableFragment_to_tableFragment2"
+            android:id="@+id/action_listFragment_to_tableFragment"
             app:destination="@id/tableFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/tableFragment"
-        android:name="com.multiplying_numbers.presentation.fragment.TableFragment"
+        android:name="com.multiplying_numbers.presentation.fragment.table_fragment.SingleTableFragment"
         android:label="fragment_table"
-        tools:layout="@layout/fragment_table" />
+        tools:layout="@layout/fragment_single_table" >
+        <argument
+            android:name="index"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
 </navigation>

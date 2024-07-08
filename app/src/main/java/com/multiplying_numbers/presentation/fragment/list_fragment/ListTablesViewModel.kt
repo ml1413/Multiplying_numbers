@@ -1,9 +1,9 @@
-package com.multiplying_numbers.presentation.fragment
+package com.multiplying_numbers.presentation.fragment.list_fragment
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.multiplying_numbers.domain.models.ModelQuestions2
+import com.multiplying_numbers.domain.models.ModelQuestions
 import com.multiplying_numbers.domain.usecase.GetListTablesUseCase
 
 class ListTablesViewModel(
@@ -19,6 +19,6 @@ class ListTablesViewModel(
 
     sealed class StateLists {
         object Initial : StateLists()
-        class Result(val listsTables: List<List<ModelQuestions2>>) : StateLists()
+        class Result(val listsTables: List<List<ModelQuestions>>) : StateLists()
     }
 }

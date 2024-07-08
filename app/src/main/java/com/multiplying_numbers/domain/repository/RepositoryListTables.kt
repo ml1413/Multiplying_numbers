@@ -1,7 +1,7 @@
 package com.multiplying_numbers.domain.repository
 
-import com.multiplying_numbers.domain.models.ModelQuestions2
+import com.multiplying_numbers.domain.models.ModelQuestions
 
 interface RepositoryListTables {
-    fun getListTables(): List<List<ModelQuestions2>>
+    fun getListTables(): List<List<ModelQuestions>>
 }

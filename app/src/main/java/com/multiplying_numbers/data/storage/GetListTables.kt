@@ -1,7 +1,7 @@
 package com.multiplying_numbers.data.storage
 
-import com.multiplying_numbers.domain.models.ModelQuestions2
+import com.multiplying_numbers.domain.models.ModelQuestions
 
 interface GetListTables {
-    fun getListTables(): List<List<ModelQuestions2>>
+    fun getListTables(): List<List<ModelQuestions>>
 }
