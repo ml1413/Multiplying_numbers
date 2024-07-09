@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.multiplying_numbers.presentation.fragment.list_fragment.ListFragment"
+        android:name="com.multiplying_numbers.presentation.fragment.list_fragment.FragmentList"
         android:label="fragment_table"
         tools:layout="@layout/fragment_list">
 
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/tableFragment"
-        android:name="com.multiplying_numbers.presentation.fragment.table_fragment.SingleTableFragment"
+        android:name="com.multiplying_numbers.presentation.fragment.single_table_fragment.FragmentSingleTable"
         android:label="fragment_table"
         tools:layout="@layout/fragment_single_table" >
         <argument

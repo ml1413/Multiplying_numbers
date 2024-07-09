@@ -6,19 +6,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.fragment.table_fragment.SingleTableFragment">
+    android:background="@color/white"
+    android:padding="@dimen/padding_container_single_fragment_36dp"
+    tools:context=".presentation.fragment.single_table_fragment.FragmentSingleTable">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_table"
+
+    <TextView
+        android:id="@+id/tv_wrong_answer_label"
         android:layout_width="wrap_content"
-        tools:listitem="@layout/item_for_table_rv"
         android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="@dimen/padding_16dp"
+        android:textSize="@dimen/text_size_18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        android:text="@string/count_wrong_answer" />
+
+    <TextView
+        android:id="@+id/tv_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/question_size_32sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_view_table"
+        tools:text="2 * 2 = ?" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_table"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/tv_question"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_wrong_answer_label"
+        tools:listitem="@layout/item_for_table_rv" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardCornerRadius="@dimen/radius_card_view_8dp"
+        app:cardElevation="@dimen/cardElevation_8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/card_right"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_question">
+
+        <TextView
+            android:id="@+id/tv_answer_left"
+            android:layout_width="@dimen/size_answer_button_56dp"
+            android:layout_height="@dimen/size_answer_button_56dp"
+            android:gravity="center"
+            android:padding="@dimen/padding_16dp"
+            android:textSize="@dimen/text_size_18sp"
+            android:textStyle="bold"
+            tools:text="10" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardCornerRadius="@dimen/radius_card_view_8dp"
+        app:cardElevation="@dimen/cardElevation_8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/card_left"
+        app:layout_constraintTop_toBottomOf="@+id/tv_question">
+
+        <TextView
+            android:id="@+id/tv_answer_right"
+            android:layout_width="@dimen/size_answer_button_56dp"
+            android:layout_height="@dimen/size_answer_button_56dp"
+            android:gravity="center"
+            android:padding="@dimen/padding_16dp"
+            android:textSize="@dimen/text_size_18sp"
+            android:textStyle="bold"
+            tools:text="1" />
+    </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

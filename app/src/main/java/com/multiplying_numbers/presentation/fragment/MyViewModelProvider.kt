@@ -6,7 +6,7 @@ import com.multiplying_numbers.data.repository.RepositoryListTablesImpl
 import com.multiplying_numbers.data.storage.GetListTablesImpl
 import com.multiplying_numbers.domain.usecase.GetListTablesUseCase
 import com.multiplying_numbers.presentation.fragment.list_fragment.ListTablesViewModel
-import com.multiplying_numbers.presentation.fragment.table_fragment.SingleTableViewModel
+import com.multiplying_numbers.presentation.fragment.single_table_fragment.SingleTableViewModel
 
 class MyViewModelProvider(
     private val viewModel : ViewModelsFactory

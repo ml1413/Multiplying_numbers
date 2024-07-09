@@ -6,4 +6,8 @@
     <dimen name="_24sp">24sp</dimen>
     <dimen name="cardElevation_8dp">8dp</dimen>
     <dimen name="radius_card_view_8dp">8dp</dimen>
+    <dimen name="padding_16dp">16dp</dimen>
+    <dimen name="size_answer_button_56dp">56dp</dimen>
+    <dimen name="question_size_32sp">32sp</dimen>
+    <dimen name="padding_container_single_fragment_36dp">36dp</dimen>
 </resources>

@@ -3,6 +3,7 @@ package com.multiplying_numbers.presentation.fragment.list_fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.multiplying_numbers.R
 import com.multiplying_numbers.databinding.ItemForRvGridBinding
@@ -23,6 +24,7 @@ class RecyclerViewListsTables(
     override fun getItemCount() = listsTables.size
 
     override fun onBindViewHolder(holder: MyTableHolder, position: Int) {
+
         holder.initView(
             listModels = listsTables[position],
             onItemClickListener = { listModels ->
@@ -30,19 +32,20 @@ class RecyclerViewListsTables(
             })
     }
 
-    class MyTableHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class MyTableHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemForRvGridBinding.bind(view)
         fun initView(
             listModels: List<ModelQuestions>,
             onItemClickListener: (List<ModelQuestions>) -> Unit = {}
         ) {
+            var messageInTable = ""
+            listModels.forEach { messageInTable += it.questions + "\n" }
 
-            val messageInTable = listModels[listModels[0].id - 1].questions
-            val label = "-- ${listModels[0].id} --"
+            val label = "-- ${listModels[0].factor} --"
 
             binding.tv.text = messageInTable
             binding.labeled.text = label
-            itemView.setOnClickListener {
+            binding.cardView.setOnClickListener {
                 onItemClickListener(listModels)
             }
         }

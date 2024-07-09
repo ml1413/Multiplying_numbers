@@ -1,5 +1,6 @@
-package com.multiplying_numbers.presentation.fragment.table_fragment
+package com.multiplying_numbers.presentation.fragment.single_table_fragment
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,6 +17,22 @@ class SingleTableViewModel(
         val list = getListTablesUseCase()[index]
         _singleList.value = SingleTabState.SingleStateResult(list = list)
     }
+
+    fun setAnswerInTableList(modelQuestions: ModelQuestions) {
+        val state = _singleList.value
+        if (state is SingleTabState.SingleStateResult) {
+            val newList = state.list.toMutableList()
+                .map {
+                    if (it.id == modelQuestions.id)
+                        modelQuestions
+                    else
+                        it
+                }.toList()
+            _singleList.value = SingleTabState.SingleStateResult(list = newList)
+        }
+
+    }
+
 
     sealed class SingleTabState {
         object Initial : SingleTabState()
