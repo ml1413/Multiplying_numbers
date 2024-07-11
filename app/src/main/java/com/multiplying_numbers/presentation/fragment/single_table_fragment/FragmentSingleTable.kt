@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
@@ -27,7 +28,6 @@ class FragmentSingleTable : Fragment() {
     private val args by navArgs<FragmentSingleTableArgs>()
     private var buttonAnswerLeftValue = -1
     private var buttonAnswerRightValue = -1
-    private var countWrongAnswer = 0
     private var questionCoroutineScope: CoroutineScope? = null
     private var wrongAnswerCoroutineScope: CoroutineScope? = null
     private val singleTableViewModel by lazy {
@@ -39,6 +39,9 @@ class FragmentSingleTable : Fragment() {
     private val singleQuestionViewModel by lazy {
         ViewModelProvider(this).get(SingleQuestionViewModel::class.java)
     }
+    private val countWrongAnswerViewModel by lazy {
+        ViewModelProvider(this).get(CountWrongAnswerViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,15 +50,9 @@ class FragmentSingleTable : Fragment() {
         ) {
             singleTableViewModel.setList(args.index)
         }
-        //restore count wrong answer
-        savedInstanceState?.getInt(KEY_COUNT_WRONG_ANSWER)?.let { countWrongAnswer = it }
+
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        // save count wrong answer
-        outState.putInt(KEY_COUNT_WRONG_ANSWER, countWrongAnswer)
-        super.onSaveInstanceState(outState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -69,6 +66,22 @@ class FragmentSingleTable : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeSingleTableViewModel()
         observeSingleQuestionViewModel()
+
+        countWrongAnswerViewModel.countWrongAnswer.observe(requireActivity()) { state ->
+            when (state) {
+                CountWrongAnswerViewModel.StateWrongAnswer.Initial -> {
+
+                }
+
+                is CountWrongAnswerViewModel.StateWrongAnswer.WrongAnswerResult -> {
+
+                    setCountValueInWrongAnswerLabel(countValue = state.count)
+                }
+            }
+
+
+        }
+
         binding.cardLeft.setOnClickListener {
             singleQuestionViewModel.checkAnswer(buttonAnswerLeftValue)
         }
@@ -86,22 +99,7 @@ class FragmentSingleTable : Fragment() {
                 SingleQuestionViewModel.SingleQuestionState.Initial -> {}
                 is SingleQuestionViewModel.SingleQuestionState.Result -> {
                     val modelQuestions = state.modelQuestions
-                    binding.tvQuestion.apply {
-
-                        CoroutineScope(Dispatchers.Main).apply {
-                            questionCoroutineScope?.cancel()
-                            questionCoroutineScope = null
-                            questionCoroutineScope = this
-                            launch {
-                                text = ""
-                                modelQuestions.questions.printString(10) { append(it) }
-                                questionCoroutineScope?.cancel()
-                                questionCoroutineScope = null
-                            }
-                        }
-
-
-                    }
+                    setTextInTvQuestion(modelQuestions)
                     addTextOnAnswerButton(modelQuestions)
                 }
 
@@ -117,6 +115,7 @@ class FragmentSingleTable : Fragment() {
             }
         }
     }
+
 
     private fun addTextOnAnswerButton(modelQuestions: ModelQuestions) {
         val isCorrectAnswer = Random.nextBoolean()
@@ -138,8 +137,7 @@ class FragmentSingleTable : Fragment() {
                 SingleTableViewModel.SingleTabState.Loading -> {}
                 is SingleTableViewModel.SingleTabState.SingleStateResult -> {
                     val listTable = state.list
-                    setCountWrongAnswerInTVWrongAnswer(listTable = listTable)
-
+                    countWrongAnswerViewModel.setCountWrongAnswer(listTable = listTable)
                     binding.recyclerViewTable.adapter =
                         RecyclerViewSingleTable(listModelQuestions = listTable)
                     singleQuestionViewModel.setSingleQuestion(listModels = listTable)
@@ -148,31 +146,49 @@ class FragmentSingleTable : Fragment() {
         }
     }
 
-    private fun setCountWrongAnswerInTVWrongAnswer(listTable: List<ModelQuestions>) {
-        val count = listTable.count { it.isCorrect == false }
+    private fun setTextInTvQuestion(modelQuestions: ModelQuestions) {
+        binding.tvQuestion.apply {
+            CoroutineScope(Dispatchers.Main).apply {
+                questionCoroutineScope?.cancel()
+                questionCoroutineScope = null
+                questionCoroutineScope = this
+                launch {
+                    text = ""
+                    modelQuestions.questions.printString(10) { append(it) }
+                    questionCoroutineScope?.cancel()
+                    questionCoroutineScope = null
+                }
+            }
 
-        if (countWrongAnswer == 0) {
-            val string = getString(R.string.count_wrong_answer) + " $countWrongAnswer"
-            binding.tvWrongAnswerLabel.text = string
+
         }
+    }
 
-        if (count > countWrongAnswer) {
-            countWrongAnswer = count
-            val string = getString(R.string.count_wrong_answer) + " $countWrongAnswer"
-            binding.tvWrongAnswerLabel.apply {
-                CoroutineScope(Dispatchers.Main).apply {
+    private fun setCountValueInWrongAnswerLabel(countValue: Int) {
+        val string = getString(R.string.count_wrong_answer) + " $countValue"
+
+        binding.tvWrongAnswerLabel.apply {
+            // change colo wrongAnswerLabel if count  >0___________________________________________
+            if (countValue > 0) setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    android.R.color.holo_red_dark
+                )
+            )
+            //_____________________________________________________________________________________
+            CoroutineScope(Dispatchers.Main).apply {
+                wrongAnswerCoroutineScope?.cancel()
+                wrongAnswerCoroutineScope = null
+                wrongAnswerCoroutineScope = this
+                launch {
+                    text = ""
+                    string.printString(10) { append(it) }
                     wrongAnswerCoroutineScope?.cancel()
                     wrongAnswerCoroutineScope = null
-                    wrongAnswerCoroutineScope = this
-                    launch {
-                        text = ""
-                        string.printString(10) { append(it) }
-                        wrongAnswerCoroutineScope?.cancel()
-                        wrongAnswerCoroutineScope = null
-                    }
                 }
             }
         }
     }
+
 
 }
