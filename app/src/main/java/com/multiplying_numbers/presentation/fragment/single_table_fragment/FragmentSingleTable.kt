@@ -74,12 +74,10 @@ class FragmentSingleTable : Fragment() {
                 }
 
                 is CountWrongAnswerViewModel.StateWrongAnswer.WrongAnswerResult -> {
-
-                    setCountValueInWrongAnswerLabel(countValue = state.count)
+                    val countWrongAnswer = state.listTable.count()
+                    setCountValueInWrongAnswerLabel(countValue = countWrongAnswer)
                 }
             }
-
-
         }
 
         binding.cardLeft.setOnClickListener {

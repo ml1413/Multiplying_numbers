@@ -8,22 +8,25 @@ import com.multiplying_numbers.domain.models.ModelQuestions
 class CountWrongAnswerViewModel : ViewModel() {
     private val _countWrongAnswer = MutableLiveData<StateWrongAnswer>(StateWrongAnswer.Initial)
     val countWrongAnswer: LiveData<StateWrongAnswer> = _countWrongAnswer
-    fun setCountWrongAnswer(listTable: List<ModelQuestions>) {
-        val count = listTable.count { it.isCorrect == false }
-        val state = _countWrongAnswer.value
-        if (state == StateWrongAnswer.Initial) {
-            _countWrongAnswer.value = StateWrongAnswer.WrongAnswerResult(count = count)
-        }
 
+    init {
+        _countWrongAnswer.value = StateWrongAnswer.WrongAnswerResult(listTable = emptyList())
+    }
+
+    fun setCountWrongAnswer(listTable: List<ModelQuestions>) {
+        val newList = listTable.filter { it.isCorrect == false }
+        val state = _countWrongAnswer.value
         if (state is StateWrongAnswer.WrongAnswerResult) {
-            if (count > state.count) {
-                _countWrongAnswer.value = StateWrongAnswer.WrongAnswerResult(count = count)
+            val oldList = state.listTable
+            if (newList.count() > oldList.count()) {
+                _countWrongAnswer.value = StateWrongAnswer.WrongAnswerResult(listTable = newList)
             }
         }
+
     }
 
     sealed class StateWrongAnswer {
         object Initial : StateWrongAnswer()
-        class WrongAnswerResult(val count: Int) : StateWrongAnswer()
+        class WrongAnswerResult(val listTable: List<ModelQuestions>) : StateWrongAnswer()
     }
 }
