@@ -13,11 +13,11 @@
 
         <action
             android:id="@+id/action_listFragment_to_tableFragment"
-            app:destination="@id/tableFragment" />
+            app:destination="@id/singeTabFragment" />
 
     </fragment>
     <fragment
-        android:id="@+id/tableFragment"
+        android:id="@+id/singeTabFragment"
         android:name="com.multiplying_numbers.presentation.fragment.single_table_fragment.FragmentSingleTable"
         android:label="fragment_table"
         tools:layout="@layout/fragment_single_table" >
@@ -25,5 +25,20 @@
             android:name="index"
             app:argType="integer"
             android:defaultValue="-1" />
+        <action
+            android:id="@+id/action_singleTabFragment_to_fragmentVictoryResult"
+            app:destination="@id/fragmentVictoryResult"
+            app:popUpTo="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentVictoryResult"
+        android:name="com.multiplying_numbers.presentation.fragment.vistory_fragment.FragmentVictoryResult"
+        android:label="fragment_victory_result"
+        tools:layout="@layout/fragment_victory_result" >
+        <argument
+            android:name="list_result_answer"
+            app:argType="com.multiplying_numbers.domain.models.ModelQuestions[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 </navigation>

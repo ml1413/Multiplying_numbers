@@ -1,13 +1,14 @@
 package com.multiplying_numbers.presentation.fragment.single_table_fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.multiplying_numbers.R
 import com.multiplying_numbers.Utils.printString
@@ -45,12 +46,12 @@ class FragmentSingleTable : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("TAG1", "onCreate: FragmentSingleTable $this")
         // setTable in view model if view model is empty
         if (singleQuestionViewModel.singleQuestion.value is SingleQuestionViewModel.SingleQuestionState.Initial
         ) {
             singleTableViewModel.setList(args.index)
         }
-
     }
 
 
@@ -66,20 +67,7 @@ class FragmentSingleTable : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeSingleTableViewModel()
         observeSingleQuestionViewModel()
-
-        countWrongAnswerViewModel.countWrongAnswer.observe(requireActivity()) { state ->
-            when (state) {
-                CountWrongAnswerViewModel.StateWrongAnswer.Initial -> {
-
-                }
-
-                is CountWrongAnswerViewModel.StateWrongAnswer.WrongAnswerResult -> {
-                    val countWrongAnswer = state.listTable.count()
-                    setCountValueInWrongAnswerLabel(countValue = countWrongAnswer)
-                }
-            }
-        }
-
+        observeCountWrongAnswerViewModel()
         binding.cardLeft.setOnClickListener {
             singleQuestionViewModel.checkAnswer(buttonAnswerLeftValue)
         }
@@ -89,31 +77,7 @@ class FragmentSingleTable : Fragment() {
     }
 
 
-    //other fun ________________________________________________________________________________________
-
-    private fun observeSingleQuestionViewModel() {
-        singleQuestionViewModel.singleQuestion.observe(requireActivity()) { state ->
-            when (state) {
-                SingleQuestionViewModel.SingleQuestionState.Initial -> {}
-                is SingleQuestionViewModel.SingleQuestionState.Result -> {
-                    val modelQuestions = state.modelQuestions
-                    setTextInTvQuestion(modelQuestions)
-                    addTextOnAnswerButton(modelQuestions)
-                }
-
-                is SingleQuestionViewModel.SingleQuestionState.Answer -> {
-                    val modelQuestions = state.modelQuestions
-                    singleQuestionViewModel.setInitial()
-                    singleTableViewModel.setAnswerInTableList(modelQuestions = modelQuestions)
-                }
-
-                SingleQuestionViewModel.SingleQuestionState.Victory -> {
-                    Toast.makeText(requireContext(), "victory", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-    }
-
+    //other fun ____________________________________________________________________________________
 
     private fun addTextOnAnswerButton(modelQuestions: ModelQuestions) {
         val isCorrectAnswer = Random.nextBoolean()
@@ -128,21 +92,6 @@ class FragmentSingleTable : Fragment() {
 
     }
 
-    private fun observeSingleTableViewModel() {
-        singleTableViewModel.singleList.observe(requireActivity()) { state ->
-            when (state) {
-                SingleTableViewModel.SingleTabState.Initial -> {}
-                SingleTableViewModel.SingleTabState.Loading -> {}
-                is SingleTableViewModel.SingleTabState.SingleStateResult -> {
-                    val listTable = state.list
-                    countWrongAnswerViewModel.setCountWrongAnswer(listTable = listTable)
-                    binding.recyclerViewTable.adapter =
-                        RecyclerViewSingleTable(listModelQuestions = listTable)
-                    singleQuestionViewModel.setSingleQuestion(listModels = listTable)
-                }
-            }
-        }
-    }
 
     private fun setTextInTvQuestion(modelQuestions: ModelQuestions) {
         binding.tvQuestion.apply {
@@ -188,5 +137,68 @@ class FragmentSingleTable : Fragment() {
         }
     }
 
+    // observe view model __________________________________________________________________________
+    private fun observeSingleQuestionViewModel() {
+        singleQuestionViewModel.singleQuestion.observe(requireActivity()) { state ->
+            when (state) {
+                SingleQuestionViewModel.SingleQuestionState.Initial -> {}
+                is SingleQuestionViewModel.SingleQuestionState.Result -> {
+                    val modelQuestions = state.modelQuestions
+                    setTextInTvQuestion(modelQuestions)
+                    addTextOnAnswerButton(modelQuestions)
+                }
 
+                is SingleQuestionViewModel.SingleQuestionState.Answer -> {
+                    val modelQuestions = state.modelQuestions
+                    singleQuestionViewModel.setInitial()
+                    singleTableViewModel.setAnswerInTableList(modelQuestions = modelQuestions)
+                }
+
+                SingleQuestionViewModel.SingleQuestionState.Victory -> {
+                    countWrongAnswerViewModel.showResultAnswer()
+                }
+            }
+        }
+    }
+
+    private fun observeSingleTableViewModel() {
+        singleTableViewModel.singleList.observe(requireActivity()) { state ->
+            when (state) {
+                SingleTableViewModel.SingleTabState.Initial -> {}
+                SingleTableViewModel.SingleTabState.Loading -> {}
+                is SingleTableViewModel.SingleTabState.SingleStateResult -> {
+                    val listTable = state.list
+                    countWrongAnswerViewModel.setCountWrongAnswer(listTable = listTable)
+                    binding.recyclerViewTable.adapter =
+                        RecyclerViewSingleTable(listModelQuestions = listTable)
+                    singleQuestionViewModel.setSingleQuestion(listModels = listTable)
+                }
+            }
+        }
+    }
+
+    private fun observeCountWrongAnswerViewModel() {
+        countWrongAnswerViewModel.countWrongAnswer.observe(requireActivity()) { state ->
+            when (state) {
+                CountWrongAnswerViewModel.StateWrongAnswer.Initial -> {
+                }
+
+                is CountWrongAnswerViewModel.StateWrongAnswer.WrongAnswerResult -> {
+                    val countWrongAnswer = state.listResultAnswer.sumOf { it.countWrongAnswer }
+                    Log.d("TAG1", "observeCountWrongAnswerViewModel: countWrongAnswer$countWrongAnswer")
+                    setCountValueInWrongAnswerLabel(countValue = countWrongAnswer)
+                }
+
+                is CountWrongAnswerViewModel.StateWrongAnswer.ResultVictory -> {
+                    val array = state.listResultAnswer.toTypedArray()
+                    val action =
+                        FragmentSingleTableDirections
+                            .actionSingleTabFragmentToFragmentVictoryResult(listResultAnswer = array)
+
+                    Navigation.findNavController(binding.root)
+                        .navigate(action)
+                }
+            }
+        }
+    }
 }

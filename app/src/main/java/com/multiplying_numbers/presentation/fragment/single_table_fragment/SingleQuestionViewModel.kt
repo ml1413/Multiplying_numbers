@@ -1,5 +1,6 @@
 package com.multiplying_numbers.presentation.fragment.single_table_fragment
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -33,7 +34,13 @@ class SingleQuestionViewModel : ViewModel() {
         if (state is SingleQuestionState.Result) {
             val oldModel = state.modelQuestions
             val isCorrectAnswer = oldModel.correctAnswer == answerValue
-            val newModel = oldModel.copy(isCorrect = isCorrectAnswer)
+            val countWrongAnswer =
+                if (!isCorrectAnswer) oldModel.countWrongAnswer + 1 else oldModel.countWrongAnswer
+
+            val newModel = oldModel.copy(
+                isCorrect = isCorrectAnswer,
+                countWrongAnswer = countWrongAnswer
+            )
             _singleQuestion.value = SingleQuestionState.Answer(modelQuestions = newModel)
         }
 

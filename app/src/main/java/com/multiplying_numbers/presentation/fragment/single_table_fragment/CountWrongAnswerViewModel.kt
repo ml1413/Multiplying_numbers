@@ -1,5 +1,6 @@
 package com.multiplying_numbers.presentation.fragment.single_table_fragment
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,23 +11,36 @@ class CountWrongAnswerViewModel : ViewModel() {
     val countWrongAnswer: LiveData<StateWrongAnswer> = _countWrongAnswer
 
     init {
-        _countWrongAnswer.value = StateWrongAnswer.WrongAnswerResult(listTable = emptyList())
+        _countWrongAnswer.value = StateWrongAnswer.WrongAnswerResult(listResultAnswer = emptyList())
     }
 
     fun setCountWrongAnswer(listTable: List<ModelQuestions>) {
-        val newList = listTable.filter { it.isCorrect == false }
+        val newList = listTable.filter { it.countWrongAnswer > 0 }
         val state = _countWrongAnswer.value
         if (state is StateWrongAnswer.WrongAnswerResult) {
-            val oldList = state.listTable
-            if (newList.count() > oldList.count()) {
-                _countWrongAnswer.value = StateWrongAnswer.WrongAnswerResult(listTable = newList)
+            val oldList = state.listResultAnswer
+            if (newList.sumOf { it.countWrongAnswer } > oldList.sumOf { it.countWrongAnswer }) {
+                _countWrongAnswer.value =
+                    StateWrongAnswer.WrongAnswerResult(listResultAnswer = newList)
             }
+
+        }
+
+
+    }
+
+    fun showResultAnswer() {
+        val state = _countWrongAnswer.value
+        if (state is StateWrongAnswer.WrongAnswerResult) {
+            val list = state.listResultAnswer
+            _countWrongAnswer.value = StateWrongAnswer.ResultVictory(listResultAnswer = list)
         }
 
     }
 
     sealed class StateWrongAnswer {
         object Initial : StateWrongAnswer()
-        class WrongAnswerResult(val listTable: List<ModelQuestions>) : StateWrongAnswer()
+        class WrongAnswerResult(val listResultAnswer: List<ModelQuestions>) : StateWrongAnswer()
+        class ResultVictory(val listResultAnswer: List<ModelQuestions>) : StateWrongAnswer()
     }
 }

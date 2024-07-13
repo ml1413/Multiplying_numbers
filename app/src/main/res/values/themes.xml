@@ -3,10 +3,10 @@
     <style name="Base.Theme.MultiplyingNumbers" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="Theme.MultiplyingNumbers" parent="Base.Theme.MultiplyingNumbers" />
 
-    <style name="MyOutLineDropDown" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
-    </style>
 </resources>
