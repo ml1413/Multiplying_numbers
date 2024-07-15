@@ -40,5 +40,10 @@
             app:argType="com.multiplying_numbers.domain.models.ModelQuestions[]"
             app:nullable="true"
             android:defaultValue="@null" />
+        <argument
+            android:name="modelLAbelAnswer"
+            app:argType="com.multiplying_numbers.domain.models.ModelLabelResultAnswer"
+            android:defaultValue="@null"
+            app:nullable="true" />
     </fragment>
 </navigation>

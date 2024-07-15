@@ -13,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import com.multiplying_numbers.R
 import com.multiplying_numbers.Utils.printString
 import com.multiplying_numbers.databinding.FragmentSingleTableBinding
+import com.multiplying_numbers.domain.models.ModelLabelResultAnswer
 import com.multiplying_numbers.domain.models.ModelQuestions
 import com.multiplying_numbers.presentation.fragment.MyViewModelProvider
 import kotlinx.coroutines.CoroutineScope
@@ -185,16 +186,23 @@ class FragmentSingleTable : Fragment() {
 
                 is CountWrongAnswerViewModel.StateWrongAnswer.WrongAnswerResult -> {
                     val countWrongAnswer = state.listResultAnswer.sumOf { it.countWrongAnswer }
-                    Log.d("TAG1", "observeCountWrongAnswerViewModel: countWrongAnswer$countWrongAnswer")
                     setCountValueInWrongAnswerLabel(countValue = countWrongAnswer)
                 }
 
                 is CountWrongAnswerViewModel.StateWrongAnswer.ResultVictory -> {
                     val array = state.listResultAnswer.toTypedArray()
+                    val data = System.currentTimeMillis()
+                    val modelLabelResultAnswer = ModelLabelResultAnswer(
+                        keyNameTable = args.index.toString(),
+                        date = data,
+                        hasWrongAnswer = array.isNotEmpty()
+                    )
                     val action =
                         FragmentSingleTableDirections
-                            .actionSingleTabFragmentToFragmentVictoryResult(listResultAnswer = array)
-
+                            .actionSingleTabFragmentToFragmentVictoryResult(
+                                listResultAnswer = array,
+                                modelLAbelAnswer = modelLabelResultAnswer
+                            )
                     Navigation.findNavController(binding.root)
                         .navigate(action)
                 }
