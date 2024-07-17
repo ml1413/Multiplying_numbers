@@ -10,4 +10,5 @@
     <dimen name="size_answer_button_56dp">56dp</dimen>
     <dimen name="question_size_32sp">32sp</dimen>
     <dimen name="padding_container_single_fragment_36dp">36dp</dimen>
+    <dimen name="padding_128dp">128dp</dimen>
 </resources>

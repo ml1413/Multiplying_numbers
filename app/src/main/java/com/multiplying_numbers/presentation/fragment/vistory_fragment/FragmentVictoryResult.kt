@@ -60,11 +60,9 @@ class FragmentVictoryResult : Fragment() {
                 ListResultViewModel.StateListResult.Initial -> {}
                 is ListResultViewModel.StateListResult.Result -> {
                     val listResult = state.listResult
-
                     binding.recyclerViewResult.adapter =
                         RecyclerViewVictoryResult(listLabelAndModelAnswer = listResult)
-
-
+                    binding.recyclerViewResult.scrollToPosition(listResult.lastIndex)
                 }
             }
         }
