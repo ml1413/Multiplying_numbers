@@ -1,13 +1,10 @@
 package com.multiplying_numbers.presentation.fragment.vistory_fragment
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.multiplying_numbers.domain.models.ModelItemVictory
-import com.multiplying_numbers.domain.models.ModelLabelResultAnswer
-import com.multiplying_numbers.domain.models.ModelQuestions
-import com.multiplying_numbers.domain.models.ModelWrapper
+import com.multiplying_numbers.domain.models.ModelParameterForSave
 import com.multiplying_numbers.domain.usecase.GetListResultUseCase
 import com.multiplying_numbers.domain.usecase.SaveListResultUseCase
 
@@ -18,29 +15,33 @@ class ListResultViewModel(
     private val _listResult = MutableLiveData<StateListResult>(StateListResult.Initial)
     val listResult: LiveData<StateListResult> = _listResult
 
-    fun setResult(modelItemResult :ModelItemVictory, keyName: String) {
-        // todo
-    //        val listFromStorage = getListResultUseCase.invoke(keyName = keyName)
-//        if (listFromStorage != null) {
-//            val newList = listFromStorage.toMutableList()
-//            newList.addAll(listResult)
-//            newList.toList()
-//            _listResult.value = StateListResult.Result(listResult = newList)
-//        } else {
-//            _listResult.value = StateListResult.Result(listResult = listResult)
-//        }
-        val list = listOf(modelItemResult)
-        _listResult.value = StateListResult.Result(listResult = list)
+    fun setResult(modelItemResult: ModelItemVictory, keyName: String) {
+
+        val modelParameterForSave = getListResultUseCase.invoke(keyName = keyName)
+        val listResult = modelParameterForSave?.listModelItemVictory
+        if (listResult != null) {
+            val newList = listResult.toMutableList()
+            newList.add(modelItemResult)
+            newList.toList()
+            _listResult.value = StateListResult.Result(listResult = newList)
+        } else {
+            _listResult.value = StateListResult.Result(listResult = listOf(modelItemResult))
+        }
+
     }
 
 
     fun saveListInStorage(keyName: String) {
-        // TODO:
-//        val state = _listResult.value
-//        if (state is StateListResult.Result) {
-//            val list = state.listResult
-//            saveUseCase.invoke(listResult = list, keyName = keyName)
-//        }
+
+        val state = _listResult.value
+        if (state is StateListResult.Result) {
+
+            val modelParameterForSave = ModelParameterForSave(
+                listModelItemVictory = state.listResult
+            )
+
+            saveUseCase.invoke(modelParameterForSave = modelParameterForSave, keyName = keyName)
+        }
     }
 
 

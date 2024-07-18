@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.multiplying_numbers.databinding.FragmentVictoryResultBinding
 import com.multiplying_numbers.domain.models.ModelItemVictory
-import com.multiplying_numbers.domain.models.ModelWrapper
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class FragmentVictoryResult : Fragment() {
@@ -41,6 +43,7 @@ class FragmentVictoryResult : Fragment() {
         binding = FragmentVictoryResultBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onDestroy() {
         args.modelItemResult?.keyNameTable?.let {
             listResultViewModel.saveListInStorage(keyName = it)
@@ -54,10 +57,10 @@ class FragmentVictoryResult : Fragment() {
             when (state) {
                 ListResultViewModel.StateListResult.Initial -> {}
                 is ListResultViewModel.StateListResult.Result -> {
-                    val listResult = state.listResult
+                    val listResult = state.listResult.reversed()
                     binding.recyclerViewResult.adapter =
                         RecyclerViewVictoryResult(listModelItemVictory = listResult)
-//                    binding.recyclerViewResult.scrollToPosition(listResult.lastIndex)
+
                 }
             }
         }
