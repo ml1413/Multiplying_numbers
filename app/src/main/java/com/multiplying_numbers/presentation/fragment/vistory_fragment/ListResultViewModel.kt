@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.multiplying_numbers.domain.models.ModelItemVictory
 import com.multiplying_numbers.domain.models.ModelLabelResultAnswer
 import com.multiplying_numbers.domain.models.ModelQuestions
 import com.multiplying_numbers.domain.models.ModelWrapper
@@ -17,31 +18,35 @@ class ListResultViewModel(
     private val _listResult = MutableLiveData<StateListResult>(StateListResult.Initial)
     val listResult: LiveData<StateListResult> = _listResult
 
-    fun setResult(listResult: List<ModelWrapper>, keyName: String) {
-        val listFromStorage = getListResultUseCase.invoke(keyName = keyName)
-        if (listFromStorage != null) {
-            val newList = listFromStorage.toMutableList()
-            newList.addAll(listResult)
-            newList.toList()
-            _listResult.value = StateListResult.Result(listResult = newList)
-        } else {
-            _listResult.value = StateListResult.Result(listResult = listResult)
-        }
+    fun setResult(modelItemResult :ModelItemVictory, keyName: String) {
+        // todo
+    //        val listFromStorage = getListResultUseCase.invoke(keyName = keyName)
+//        if (listFromStorage != null) {
+//            val newList = listFromStorage.toMutableList()
+//            newList.addAll(listResult)
+//            newList.toList()
+//            _listResult.value = StateListResult.Result(listResult = newList)
+//        } else {
+//            _listResult.value = StateListResult.Result(listResult = listResult)
+//        }
+        val list = listOf(modelItemResult)
+        _listResult.value = StateListResult.Result(listResult = list)
     }
 
 
     fun saveListInStorage(keyName: String) {
-        val state = _listResult.value
-        if (state is StateListResult.Result) {
-            val list = state.listResult
-            saveUseCase.invoke(listResult = list, keyName = keyName)
-        }
+        // TODO:
+//        val state = _listResult.value
+//        if (state is StateListResult.Result) {
+//            val list = state.listResult
+//            saveUseCase.invoke(listResult = list, keyName = keyName)
+//        }
     }
 
 
     sealed class StateListResult {
         object Initial : StateListResult()
-        class Result(val listResult: List<ModelWrapper>) : StateListResult()
+        class Result(val listResult: List<ModelItemVictory>) : StateListResult()
     }
 
 }

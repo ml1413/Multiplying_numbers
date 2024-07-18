@@ -36,14 +36,9 @@
         android:label="fragment_victory_result"
         tools:layout="@layout/fragment_victory_result" >
         <argument
-            android:name="list_result_answer"
-            app:argType="com.multiplying_numbers.domain.models.ModelQuestions[]"
+            android:name="model_item_result"
+            app:argType="com.multiplying_numbers.domain.models.ModelItemVictory"
             app:nullable="true"
             android:defaultValue="@null" />
-        <argument
-            android:name="modelLAbelAnswer"
-            app:argType="com.multiplying_numbers.domain.models.ModelLabelResultAnswer"
-            android:defaultValue="@null"
-            app:nullable="true" />
     </fragment>
 </navigation>

@@ -13,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import com.multiplying_numbers.R
 import com.multiplying_numbers.Utils.printString
 import com.multiplying_numbers.databinding.FragmentSingleTableBinding
+import com.multiplying_numbers.domain.models.ModelItemVictory
 import com.multiplying_numbers.domain.models.ModelLabelResultAnswer
 import com.multiplying_numbers.domain.models.ModelQuestions
 import com.multiplying_numbers.presentation.fragment.MyViewModelProvider
@@ -190,18 +191,26 @@ class FragmentSingleTable : Fragment() {
                 }
 
                 is CountWrongAnswerViewModel.StateWrongAnswer.ResultVictory -> {
-                    val array = state.listResultAnswer.toTypedArray()
+                    val listResultAnswer = state.listResultAnswer
+                    val array = listResultAnswer.toTypedArray()
                     val data = System.currentTimeMillis()
+
                     val modelLabelResultAnswer = ModelLabelResultAnswer(
                         keyNameTable = args.index.toString(),
                         date = data,
                         hasWrongAnswer = array.isNotEmpty()
                     )
+                    val modelItemVictory = ModelItemVictory(
+                        keyNameTable = args.index.toString(),
+                        label = "Answer",
+                        date = data,
+                        hasWrongAnswer = array.isNotEmpty(),
+                        listAnswer = listResultAnswer
+                    )
                     val action =
                         FragmentSingleTableDirections
                             .actionSingleTabFragmentToFragmentVictoryResult(
-                                listResultAnswer = array,
-                                modelLAbelAnswer = modelLabelResultAnswer
+                                modelItemResult = modelItemVictory
                             )
                     Navigation.findNavController(binding.root)
                         .navigate(action)

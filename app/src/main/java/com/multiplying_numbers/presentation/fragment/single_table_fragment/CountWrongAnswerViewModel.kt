@@ -15,13 +15,13 @@ class CountWrongAnswerViewModel : ViewModel() {
     }
 
     fun setCountWrongAnswer(listTable: List<ModelQuestions>) {
-        val newList = listTable.filter { it.countWrongAnswer > 0 }
+//        val newList = listTable.filter { it.countWrongAnswer > 0 }
         val state = _countWrongAnswer.value
         if (state is StateWrongAnswer.WrongAnswerResult) {
             val oldList = state.listResultAnswer
-            if (newList.sumOf { it.countWrongAnswer } > oldList.sumOf { it.countWrongAnswer }) {
+            if (listTable.sumOf { it.countWrongAnswer } > oldList.sumOf { it.countWrongAnswer }) {
                 _countWrongAnswer.value =
-                    StateWrongAnswer.WrongAnswerResult(listResultAnswer = newList)
+                    StateWrongAnswer.WrongAnswerResult(listResultAnswer = listTable)
             }
 
         }

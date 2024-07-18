@@ -27,7 +27,6 @@
         android:id="@+id/recycler_view_result"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="@dimen/margin_16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,6 +35,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:listitem="@layout/item_result_answer" />
+        tools:listitem="@layout/item_result_answer_refactor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

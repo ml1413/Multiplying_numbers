@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.multiplying_numbers.databinding.FragmentVictoryResultBinding
+import com.multiplying_numbers.domain.models.ModelItemVictory
 import com.multiplying_numbers.domain.models.ModelWrapper
 
 
@@ -22,18 +23,13 @@ class FragmentVictoryResult : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val listLabelAndResult = mutableListOf<ModelWrapper>()
-        val modelLabel = args.modelLAbelAnswer
-        val listResult = args.listResultAnswer
-        if (modelLabel != null && listResult != null) {
-            listLabelAndResult.add(ModelWrapper.ModelLabel(modelLabelResultAnswer = modelLabel))
-            listResult.forEach { modelQuestions ->
-                listLabelAndResult.add(ModelWrapper.ModelQuestion(modelQuestions = modelQuestions))
-            }
-
+        val listLabelAndResult = mutableListOf<ModelItemVictory>()
+        val modelItemResult = args.modelItemResult
+        if (modelItemResult != null) {
+            listLabelAndResult.add(modelItemResult)
             listResultViewModel.setResult(
-                listResult = listLabelAndResult,
-                keyName = modelLabel.keyNameTable
+                modelItemResult = modelItemResult,
+                keyName = modelItemResult.keyNameTable
             )
         }
     }
@@ -45,9 +41,8 @@ class FragmentVictoryResult : Fragment() {
         binding = FragmentVictoryResultBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     override fun onDestroy() {
-        args.modelLAbelAnswer?.keyNameTable?.let {
+        args.modelItemResult?.keyNameTable?.let {
             listResultViewModel.saveListInStorage(keyName = it)
         }
         super.onDestroy()
@@ -61,8 +56,8 @@ class FragmentVictoryResult : Fragment() {
                 is ListResultViewModel.StateListResult.Result -> {
                     val listResult = state.listResult
                     binding.recyclerViewResult.adapter =
-                        RecyclerViewVictoryResult(listLabelAndModelAnswer = listResult)
-                    binding.recyclerViewResult.scrollToPosition(listResult.lastIndex)
+                        RecyclerViewVictoryResult(listModelItemVictory = listResult)
+//                    binding.recyclerViewResult.scrollToPosition(listResult.lastIndex)
                 }
             }
         }
