@@ -14,7 +14,6 @@ import com.multiplying_numbers.R
 import com.multiplying_numbers.Utils.printString
 import com.multiplying_numbers.databinding.FragmentSingleTableBinding
 import com.multiplying_numbers.domain.models.ModelItemVictory
-import com.multiplying_numbers.domain.models.ModelLabelResultAnswer
 import com.multiplying_numbers.domain.models.ModelQuestions
 import com.multiplying_numbers.presentation.fragment.MyViewModelProvider
 import kotlinx.coroutines.CoroutineScope
@@ -138,6 +137,25 @@ class FragmentSingleTable : Fragment() {
             }
         }
     }
+    private fun openFragmentVictory(listResultAnswer: List<ModelQuestions>) {
+        val array = listResultAnswer.toTypedArray()
+        val data = System.currentTimeMillis()
+
+        val modelItemVictory = ModelItemVictory(
+            keyNameTable = args.index.toString(),
+            label = "Answer",
+            date = data,
+            hasWrongAnswer = array.isNotEmpty(),
+            listAnswer = listResultAnswer
+        )
+        val action =
+            FragmentSingleTableDirections
+                .actionSingleTabFragmentToFragmentVictoryResult(
+                    modelItemResult = modelItemVictory
+                )
+        Navigation.findNavController(binding.root)
+            .navigate(action)
+    }
 
     // observe view model __________________________________________________________________________
     private fun observeSingleQuestionViewModel() {
@@ -175,9 +193,16 @@ class FragmentSingleTable : Fragment() {
                         RecyclerViewSingleTable(listModelQuestions = listTable)
                     singleQuestionViewModel.setSingleQuestion(listModels = listTable)
                 }
+
+                is SingleTableViewModel.SingleTabState.AnswerResult -> {
+                    val listResultAnswer = state.list
+                    openFragmentVictory(listResultAnswer = listResultAnswer)
+                }
             }
         }
     }
+
+
 
     private fun observeCountWrongAnswerViewModel() {
         countWrongAnswerViewModel.countWrongAnswer.observe(requireActivity()) { state ->
@@ -191,29 +216,8 @@ class FragmentSingleTable : Fragment() {
                 }
 
                 is CountWrongAnswerViewModel.StateWrongAnswer.ResultVictory -> {
-                    val listResultAnswer = state.listResultAnswer
-                    val array = listResultAnswer.toTypedArray()
-                    val data = System.currentTimeMillis()
+                    singleTableViewModel.showResult()
 
-                    val modelLabelResultAnswer = ModelLabelResultAnswer(
-                        keyNameTable = args.index.toString(),
-                        date = data,
-                        hasWrongAnswer = array.isNotEmpty()
-                    )
-                    val modelItemVictory = ModelItemVictory(
-                        keyNameTable = args.index.toString(),
-                        label = "Answer",
-                        date = data,
-                        hasWrongAnswer = array.isNotEmpty(),
-                        listAnswer = listResultAnswer
-                    )
-                    val action =
-                        FragmentSingleTableDirections
-                            .actionSingleTabFragmentToFragmentVictoryResult(
-                                modelItemResult = modelItemVictory
-                            )
-                    Navigation.findNavController(binding.root)
-                        .navigate(action)
                 }
             }
         }

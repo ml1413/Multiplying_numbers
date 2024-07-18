@@ -32,11 +32,19 @@ class SingleTableViewModel(
         }
 
     }
+    fun showResult() {
+        val state = _singleList.value
+        if (state is SingleTabState.SingleStateResult) {
+            _singleList.value = SingleTabState.AnswerResult(list = state.list)
+        }
+
+    }
 
 
     sealed class SingleTabState {
         object Initial : SingleTabState()
         class SingleStateResult(val list: List<ModelQuestions>) : SingleTabState()
+        class AnswerResult(val list: List<ModelQuestions>): SingleTabState()
         object Loading : SingleTabState()
     }
 }
