@@ -10,4 +10,6 @@
     <string name="fragment_result_label">Result</string>
     <string name="questions">questions</string>
     <string name="wrong_answer">wrong answer</string>
+    <string name="label_wrong_answer">Has Wrong Answer</string>
+    <string name="label_all_answer_is_correct">All Answer Is Correct</string>
 </resources>

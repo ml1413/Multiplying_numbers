@@ -2,7 +2,6 @@ package com.multiplying_numbers.data.repository
 
 import com.multiplying_numbers.data.storage.StorageListResult
 import com.multiplying_numbers.domain.models.ModelParameterForSave
-import com.multiplying_numbers.domain.models.ModelWrapper
 import com.multiplying_numbers.domain.repository.RepositoryListResult
 
 class RepositoryListResultImpl(private val storageListResult: StorageListResult) :

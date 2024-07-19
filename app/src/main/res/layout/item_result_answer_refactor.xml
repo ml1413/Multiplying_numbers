@@ -23,43 +23,43 @@
             layout="@layout/include_tv_label_item_for_result" />
 
         <include
-            android:id="@+id/tv0"
+            android:id="@+id/includeItemTab0"
             layout="@layout/include_tv_answer_item_for_result" />
 
         <include
-            android:id="@+id/tv1"
+            android:id="@+id/includeItemTab1"
             layout="@layout/include_tv_answer_item_for_result" />
 
         <include
-            android:id="@+id/tv2"
+            android:id="@+id/includeItemTab2"
             layout="@layout/include_tv_answer_item_for_result" />
 
         <include
-            android:id="@+id/tv3"
+            android:id="@+id/includeItemTab3"
             layout="@layout/include_tv_answer_item_for_result" />
 
         <include
-            android:id="@+id/tv4"
+            android:id="@+id/includeItemTab4"
             layout="@layout/include_tv_answer_item_for_result" />
 
         <include
-            android:id="@+id/tv5"
+            android:id="@+id/includeItemTab5"
             layout="@layout/include_tv_answer_item_for_result" />
 
         <include
-            android:id="@+id/tv6"
+            android:id="@+id/includeItemTab6"
             layout="@layout/include_tv_answer_item_for_result" />
 
         <include
-            android:id="@+id/tv7"
+            android:id="@+id/includeItemTab7"
             layout="@layout/include_tv_answer_item_for_result" />
 
         <include
-            android:id="@+id/tv8"
+            android:id="@+id/includeItemTab8"
             layout="@layout/include_tv_answer_item_for_result" />
 
         <include
-            android:id="@+id/tv9"
+            android:id="@+id/includeItemTab9"
             layout="@layout/include_tv_answer_item_for_result" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
