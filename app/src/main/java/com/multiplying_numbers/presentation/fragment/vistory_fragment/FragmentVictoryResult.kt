@@ -25,10 +25,10 @@ class FragmentVictoryResult : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val listLabelAndResult = mutableListOf<ModelItemVictory>()
+
         val modelItemResult = args.modelItemResult
         if (modelItemResult != null) {
-            listLabelAndResult.add(modelItemResult)
+
             listResultViewModel.setResult(
                 modelItemResult = modelItemResult,
                 keyName = modelItemResult.keyNameTable

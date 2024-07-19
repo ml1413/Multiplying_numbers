@@ -21,11 +21,12 @@ class ListResultViewModel(
         val listResult = modelParameterForSave?.listModelItemVictory
         if (listResult != null) {
             val newList = listResult.toMutableList()
-            newList.add(modelItemResult)
+            if (modelItemResult.listAnswer.isNotEmpty()) newList.add(modelItemResult)
             newList.toList()
             _listResult.value = StateListResult.Result(listResult = newList)
         } else {
-            _listResult.value = StateListResult.Result(listResult = listOf(modelItemResult))
+            if (modelItemResult.listAnswer.isNotEmpty())
+                _listResult.value = StateListResult.Result(listResult = listOf(modelItemResult))
         }
 
     }

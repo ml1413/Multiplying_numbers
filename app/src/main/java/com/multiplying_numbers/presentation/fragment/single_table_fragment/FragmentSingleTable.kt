@@ -1,7 +1,6 @@
 package com.multiplying_numbers.presentation.fragment.single_table_fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,7 +46,6 @@ class FragmentSingleTable : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("TAG1", "onCreate: FragmentSingleTable $this")
         // setTable in view model if view model is empty
         if (singleQuestionViewModel.singleQuestion.value is SingleQuestionViewModel.SingleQuestionState.Initial
         ) {
@@ -74,6 +72,9 @@ class FragmentSingleTable : Fragment() {
         }
         binding.cardRight.setOnClickListener {
             singleQuestionViewModel.checkAnswer(buttonAnswerRightValue)
+        }
+        binding.buttonResult.setOnClickListener {
+            openFragmentVictory(listResultAnswer = listOf())
         }
     }
 
@@ -137,13 +138,13 @@ class FragmentSingleTable : Fragment() {
             }
         }
     }
+
     private fun openFragmentVictory(listResultAnswer: List<ModelQuestions>) {
         val array = listResultAnswer.toTypedArray()
         val data = System.currentTimeMillis()
 
         val modelItemVictory = ModelItemVictory(
             keyNameTable = args.index.toString(),
-            label = "Answer",
             date = data,
             hasWrongAnswer = array.isNotEmpty(),
             listAnswer = listResultAnswer
@@ -201,7 +202,6 @@ class FragmentSingleTable : Fragment() {
             }
         }
     }
-
 
 
     private fun observeCountWrongAnswerViewModel() {
