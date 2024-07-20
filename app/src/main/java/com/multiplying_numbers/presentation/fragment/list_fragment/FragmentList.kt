@@ -12,17 +12,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.multiplying_numbers.databinding.FragmentListBinding
-import com.multiplying_numbers.presentation.fragment.MyViewModelProvider
 
 
 class FragmentList : Fragment() {
     private lateinit var binding: FragmentListBinding
     private var adapter: RecyclerViewListsTables? = null
     private val listTablesViewModel by lazy {
-        ViewModelProvider(
-            this,
-            MyViewModelProvider(MyViewModelProvider.ViewModelsFactory.ListTablesViewModel)
-        ).get(ListTablesViewModel::class.java)
+        ViewModelProvider(this, ListTablesViewModelFactory()).get(ListTablesViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

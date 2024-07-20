@@ -12,17 +12,12 @@ import androidx.navigation.fragment.navArgs
 import com.multiplying_numbers.R
 import com.multiplying_numbers.Utils.printString
 import com.multiplying_numbers.databinding.FragmentSingleTableBinding
-import com.multiplying_numbers.domain.models.ModelItemVictory
 import com.multiplying_numbers.domain.models.ModelQuestions
-import com.multiplying_numbers.presentation.fragment.MyViewModelProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlin.random.Random
-
-//todo recycler horizontsl height to big
-private const val KEY_COUNT_WRONG_ANSWER = "key answer"
 
 class FragmentSingleTable : Fragment() {
     private lateinit var binding: FragmentSingleTableBinding
@@ -32,10 +27,8 @@ class FragmentSingleTable : Fragment() {
     private var questionCoroutineScope: CoroutineScope? = null
     private var wrongAnswerCoroutineScope: CoroutineScope? = null
     private val singleTableViewModel by lazy {
-        ViewModelProvider(
-            this,
-            MyViewModelProvider(MyViewModelProvider.ViewModelsFactory.SingleTableViewModel)
-        ).get(SingleTableViewModel::class.java)
+        ViewModelProvider(this, SingleTabViewModelFactory(requireContext()))
+            .get(SingleTableViewModel::class.java)
     }
     private val singleQuestionViewModel by lazy {
         ViewModelProvider(this).get(SingleQuestionViewModel::class.java)
@@ -74,7 +67,7 @@ class FragmentSingleTable : Fragment() {
             singleQuestionViewModel.checkAnswer(buttonAnswerRightValue)
         }
         binding.buttonResult.setOnClickListener {
-            openFragmentVictory(listResultAnswer = listOf())
+            openFragmentVictory()
         }
     }
 
@@ -139,21 +132,11 @@ class FragmentSingleTable : Fragment() {
         }
     }
 
-    private fun openFragmentVictory(listResultAnswer: List<ModelQuestions>) {
-        val array = listResultAnswer.toTypedArray()
-        val data = System.currentTimeMillis()
-
-        val modelItemVictory = ModelItemVictory(
-            keyNameTable = args.index.toString(),
-            date = data,
-            hasWrongAnswer = array.isNotEmpty(),
-            listAnswer = listResultAnswer
-        )
+    private fun openFragmentVictory() {
         val action =
-            FragmentSingleTableDirections
-                .actionSingleTabFragmentToFragmentVictoryResult(
-                    modelItemResult = modelItemVictory
-                )
+            FragmentSingleTableDirections.actionSingleTabFragmentToFragmentVictoryResult(
+                index = args.index
+            )
         Navigation.findNavController(binding.root)
             .navigate(action)
     }
@@ -195,9 +178,8 @@ class FragmentSingleTable : Fragment() {
                     singleQuestionViewModel.setSingleQuestion(listModels = listTable)
                 }
 
-                is SingleTableViewModel.SingleTabState.AnswerResult -> {
-                    val listResultAnswer = state.list
-                    openFragmentVictory(listResultAnswer = listResultAnswer)
+                is SingleTableViewModel.SingleTabState.ShowResult -> {
+                    openFragmentVictory()
                 }
             }
         }
@@ -216,7 +198,8 @@ class FragmentSingleTable : Fragment() {
                 }
 
                 is CountWrongAnswerViewModel.StateWrongAnswer.ResultVictory -> {
-                    singleTableViewModel.showResult()
+
+                    singleTableViewModel.showResult(index = args.index)
 
                 }
             }

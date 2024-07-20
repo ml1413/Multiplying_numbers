@@ -6,12 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import com.multiplying_numbers.R
 import com.multiplying_numbers.databinding.FragmentVictoryResultBinding
-import com.multiplying_numbers.domain.models.ModelItemVictory
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 
 class FragmentVictoryResult : Fragment() {
@@ -19,21 +16,13 @@ class FragmentVictoryResult : Fragment() {
     private lateinit var binding: FragmentVictoryResultBinding
 
     private val listResultViewModel by lazy {
-        ViewModelProvider(this, ListResultViewModelFactory(requireContext()))
+        ViewModelProvider(this, ListResultViewModelFactory(requireContext(), args.index))
             .get(ListResultViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val modelItemResult = args.modelItemResult
-        if (modelItemResult != null) {
-
-            listResultViewModel.setResult(
-                modelItemResult = modelItemResult,
-                keyName = modelItemResult.keyNameTable
-            )
-        }
     }
 
     override fun onCreateView(
@@ -44,18 +33,14 @@ class FragmentVictoryResult : Fragment() {
         return binding.root
     }
 
-    override fun onDestroy() {
-        args.modelItemResult?.keyNameTable?.let {
-            listResultViewModel.saveListInStorage(keyName = it)
-        }
-        super.onDestroy()
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         listResultViewModel.listResult.observe(requireActivity()) { state ->
             when (state) {
-                ListResultViewModel.StateListResult.Initial -> {}
+                ListResultViewModel.StateListResult.Initial -> {
+                    binding.textView.text = getString(R.string.no_answer)
+                }
                 is ListResultViewModel.StateListResult.Result -> {
                     val listResult = state.listResult.reversed()
                     binding.recyclerViewResult.adapter =

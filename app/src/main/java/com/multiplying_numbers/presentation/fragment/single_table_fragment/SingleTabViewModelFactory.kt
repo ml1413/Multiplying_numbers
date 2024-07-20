@@ -1,15 +1,22 @@
-package com.multiplying_numbers.presentation.fragment.vistory_fragment
+package com.multiplying_numbers.presentation.fragment.single_table_fragment
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.multiplying_numbers.data.repository.RepositoryListResultImpl
+import com.multiplying_numbers.data.repository.RepositoryListTablesImpl
+import com.multiplying_numbers.data.storage.GetListTablesImpl
 import com.multiplying_numbers.data.storage.StorageListResultSharedImpl
 import com.multiplying_numbers.domain.usecase.GetListResultUseCase
+import com.multiplying_numbers.domain.usecase.GetListTablesUseCase
 import com.multiplying_numbers.domain.usecase.SaveListResultUseCase
+import com.multiplying_numbers.presentation.fragment.list_fragment.ListTablesViewModel
 
-class ListResultViewModelFactory(context: Context, private val index: Int) :
-    ViewModelProvider.Factory {
+class SingleTabViewModelFactory(context: Context) : ViewModelProvider.Factory {
+    private val getListTables = GetListTablesImpl()
+    private val repositoryListTables = RepositoryListTablesImpl(getListTables = getListTables)
+    private val getListTablesUseCase =
+        GetListTablesUseCase(repositoryListTables = repositoryListTables)
     private val storageListResultImpl =
         StorageListResultSharedImpl(context = context)
     private val repositoryListResultImpl =
@@ -20,10 +27,10 @@ class ListResultViewModelFactory(context: Context, private val index: Int) :
         GetListResultUseCase(repositoryListResult = repositoryListResultImpl)
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return ListResultViewModel(
-            saveUseCase = saveUseCase,
-            getListResultUseCase = getListResultUseCase,
-            index = index
+        return SingleTableViewModel(
+            getListTablesUseCase = getListTablesUseCase,
+            saveListResultUseCase = saveUseCase,
+            getListResultUseCase = getListResultUseCase
         ) as T
     }
 

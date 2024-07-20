@@ -12,4 +12,5 @@
     <string name="wrong_answer">wrong answer</string>
     <string name="label_wrong_answer">Has Wrong Answer</string>
     <string name="label_all_answer_is_correct">All Answer Is Correct</string>
+    <string name="no_answer">No answer history</string>
 </resources>

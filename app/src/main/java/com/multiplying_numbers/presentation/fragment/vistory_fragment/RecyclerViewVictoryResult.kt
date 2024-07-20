@@ -89,7 +89,7 @@ class RecyclerViewVictoryResult(
             context.getString(R.string.wrong_answer) + " : ${model.countWrongAnswer}"
 
         private fun formatDate(time: Long) =
-            SimpleDateFormat("YYYY MM dd", Locale.getDefault()).format(Date(time))
+            SimpleDateFormat("YYYY MM dd  HH:mm:ss", Locale.getDefault()).format(Date(time))
 
         private fun getColorAnswer(model: ModelQuestions) =
             if (model.countWrongAnswer>0) android.R.color.holo_red_dark
