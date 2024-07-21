@@ -1,6 +1,5 @@
 package com.multiplying_numbers.presentation.fragment.single_table_fragment
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -52,7 +51,7 @@ class SingleTableViewModel(
                 hasWrongAnswer = listFromViewModel.sumOf { it.countWrongAnswer } > 0,
                 listAnswer = listFromViewModel)
             // get old list from storage
-            val modelParameter = getListResultUseCase(keyName = index.toString())
+            val modelParameter = getListResultFromStorage(index = index)
 
             if (modelParameter != null) {
                 // if list is exist add to old list new item
@@ -81,6 +80,9 @@ class SingleTableViewModel(
         }
 
     }
+
+     fun getListResultFromStorage(index: Int) =
+        getListResultUseCase(keyName = index.toString())
 
 
     sealed class SingleTabState {

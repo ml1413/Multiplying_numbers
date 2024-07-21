@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -44,6 +45,7 @@ class FragmentSingleTable : Fragment() {
         ) {
             singleTableViewModel.setList(args.index)
         }
+
     }
 
 
@@ -60,15 +62,29 @@ class FragmentSingleTable : Fragment() {
         observeSingleTableViewModel()
         observeSingleQuestionViewModel()
         observeCountWrongAnswerViewModel()
+        showButtonHistoryIfHasHistory()
         binding.cardLeft.setOnClickListener {
             singleQuestionViewModel.checkAnswer(buttonAnswerLeftValue)
         }
         binding.cardRight.setOnClickListener {
             singleQuestionViewModel.checkAnswer(buttonAnswerRightValue)
+
         }
-        binding.buttonResult.setOnClickListener {
+        binding.buttonResultHistory.setOnClickListener {
             openFragmentVictory()
         }
+        binding.buttonBack.setOnClickListener {
+            Navigation.findNavController(binding.root).popBackStack()
+        }
+    }
+
+    private fun showButtonHistoryIfHasHistory() {
+        // show button history if has history
+        singleTableViewModel.getListResultFromStorage(index = args.index)
+            ?.let { modelParameterForSave ->
+                if (modelParameterForSave.listModelItemVictory.isNotEmpty())
+                    binding.buttonResultHistory.isVisible = true
+            }
     }
 
 
@@ -84,6 +100,7 @@ class FragmentSingleTable : Fragment() {
 
         buttonAnswerRightValue = if (!isCorrectAnswer) correctAnswer else wrongAnswer
         binding.tvAnswerRight.text = buttonAnswerRightValue.toString()
+
 
     }
 

@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
-import com.multiplying_numbers.R
 import com.multiplying_numbers.databinding.FragmentVictoryResultBinding
 
 
@@ -36,11 +36,16 @@ class FragmentVictoryResult : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeListResultViewModel()
+        binding.buttonBack.setOnClickListener {
+            Navigation.findNavController(binding.root).popBackStack()
+        }
+    }
+
+    private fun observeListResultViewModel() {
         listResultViewModel.listResult.observe(requireActivity()) { state ->
             when (state) {
-                ListResultViewModel.StateListResult.Initial -> {
-                    binding.textView.text = getString(R.string.no_answer)
-                }
+                ListResultViewModel.StateListResult.Initial -> {}
                 is ListResultViewModel.StateListResult.Result -> {
                     val listResult = state.listResult.reversed()
                     binding.recyclerViewResult.adapter =
