@@ -1,6 +1,11 @@
 package com.multiplying_numbers.presentation.fragment.single_table_fragment
 
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.os.VibratorManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -158,6 +163,28 @@ class FragmentSingleTable : Fragment() {
             .navigate(action)
     }
 
+    private fun vibration(vibratorTime: Long = 100L) {
+        val vib = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val vibratorManager =
+                requireContext().getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+            vibratorManager.defaultVibrator
+        } else {
+            @Suppress("DEPRECATION")
+            requireContext().getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            vib.vibrate(
+                VibrationEffect.createOneShot(
+                    vibratorTime,
+                    VibrationEffect.DEFAULT_AMPLITUDE
+                )
+            )
+        } else {
+            @Suppress("DEPRECATION")
+            vib.vibrate(vibratorTime)
+        }
+    }
+
     // observe view model __________________________________________________________________________
     private fun observeSingleQuestionViewModel() {
         singleQuestionViewModel.singleQuestion.observe(requireActivity()) { state ->
@@ -212,6 +239,8 @@ class FragmentSingleTable : Fragment() {
                 is CountWrongAnswerViewModel.StateWrongAnswer.WrongAnswerResult -> {
                     val countWrongAnswer = state.listResultAnswer.sumOf { it.countWrongAnswer }
                     setCountValueInWrongAnswerLabel(countValue = countWrongAnswer)
+                    // turn vibrator
+                    if (countWrongAnswer > 0) vibration()
                 }
 
                 is CountWrongAnswerViewModel.StateWrongAnswer.ResultVictory -> {
@@ -222,4 +251,6 @@ class FragmentSingleTable : Fragment() {
             }
         }
     }
+
+
 }
