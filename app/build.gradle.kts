@@ -49,6 +49,8 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     implementation ("com.google.code.gson:gson:2.10.1")
+    // googleSplashScreen
+    implementation("androidx.core:core-splashscreen:1.0.1")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.0")

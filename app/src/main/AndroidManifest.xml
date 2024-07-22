@@ -7,11 +7,11 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/baseline_format_list_numbered_24"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/baseline_format_list_numbered_24"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MultiplyingNumbers"
+        android:theme="@style/Theme.MultiplyingNumbers.MySplash"
         tools:targetApi="31">
         <activity
             android:name=".presentation.MainActivity"
