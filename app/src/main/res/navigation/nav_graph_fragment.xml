@@ -13,7 +13,9 @@
 
         <action
             android:id="@+id/action_listFragment_to_tableFragment"
-            app:destination="@id/singeTabFragment" />
+            app:destination="@id/singeTabFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
 
     </fragment>
     <fragment
@@ -28,6 +30,8 @@
         <action
             android:id="@+id/action_singleTabFragment_to_fragmentVictoryResult"
             app:destination="@id/fragmentVictoryResult"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/listFragment" />
     </fragment>
     <fragment
