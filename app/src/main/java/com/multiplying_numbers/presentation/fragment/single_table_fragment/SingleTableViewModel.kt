@@ -9,8 +9,11 @@ import com.multiplying_numbers.domain.models.ModelQuestions
 import com.multiplying_numbers.domain.usecase.GetListResultUseCase
 import com.multiplying_numbers.domain.usecase.GetListTablesUseCase
 import com.multiplying_numbers.domain.usecase.SaveListResultUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class SingleTableViewModel(
+@HiltViewModel
+class SingleTableViewModel @Inject constructor(
     private val getListTablesUseCase: GetListTablesUseCase,
     private val saveListResultUseCase: SaveListResultUseCase,
     private val getListResultUseCase: GetListResultUseCase
@@ -81,7 +84,7 @@ class SingleTableViewModel(
 
     }
 
-     fun getListResultFromStorage(index: Int) =
+    fun getListResultFromStorage(index: Int) =
         getListResultUseCase(keyName = index.toString())
 
 

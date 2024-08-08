@@ -12,19 +12,21 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.multiplying_numbers.R
 import com.multiplying_numbers.Utils.printString
 import com.multiplying_numbers.databinding.FragmentSingleTableBinding
 import com.multiplying_numbers.domain.models.ModelQuestions
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
+@AndroidEntryPoint
 class FragmentSingleTable : Fragment() {
     private lateinit var binding: FragmentSingleTableBinding
     private val args by navArgs<FragmentSingleTableArgs>()
@@ -32,17 +34,9 @@ class FragmentSingleTable : Fragment() {
     private var buttonAnswerRightValue = -1
     private var questionCoroutineScope: CoroutineScope? = null
     private var wrongAnswerCoroutineScope: CoroutineScope? = null
-    private val singleTableViewModel by lazy {
-        ViewModelProvider(this, SingleTabViewModelFactory(requireContext()))
-            .get(SingleTableViewModel::class.java)
-    }
-    private val singleQuestionViewModel by lazy {
-        ViewModelProvider(this).get(SingleQuestionViewModel::class.java)
-    }
-    private val countWrongAnswerViewModel by lazy {
-        ViewModelProvider(this).get(CountWrongAnswerViewModel::class.java)
-    }
-
+    private val singleTableViewModel: SingleTableViewModel by viewModels()
+    private val singleQuestionViewModel: SingleQuestionViewModel by viewModels()
+    private val countWrongAnswerViewModel: CountWrongAnswerViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // setTable in view model if view model is empty

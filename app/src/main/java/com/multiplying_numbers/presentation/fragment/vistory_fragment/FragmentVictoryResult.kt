@@ -5,24 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.multiplying_numbers.databinding.FragmentVictoryResultBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class FragmentVictoryResult : Fragment() {
     private val args by navArgs<FragmentVictoryResultArgs>()
     private lateinit var binding: FragmentVictoryResultBinding
-
-    private val listResultViewModel by lazy {
-        ViewModelProvider(this, ListResultViewModelFactory(requireContext(), args.index))
-            .get(ListResultViewModel::class.java)
-    }
-
+    private val listResultViewModel: ListResultViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
+        listResultViewModel.initValueInViewModel(index = args.index)
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(

@@ -9,20 +9,20 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.WindowManager
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.multiplying_numbers.databinding.FragmentListBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 private const val KEY_INDEX = "key index"
 
+@AndroidEntryPoint
 class FragmentList : Fragment() {
     private lateinit var binding: FragmentListBinding
     private var adapter: RecyclerViewListsTables? = null
     private var index = 0
-    private val listTablesViewModel by lazy {
-        ViewModelProvider(this, ListTablesViewModelFactory()).get(ListTablesViewModel::class.java)
-    }
+    private val listTablesViewModel: ListTablesViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

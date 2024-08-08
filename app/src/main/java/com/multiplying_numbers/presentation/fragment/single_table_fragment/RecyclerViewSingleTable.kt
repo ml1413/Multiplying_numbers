@@ -36,7 +36,6 @@ class RecyclerViewSingleTable(
                 setTextColor(colorAnswer)
                 text = textAnswer
             }
-
         }
         //other fun_________________________________________________________________________________________
 

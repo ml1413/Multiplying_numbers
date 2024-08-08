@@ -3,6 +3,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-parcelize")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -52,6 +54,11 @@ dependencies {
     implementation ("com.google.code.gson:gson:2.10.1")
     // googleSplashScreen
     implementation("androidx.core:core-splashscreen:1.0.1")
+    //Hilt
+    implementation("com.google.dagger:hilt-android:2.47")
+    kapt("com.google.dagger:hilt-compiler:2.47")
+    // in fragment byviewModels
+    implementation("androidx.fragment:fragment-ktx:1.2.5")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.0")
