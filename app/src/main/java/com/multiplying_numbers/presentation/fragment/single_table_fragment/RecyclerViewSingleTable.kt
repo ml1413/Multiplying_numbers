@@ -30,25 +30,39 @@ class RecyclerViewSingleTable(
     class TableHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemForTableRvBinding.bind(view)
         fun initView(modelQuestions: ModelQuestions) {
-            binding.tv.text = modelQuestions.questions
-            if (modelQuestions.isCorrect != null) {
-                if (modelQuestions.isCorrect) {
-                    binding.tv.text = modelQuestions.answer
-                    binding.tv.setTextColor(
-                        ContextCompat.getColor(
-                            view.context,
-                            android.R.color.holo_green_dark
-                        )
-                    )
-                } else {
-                    binding.tv.setTextColor(
-                        ContextCompat.getColor(
-                            view.context,
-                            android.R.color.holo_red_dark
-                        )
-                    )
-                }
+            binding.tv.apply {
+                val colorAnswer = getColorAnswer(modelQuestions = modelQuestions)
+                val textAnswer = getAnswerOrQuestionsText(modelQuestions = modelQuestions)
+                setTextColor(colorAnswer)
+                text = textAnswer
             }
+
         }
+        //other fun_________________________________________________________________________________________
+
+        private fun getAnswerOrQuestionsText(modelQuestions: ModelQuestions) =
+            if (modelQuestions.isCorrect != null && modelQuestions.isCorrect) {
+                modelQuestions.answer
+            } else {
+                modelQuestions.questions
+            }
+
+        private fun getColorAnswer(modelQuestions: ModelQuestions) =
+            if (modelQuestions.isCorrect == null) {
+                ContextCompat.getColor(
+                    view.context,
+                    android.R.color.black
+                )
+            } else if (modelQuestions.isCorrect) {
+                ContextCompat.getColor(
+                    view.context,
+                    android.R.color.holo_green_dark
+                )
+            } else {
+                ContextCompat.getColor(
+                    view.context,
+                    android.R.color.holo_red_dark
+                )
+            }
     }
 }
