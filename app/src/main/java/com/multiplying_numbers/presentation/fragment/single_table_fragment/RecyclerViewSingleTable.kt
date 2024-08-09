@@ -1,5 +1,6 @@
 package com.multiplying_numbers.presentation.fragment.single_table_fragment
 
+import android.animation.ObjectAnimator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,12 +31,14 @@ class RecyclerViewSingleTable(
     class TableHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemForTableRvBinding.bind(view)
         fun initView(modelQuestions: ModelQuestions) {
+            val colorAnswer = getColorAnswer(modelQuestions = modelQuestions)
+            val textAnswer = getAnswerOrQuestionsText(modelQuestions = modelQuestions)
             binding.tv.apply {
-                val colorAnswer = getColorAnswer(modelQuestions = modelQuestions)
-                val textAnswer = getAnswerOrQuestionsText(modelQuestions = modelQuestions)
                 setTextColor(colorAnswer)
                 text = textAnswer
+
             }
+
         }
         //other fun_________________________________________________________________________________________
 

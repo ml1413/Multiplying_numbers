@@ -1,5 +1,6 @@
 package com.multiplying_numbers.presentation.fragment.single_table_fragment
 
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
