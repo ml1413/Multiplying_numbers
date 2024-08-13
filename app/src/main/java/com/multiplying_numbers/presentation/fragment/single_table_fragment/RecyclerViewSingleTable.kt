@@ -36,9 +36,14 @@ class RecyclerViewSingleTable(
             binding.tv.apply {
                 setTextColor(colorAnswer)
                 text = textAnswer
-
             }
-
+            if (!modelQuestions.isAnimation) {
+                ObjectAnimator.ofFloat(itemView, View.ALPHA, 0f, 1f)
+                    .apply {
+                        duration = 1500
+                        start()
+                    }
+            }
         }
         //other fun_________________________________________________________________________________________
 

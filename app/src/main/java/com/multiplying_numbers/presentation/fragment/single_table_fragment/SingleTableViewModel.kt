@@ -34,7 +34,7 @@ class SingleTableViewModel @Inject constructor(
                     if (it.id == modelQuestions.id)
                         modelQuestions
                     else
-                        it
+                        it.copy(isAnimation = false)
                 }.toList()
             _singleList.value = SingleTabState.SingleStateResult(list = newList)
         }

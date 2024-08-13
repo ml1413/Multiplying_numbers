@@ -1,6 +1,5 @@
 package com.multiplying_numbers.presentation.fragment.single_table_fragment
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -39,7 +38,8 @@ class SingleQuestionViewModel : ViewModel() {
 
             val newModel = oldModel.copy(
                 isCorrect = isCorrectAnswer,
-                countWrongAnswer = countWrongAnswer
+                countWrongAnswer = countWrongAnswer,
+                isAnimation = true
             )
             _singleQuestion.value = SingleQuestionState.Answer(modelQuestions = newModel)
         }
