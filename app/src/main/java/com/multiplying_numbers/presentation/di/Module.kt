@@ -1,6 +1,7 @@
-package com.multiplying_numbers.di
+package com.multiplying_numbers.presentation.di
 
 import android.content.Context
+import android.content.SharedPreferences
 import com.multiplying_numbers.data.repository.RepositoryListResultImpl
 import com.multiplying_numbers.data.repository.RepositoryListTablesImpl
 import com.multiplying_numbers.data.storage.GetListTables
@@ -17,6 +18,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -26,6 +28,16 @@ class Module {
     fun provideGetListTablesImpl(): GetListTables = GetListTablesImpl()
 
     @Provides
+    @Singleton
+    fun provideSharedPref(@ApplicationContext context: Context): SharedPreferences {
+        return context.getSharedPreferences(
+            StorageListResultSharedImpl.SHARED_NAME,
+            Context.MODE_PRIVATE
+        )
+    }
+
+    @Provides
+    @Singleton
     fun provideRepositoryListTablesImpl(getListTables: GetListTables): RepositoryListTables {
         return RepositoryListTablesImpl(getListTables = getListTables)
     }
@@ -36,11 +48,12 @@ class Module {
     }
 
     @Provides
-    fun provideStorageListResultSharedImpl(@ApplicationContext context: Context): StorageListResult {
-        return StorageListResultSharedImpl(context = context)
+    fun provideStorageListResultSharedImpl(sharedPreferences: SharedPreferences): StorageListResult {
+        return StorageListResultSharedImpl(sharedPreferences = sharedPreferences)
     }
 
     @Provides
+    @Singleton
     fun provideRepositoryListResultImpl(storageListResult: StorageListResult): RepositoryListResult {
         return RepositoryListResultImpl(storageListResult = storageListResult)
     }

@@ -1,4 +1,4 @@
-package com.multiplying_numbers.app
+package com.multiplying_numbers.presentation.app
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
