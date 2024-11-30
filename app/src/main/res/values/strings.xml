@@ -6,11 +6,13 @@
     <string name="time">Time</string>
     <string name="error">Error</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="count_wrong_answer">Count wrong answer = </string>
+    <string name="count_wrong_answer">Count wrong answer = 0 </string>
     <string name="fragment_result_label">Result</string>
     <string name="questions">questions</string>
     <string name="wrong_answer">wrong answer</string>
     <string name="label_wrong_answer">Has Wrong Answer</string>
     <string name="label_all_answer_is_correct">All Answer Is Correct</string>
     <string name="no_answer">No answer history</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -12,35 +12,31 @@
         tools:layout="@layout/fragment_list">
 
         <action
-            android:id="@+id/action_listFragment_to_tableFragment"
-            app:destination="@id/singeTabFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right" />
+            android:id="@+id/action_listFragment_to_singleTab"
+            app:destination="@id/singleTabRAFECTOR" />
 
     </fragment>
     <fragment
-        android:id="@+id/singeTabFragment"
-        android:name="com.multiplying_numbers.presentation.fragment.single_table_fragment.FragmentSingleTable"
-        android:label="fragment_table"
-        tools:layout="@layout/fragment_single_table" >
+        android:id="@+id/singleTabRAFECTOR"
+        android:name="com.multiplying_numbers.presentation.fragment.singleTabRefactor.FragmentSingleTab"
+        android:label="fragment_single_tab_r_a_f_e_c_t_o_r"
+        tools:layout="@layout/fragment_single_tab" >
         <argument
-            android:name="index"
+            android:name="idTable"
             app:argType="integer"
             android:defaultValue="-1" />
         <action
-            android:id="@+id/action_singleTabFragment_to_fragmentVictoryResult"
-            app:destination="@id/fragmentVictoryResult"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
+            android:id="@+id/action_singleTab_to_fragmentHistory"
+            app:destination="@id/fragmentHistoryREFACTOR"
             app:popUpTo="@id/listFragment" />
     </fragment>
     <fragment
-        android:id="@+id/fragmentVictoryResult"
-        android:name="com.multiplying_numbers.presentation.fragment.vistory_fragment.FragmentVictoryResult"
-        android:label="fragment_victory_result"
-        tools:layout="@layout/fragment_victory_result" >
+        android:id="@+id/fragmentHistoryREFACTOR"
+        android:name="com.multiplying_numbers.presentation.history_fragment_.FragmentHistory"
+        android:label="fragment_history_r_e_f_a_c_t_o_r"
+        tools:layout="@layout/fragment_history" >
         <argument
-            android:name="index"
+            android:name="idTable"
             app:argType="integer"
             android:defaultValue="0" />
     </fragment>

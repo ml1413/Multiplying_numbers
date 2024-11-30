@@ -1,0 +1,12 @@
+package com.multiplying_numbers.domain.models
+
+data class ModelHistory(
+    val listHistory: List<ItemHistory> = emptyList()
+)
+
+data class ItemHistory(
+    val hasWrongAnswer: Boolean,
+    val label: Int,
+    val date: Long,
+    val listAnswer: List<ModelQuestions>
+)

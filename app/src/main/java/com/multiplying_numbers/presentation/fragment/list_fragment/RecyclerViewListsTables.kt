@@ -1,22 +1,17 @@
 package com.multiplying_numbers.presentation.fragment.list_fragment
 
-import android.content.Context
-import android.util.DisplayMetrics
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewTreeObserver
-import android.view.WindowManager
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.multiplying_numbers.R
 import com.multiplying_numbers.databinding.ItemForRvGridBinding
-import com.multiplying_numbers.domain.models.ModelQuestions
+import com.multiplying_numbers.domain.models.ModelTabForCard
 
 class RecyclerViewListsTables(
-    private val listsTables: List<List<ModelQuestions>>,
-    val onItemClickListener: (Int) -> Unit = {}
+    private val listsTables: List<ModelTabForCard>,
+    val onItemClickListener: (Int) -> Unit = {},
+    val indexItem: (Int) -> Unit = {}
 ) : RecyclerView.Adapter<RecyclerViewListsTables.MyTableHolder>() {
 
 
@@ -31,27 +26,28 @@ class RecyclerViewListsTables(
     override fun onBindViewHolder(holder: MyTableHolder, position: Int) {
 
         holder.initView(
-            listModels = listsTables[position],
-            onItemClickListener = { listModels ->
-                onItemClickListener(listsTables.indexOf(listModels))
+            modelTab = listsTables[position],
+            onItemClickListener = { idTable ->
+                onItemClickListener(idTable)
+                indexItem(position)
             })
     }
 
     class MyTableHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemForRvGridBinding.bind(view)
         fun initView(
-            listModels: List<ModelQuestions>,
-            onItemClickListener: (List<ModelQuestions>) -> Unit = {}
+            modelTab: ModelTabForCard,
+            onItemClickListener: (Int) -> Unit = {}
         ) {
             var messageInTable = ""
-            listModels.forEach { messageInTable += it.questions + "\n" }
+            modelTab.listQuestions.forEach { messageInTable += it + "\n" }
 
-            val label = "-- ${listModels[0].factor} --"
+            val label = "-- ${modelTab.idTable} --"
 
             binding.tv.text = messageInTable
             binding.labeled.text = label
             binding.cardView.setOnClickListener {
-                onItemClickListener(listModels)
+                onItemClickListener(modelTab.idTable)
             }
 
         }

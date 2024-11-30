@@ -60,9 +60,11 @@ class FragmentList : Fragment() {
                 is ListTablesViewModel.StateLists.Result -> {
                     adapter = RecyclerViewListsTables(
                         listsTables = state.listsTables,
-                        onItemClickListener = { indexOf ->
-                            index = indexOf
-                            openSingleTableFragment(indexOf)
+                        onItemClickListener = { idTable ->
+                            openSingleTableFragment(idTable = idTable)
+                        },
+                        indexItem = { indexItem ->
+                            index = indexItem
                         })
                     adapter?.let { binding.recyclerView.adapter = it }
                     PagerSnapHelper().apply { attachToRecyclerView(binding.recyclerView) }
@@ -78,13 +80,13 @@ class FragmentList : Fragment() {
 
 
     /** other fun ____________________________________________________________________________________*/
-    private fun openSingleTableFragment(indexOf: Int) {
+    private fun openSingleTableFragment( idTable: Int) {
         // put args in action
-        val action =
-            FragmentListDirections.actionListFragmentToTableFragment(indexOf)
+
+        val actionREFACTOR = FragmentListDirections.actionListFragmentToSingleTab(idTable = idTable)
         // navigate to fragment
         Navigation.findNavController(binding.root)
-            .navigate(action)
+            .navigate(actionREFACTOR)
     }
 
     private fun setPaddingOnItemRecyclerview(padding: (Int) -> Unit) {

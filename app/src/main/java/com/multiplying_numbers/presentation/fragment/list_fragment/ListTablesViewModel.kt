@@ -3,7 +3,7 @@ package com.multiplying_numbers.presentation.fragment.list_fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.multiplying_numbers.domain.models.ModelQuestions
+import com.multiplying_numbers.domain.models.ModelTabForCard
 import com.multiplying_numbers.domain.usecase.GetListTablesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -22,6 +22,6 @@ class ListTablesViewModel @Inject constructor(
 
     sealed class StateLists {
         object Initial : StateLists()
-        class Result(val listsTables: List<List<ModelQuestions>>) : StateLists()
+        class Result(val listsTables: List<ModelTabForCard>) : StateLists()
     }
 }
