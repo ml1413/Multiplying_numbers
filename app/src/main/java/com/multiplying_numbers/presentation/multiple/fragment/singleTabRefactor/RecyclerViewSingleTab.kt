@@ -8,12 +8,12 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.multiplying_numbers.R
 import com.multiplying_numbers.databinding.ItemForTableRvBinding
-import com.multiplying_numbers.domain.multiple.models.ColorItem
-import com.multiplying_numbers.domain.multiple.models.ModelItemTab
+import com.multiplying_numbers.domain.multiple.models.ColorQuestion
+import com.multiplying_numbers.domain.multiple.models.ModelSingleTab
 import com.multiplying_numbers.domain.multiple.models.ModelQuestions
 
 class RecyclerViewSingleTab(
-    private val modelItemTab: ModelItemTab
+    private val modelSingleTab: ModelSingleTab
 ) : RecyclerView.Adapter<RecyclerViewSingleTab.TableHolderREFACTOR>() {
 
     class TableHolderREFACTOR(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -24,10 +24,10 @@ class RecyclerViewSingleTab(
                 setTextColor(
                     ContextCompat.getColor(
                         view.context,
-                        when (modelSingleTabREFACTOR.colorItem) {
-                            ColorItem.COLOR_DEFAULT -> android.R.color.black
-                            ColorItem.COLOR_WRONG -> android.R.color.holo_red_dark
-                            ColorItem.COLOR_CORRECT -> android.R.color.holo_green_dark
+                        when (modelSingleTabREFACTOR.colorQuestion) {
+                            ColorQuestion.COLOR_DEFAULT -> android.R.color.black
+                            ColorQuestion.COLOR_WRONG -> android.R.color.holo_red_dark
+                            ColorQuestion.COLOR_CORRECT -> android.R.color.holo_green_dark
                         }
                     )
                 )
@@ -48,10 +48,10 @@ class RecyclerViewSingleTab(
         return TableHolderREFACTOR(view = view)
     }
 
-    override fun getItemCount() = modelItemTab.listModelQuestions.size
+    override fun getItemCount() = modelSingleTab.listModelQuestions.size
 
     override fun onBindViewHolder(holder: TableHolderREFACTOR, position: Int) {
-        val modelSingleTabREFACTOR = modelItemTab.listModelQuestions[position]
+        val modelSingleTabREFACTOR = modelSingleTab.listModelQuestions[position]
         holder.initView(modelSingleTabREFACTOR = modelSingleTabREFACTOR)
     }
 }

@@ -4,7 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.multiplying_numbers.domain.multiple.models.ModelItemTab
+import com.multiplying_numbers.domain.multiple.models.ModelSingleTab
+import com.multiplying_numbers.domain.multiple.usecase.CheckHistoryUseCase
 import com.multiplying_numbers.domain.multiple.usecase.CheckLeftAnswerUseCase
 import com.multiplying_numbers.domain.multiple.usecase.CheckRightAnswerUseCase
 import com.multiplying_numbers.domain.multiple.usecase.GetSingleTableUseCase
@@ -21,7 +22,7 @@ class SingleTabViewModel @Inject constructor(
     private val getSingleTableUseCase: GetSingleTableUseCase,
     private val checkLeftAnswerUseCase: CheckLeftAnswerUseCase,
     private val checkRightAnswerUseCase: CheckRightAnswerUseCase,
-    private val saveInStorageUseCase: SaveInStorageUseCase
+    private val saveInStorageUseCase: SaveInStorageUseCase,
 ) : ViewModel() {
 
     private val _table = MutableLiveData<StateTable>(StateTable.Initial)
@@ -29,14 +30,14 @@ class SingleTabViewModel @Inject constructor(
 
     fun getTable(idTable: Int) {
         val modelSingleTab = getSingleTableUseCase(idTable = idTable)
-        _table.value = StateTable.ResumeGame(modelItemTab = modelSingleTab)
+        _table.value = StateTable.ResumeGame(modelSingleTab = modelSingleTab)
     }
 
     fun checkLeftAnswer() {
         _table.value?.checkState(
             onResumeGame = { oldModelSingleTab ->
                 val newModel =
-                    checkLeftAnswerUseCase(modelItemTab = oldModelSingleTab)
+                    checkLeftAnswerUseCase(modelSingleTab = oldModelSingleTab)
                 checkAnswer(newModel)
             }
         )
@@ -46,7 +47,7 @@ class SingleTabViewModel @Inject constructor(
         _table.value?.checkState(
             onResumeGame = { oldModelSingleTab ->
                 val newModel =
-                    checkRightAnswerUseCase(modelItemTab = oldModelSingleTab)
+                    checkRightAnswerUseCase(modelSingleTab = oldModelSingleTab)
                 checkAnswer(newModel)
             }
         )
@@ -54,36 +55,38 @@ class SingleTabViewModel @Inject constructor(
 
     fun saveInStorage() {
         _table.value?.checkState(onVictory = { modelItemTab ->
-            saveInStorageUseCase(modelItemTab = modelItemTab)
+            saveInStorageUseCase(modelSingleTab = modelItemTab)
         })
     }
+
+
 
 
     sealed class StateTable() {
         object Initial : StateTable()
         object DisableButton : StateTable()
-        class ResumeGame(val modelItemTab: ModelItemTab) : StateTable()
-        class Victory(val modelItemTab: ModelItemTab) : StateTable()
+        class ResumeGame(val modelSingleTab: ModelSingleTab) : StateTable()
+        class Victory(val modelSingleTab: ModelSingleTab) : StateTable()
     }
 
     /** otherFun__________________________________________________________________________________*/
 
     private fun StateTable.checkState(
         onInitial: () -> Unit = {},
-        onResumeGame: (ModelItemTab) -> Unit = {},
-        onVictory: (ModelItemTab) -> Unit = {},
+        onResumeGame: (ModelSingleTab) -> Unit = {},
+        onVictory: (ModelSingleTab) -> Unit = {},
         onDisableButton: () -> Unit = {}
     ) {
         when (this) {
             StateTable.Initial -> onInitial()
-            is StateTable.ResumeGame -> onResumeGame(modelItemTab)
-            is StateTable.Victory -> onVictory(modelItemTab)
+            is StateTable.ResumeGame -> onResumeGame(modelSingleTab)
+            is StateTable.Victory -> onVictory(modelSingleTab)
             StateTable.DisableButton -> onDisableButton()
         }
     }
 
-    private fun checkAnswer(newModel: ModelItemTab) {
-        _table.value = StateTable.ResumeGame(modelItemTab = newModel)
+    private fun checkAnswer(newModel: ModelSingleTab) {
+        _table.value = StateTable.ResumeGame(modelSingleTab = newModel)
         checkVictory()
     }
 
@@ -94,7 +97,7 @@ class SingleTabViewModel @Inject constructor(
                     viewModelScope.launch {
                         _table.value = StateTable.DisableButton
                         delay(1000)
-                        _table.value = StateTable.Victory(modelItemTab = modelItemTab)
+                        _table.value = StateTable.Victory(modelSingleTab = modelItemTab)
                     }
                 }
             })

@@ -14,17 +14,22 @@ import com.multiplying_numbers.R
 import com.multiplying_numbers.Utils.printString
 import com.multiplying_numbers.databinding.FragmentSingleTabBinding
 import com.multiplying_numbers.domain.multiple.models.ColorCountWrongAnswer
-import com.multiplying_numbers.domain.multiple.models.ModelItemTab
+import com.multiplying_numbers.domain.multiple.models.ModelSingleTab
+import com.multiplying_numbers.domain.multiple.usecase.CheckHistoryUseCase
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 private const val TAG = "FragmentSingleTabRAFECTOR"
+
 // todo Add history button if history exists
 @AndroidEntryPoint
-class FragmentSingleTab : Fragment() {
+class FragmentSingleTab @Inject constructor() : Fragment() {
+    @Inject
+    lateinit var checkHistoryUseCase: CheckHistoryUseCase
     private lateinit var binding: FragmentSingleTabBinding
     private val singleTabViewModel: SingleTabViewModel by viewModels()
     private val args by navArgs<FragmentSingleTabArgs>()
@@ -59,23 +64,19 @@ class FragmentSingleTab : Fragment() {
             when (state) {
                 SingleTabViewModel.StateTable.Initial -> {}
                 is SingleTabViewModel.StateTable.ResumeGame -> {
-                    val modelSingleTabREFACTOR = state.modelItemTab
-                    setModelInRecyclerViewAdapter(modelItemTab = modelSingleTabREFACTOR)
-                    setTextOnQuestions(modelItemTab = modelSingleTabREFACTOR)
-                    tesTextOnLeftAndRightButton(modelItemTab = modelSingleTabREFACTOR)
-                    setTextOnLabelWrongAnswer(modelItemTab = modelSingleTabREFACTOR)
+                    val modelSingleTabREFACTOR = state.modelSingleTab
+                    checkHistory(modelSingleTabREFACTOR)
+                    setModelInRecyclerViewAdapter(modelSingleTab = modelSingleTabREFACTOR)
+                    setTextOnQuestions(modelSingleTab = modelSingleTabREFACTOR)
+                    tesTextOnLeftAndRightButton(modelSingleTab = modelSingleTabREFACTOR)
+                    setTextOnLabelWrongAnswer(modelSingleTab = modelSingleTabREFACTOR)
 
                 }
 
                 is SingleTabViewModel.StateTable.Victory -> {
-                    val idTable = state.modelItemTab.idTable
-
                     singleTabViewModel.saveInStorage()
-
-                    val action = FragmentSingleTabDirections
-                        .actionSingleTabToFragmentHistory(idTable = idTable)
-                    Navigation.findNavController(binding.root).navigate(action)
-
+                    val idTable = state.modelSingleTab.idTable
+                    openFragmentHistory(idTable)
                 }
 
                 SingleTabViewModel.StateTable.DisableButton -> {
@@ -84,6 +85,21 @@ class FragmentSingleTab : Fragment() {
                 }
             }
         }
+    }
+
+    private fun checkHistory(modelSingleTabREFACTOR: ModelSingleTab) {
+        val idTable = modelSingleTabREFACTOR.idTable
+        val isExist = checkHistoryUseCase(idTable = idTable)
+        binding.buttonResultHistory.apply {
+            isVisible = isExist
+            setOnClickListener { openFragmentHistory(idTable = idTable) }
+        }
+    }
+
+    private fun openFragmentHistory(idTable: Int) {
+        val action = FragmentSingleTabDirections
+            .actionSingleTabToFragmentHistory(idTable = idTable)
+        Navigation.findNavController(binding.root).navigate(action)
     }
 
     private fun clickOnRightButton() {
@@ -99,16 +115,16 @@ class FragmentSingleTab : Fragment() {
     }
 
 
-    private fun setTextOnLabelWrongAnswer(modelItemTab: ModelItemTab) {
-        if (modelItemTab.isPrintCountWrongAnswer) {
-            val count = modelItemTab.countWrongAnswer
+    private fun setTextOnLabelWrongAnswer(modelSingleTab: ModelSingleTab) {
+        if (modelSingleTab.isPrintCountWrongAnswer) {
+            val count = modelSingleTab.countWrongAnswer
             val label = getString(R.string.count_wrong_answer).replace("0", count.toString())
             binding.tvWrongAnswerLabel.apply {
                 // set color
                 setTextColor(
                     ContextCompat.getColor(
                         requireActivity(),
-                        when (modelItemTab.colorCountWrongAnswer) {
+                        when (modelSingleTab.colorCountWrongAnswer) {
                             ColorCountWrongAnswer.COLOR_DEFAULT -> android.R.color.black
                             ColorCountWrongAnswer.COLOR_WRONG -> android.R.color.holo_red_dark
                             ColorCountWrongAnswer.COLOR_CORRECT -> android.R.color.holo_green_dark
@@ -131,20 +147,20 @@ class FragmentSingleTab : Fragment() {
 
     }
 
-    private fun tesTextOnLeftAndRightButton(modelItemTab: ModelItemTab) {
+    private fun tesTextOnLeftAndRightButton(modelSingleTab: ModelSingleTab) {
         binding.tvAnswerLeft.text =
-            modelItemTab.textForLeftButton.toString()
+            modelSingleTab.textForLeftButton.toString()
         binding.tvAnswerRight.text =
-            modelItemTab.textForRightButton.toString()
+            modelSingleTab.textForRightButton.toString()
     }
 
-    private fun setTextOnQuestions(modelItemTab: ModelItemTab) {
+    private fun setTextOnQuestions(modelSingleTab: ModelSingleTab) {
         binding.tvQuestion.apply {
             CoroutineScope(Dispatchers.Main).apply {
                 scopeForQuestions?.cancel();scopeForQuestions = null;scopeForQuestions = this
                 launch {
                     text = ""
-                    modelItemTab.questionString.printString(
+                    modelSingleTab.questionString.printString(
                         10,
                         stringForPrint = { append(it) })
                     scopeForQuestions?.cancel();scopeForQuestions = null
@@ -153,9 +169,9 @@ class FragmentSingleTab : Fragment() {
         }
     }
 
-    private fun setModelInRecyclerViewAdapter(modelItemTab: ModelItemTab) {
+    private fun setModelInRecyclerViewAdapter(modelSingleTab: ModelSingleTab) {
         binding.recyclerViewTable.adapter =
-            RecyclerViewSingleTab(modelItemTab = modelItemTab)
+            RecyclerViewSingleTab(modelSingleTab = modelSingleTab)
     }
 
     private fun clickOnBackButton() {

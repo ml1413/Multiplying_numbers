@@ -5,7 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.multiplying_numbers.domain.multiple.models.ItemHistory
 import com.multiplying_numbers.domain.multiple.models.ModelHistory
-import com.multiplying_numbers.domain.multiple.models.ModelItemTab
+import com.multiplying_numbers.domain.multiple.models.ModelSingleTab
 import javax.inject.Inject
 
 class StorageSharedPrefImpl @Inject constructor(
@@ -16,17 +16,18 @@ class StorageSharedPrefImpl @Inject constructor(
         const val MANE_FOR_SHARED = "model for victory"
     }
 
-    override fun saveInStorage(modelItemTab: ModelItemTab) {
+    override fun saveInStorage(modelSingleTab: ModelSingleTab) {
         // todo need mapping
-        val key = modelItemTab.idTable.toString()
+        val key = modelSingleTab.idTable.toString()
         val data = System.currentTimeMillis()
 
 
         val itemHistory = ItemHistory(
-            label = modelItemTab.idTable,
+            label = modelSingleTab.idTable,
             date = data,
-            listAnswer = modelItemTab.listModelQuestions,
-            hasWrongAnswer = modelItemTab.hasWrongAnswer
+            listAnswer = modelSingleTab.listModelQuestions,
+            hasWrongAnswer = modelSingleTab.hasWrongAnswer,
+            colorCountWrongAnswer = modelSingleTab.colorCountWrongAnswer
         )
         val modelHistoryFromStorage = getModelFromStorage(key = key)
             ?.let { modelHistory ->
@@ -51,6 +52,10 @@ class StorageSharedPrefImpl @Inject constructor(
     override fun getHistoryFromStorage(idTable: Int): ModelHistory? {
         val key = idTable.toString()
         return getModelFromStorage(key = key)
+    }
+
+    override fun checkHistory(idTable: Int): Boolean {
+       return sharedPreferences.contains(idTable.toString())
     }
     //todo  need add fun get from storage
 

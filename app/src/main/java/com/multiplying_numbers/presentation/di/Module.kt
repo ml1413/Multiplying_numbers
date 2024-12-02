@@ -14,6 +14,7 @@ import com.multiplying_numbers.data.multiple.storage.sharedPref.StorageSharedPre
 import com.multiplying_numbers.domain.multiple.repository.RepositoryHistoryAnswer
 import com.multiplying_numbers.domain.multiple.repository.RepositoryListTables
 import com.multiplying_numbers.domain.multiple.repository.RepositorySingleTable
+import com.multiplying_numbers.domain.multiple.usecase.CheckHistoryUseCase
 import com.multiplying_numbers.domain.multiple.usecase.CheckLeftAnswerUseCase
 import com.multiplying_numbers.domain.multiple.usecase.CheckRightAnswerUseCase
 import com.multiplying_numbers.domain.multiple.usecase.GetHistoryFromStorage
@@ -107,6 +108,11 @@ class Module {
     @Provides
     fun providesGetHistoryFromStorageREFACTOR(repositoryHistoryAnswer: RepositoryHistoryAnswer): GetHistoryFromStorage {
         return GetHistoryFromStorage(repositoryHistoryAnswer = repositoryHistoryAnswer)
+    }
+
+    @Provides
+    fun provideCheckHistoryUseCase(repositorySingleTable: RepositorySingleTable): CheckHistoryUseCase {
+        return CheckHistoryUseCase(repositorySingleTable = repositorySingleTable)
     }
 
 }

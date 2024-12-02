@@ -1,12 +1,12 @@
 package com.multiplying_numbers.data.multiple
 
 import com.multiplying_numbers.domain.multiple.models.ColorCountWrongAnswer
-import com.multiplying_numbers.domain.multiple.models.ColorItem
-import com.multiplying_numbers.domain.multiple.models.ModelItemTab
+import com.multiplying_numbers.domain.multiple.models.ColorQuestion
+import com.multiplying_numbers.domain.multiple.models.ModelSingleTab
 import com.multiplying_numbers.domain.multiple.models.ModelQuestions
 
 class SingleTableInterfaceImpl : SingleTableInterface {
-    override fun getListTables(idTable: Int): ModelItemTab {
+    override fun getListTables(idTable: Int): ModelSingleTab {
 
         val listModelQuestions = (1..10).map { num ->
             val answer = idTable * num
@@ -27,7 +27,7 @@ class SingleTableInterfaceImpl : SingleTableInterface {
             )
         }
         val randomModelQuestion = listModelQuestions.random()
-        return ModelItemTab(
+        return ModelSingleTab(
             idTable = idTable,
             idQuestion = randomModelQuestion.id,
             listModelQuestions = listModelQuestions,
@@ -39,46 +39,46 @@ class SingleTableInterfaceImpl : SingleTableInterface {
     }
 
 
-    override fun checkLeftAnswer(modelItemTab: ModelItemTab): ModelItemTab {
+    override fun checkLeftAnswer(modelSingleTab: ModelSingleTab): ModelSingleTab {
 
         return checkAnswer(
-            modelItemTab = modelItemTab,
-            answer = modelItemTab.textForLeftButton
+            modelSingleTab = modelSingleTab,
+            answer = modelSingleTab.textForLeftButton
         )
     }
 
-    override fun checkRightAnswer(modelItemTab: ModelItemTab): ModelItemTab {
+    override fun checkRightAnswer(modelSingleTab: ModelSingleTab): ModelSingleTab {
         return checkAnswer(
-            modelItemTab = modelItemTab,
-            answer = modelItemTab.textForRightButton
+            modelSingleTab = modelSingleTab,
+            answer = modelSingleTab.textForRightButton
         )
     }
 
     /** otherfun__________________________________________________________________________________*/
 
     private fun checkAnswer(
-        modelItemTab: ModelItemTab,
+        modelSingleTab: ModelSingleTab,
         answer: Int
-    ): ModelItemTab {
+    ): ModelSingleTab {
 
-        val listModelQuestions = modelItemTab.listModelQuestions
+        val listModelQuestions = modelSingleTab.listModelQuestions
             .map { modelQuestion ->
                 when {
                     // change item  answer and color if answer is correct
-                    modelQuestion.id == modelItemTab.idQuestion && modelQuestion.answerValue == answer ->
+                    modelQuestion.id == modelSingleTab.idQuestion && modelQuestion.answerValue == answer ->
                         modelQuestion.copy(
                             questionsString = modelQuestion.questionsString
                                 .replace("?", "$answer"),
                             isCorrectAnswer = true,
                             isAnimated = true,
-                            colorItem = ColorItem.COLOR_CORRECT
+                            colorQuestion = ColorQuestion.COLOR_CORRECT
                         )
                     // if answer is not correct change count wrong answer and color
-                    modelQuestion.id == modelItemTab.idQuestion && modelQuestion.answerValue != answer ->
+                    modelQuestion.id == modelSingleTab.idQuestion && modelQuestion.answerValue != answer ->
                         modelQuestion.copy(
                             countWrongAnswer = modelQuestion.countWrongAnswer + 1,
                             isAnimated = true,
-                            colorItem = ColorItem.COLOR_WRONG
+                            colorQuestion = ColorQuestion.COLOR_WRONG
                         )
 
                     else -> modelQuestion.copy(isAnimated = false)
@@ -90,7 +90,7 @@ class SingleTableInterfaceImpl : SingleTableInterface {
             .shuffled()
             .firstOrNull()
 
-        return modelItemTab.let { modelTable ->
+        return modelSingleTab.let { modelTable ->
             val sumCountWrongAnswer = listModelQuestions.sumOf { it.countWrongAnswer }
             modelTable.copy(
                 idQuestion = modelForQuestions?.id ?: modelTable.idQuestion,

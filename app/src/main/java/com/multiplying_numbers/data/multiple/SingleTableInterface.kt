@@ -1,9 +1,9 @@
 package com.multiplying_numbers.data.multiple
 
-import com.multiplying_numbers.domain.multiple.models.ModelItemTab
+import com.multiplying_numbers.domain.multiple.models.ModelSingleTab
 
 interface SingleTableInterface {
-    fun getListTables(idTable: Int): ModelItemTab
-    fun checkLeftAnswer(modelItemTab: ModelItemTab): ModelItemTab
-    fun checkRightAnswer(modelItemTab: ModelItemTab): ModelItemTab
+    fun getListTables(idTable: Int): ModelSingleTab
+    fun checkLeftAnswer(modelSingleTab: ModelSingleTab): ModelSingleTab
+    fun checkRightAnswer(modelSingleTab: ModelSingleTab): ModelSingleTab
 }
