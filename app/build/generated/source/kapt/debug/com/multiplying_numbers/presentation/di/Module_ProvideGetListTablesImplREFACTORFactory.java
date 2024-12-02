@@ -2,11 +2,13 @@
 package com.multiplying_numbers.presentation.di;
 
 import com.multiplying_numbers.data.multiple.SingleTableInterface;
+import com.multiplying_numbers.data.multiple.WrongAnswerSignal;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.Factory;
 import dagger.internal.Preconditions;
 import dagger.internal.QualifierMetadata;
 import dagger.internal.ScopeMetadata;
+import javax.inject.Provider;
 
 @ScopeMetadata("javax.inject.Singleton")
 @QualifierMetadata
@@ -20,20 +22,26 @@ import dagger.internal.ScopeMetadata;
 public final class Module_ProvideGetListTablesImplREFACTORFactory implements Factory<SingleTableInterface> {
   private final Module module;
 
-  public Module_ProvideGetListTablesImplREFACTORFactory(Module module) {
+  private final Provider<WrongAnswerSignal> wrongAnswerSignalProvider;
+
+  public Module_ProvideGetListTablesImplREFACTORFactory(Module module,
+      Provider<WrongAnswerSignal> wrongAnswerSignalProvider) {
     this.module = module;
+    this.wrongAnswerSignalProvider = wrongAnswerSignalProvider;
   }
 
   @Override
   public SingleTableInterface get() {
-    return provideGetListTablesImplREFACTOR(module);
+    return provideGetListTablesImplREFACTOR(module, wrongAnswerSignalProvider.get());
   }
 
-  public static Module_ProvideGetListTablesImplREFACTORFactory create(Module module) {
-    return new Module_ProvideGetListTablesImplREFACTORFactory(module);
+  public static Module_ProvideGetListTablesImplREFACTORFactory create(Module module,
+      Provider<WrongAnswerSignal> wrongAnswerSignalProvider) {
+    return new Module_ProvideGetListTablesImplREFACTORFactory(module, wrongAnswerSignalProvider);
   }
 
-  public static SingleTableInterface provideGetListTablesImplREFACTOR(Module instance) {
-    return Preconditions.checkNotNullFromProvides(instance.provideGetListTablesImplREFACTOR());
+  public static SingleTableInterface provideGetListTablesImplREFACTOR(Module instance,
+      WrongAnswerSignal wrongAnswerSignal) {
+    return Preconditions.checkNotNullFromProvides(instance.provideGetListTablesImplREFACTOR(wrongAnswerSignal));
   }
 }

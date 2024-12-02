@@ -10,6 +10,7 @@ import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import com.multiplying_numbers.data.multiple.SingleTableInterface;
+import com.multiplying_numbers.data.multiple.WrongAnswerSignal;
 import com.multiplying_numbers.data.multiple.storage.sharedPref.StorageSharedPref;
 import com.multiplying_numbers.domain.multiple.repository.RepositoryHistoryAnswer;
 import com.multiplying_numbers.domain.multiple.repository.RepositoryListTables;
@@ -35,6 +36,7 @@ import com.multiplying_numbers.presentation.di.Module_ProvideRepositorySingleTab
 import com.multiplying_numbers.presentation.di.Module_ProvideSaveInStorageUseCaseREFACTORFactory;
 import com.multiplying_numbers.presentation.di.Module_ProvideSharedPrefFactory;
 import com.multiplying_numbers.presentation.di.Module_ProvideStorageSharedImplFactory;
+import com.multiplying_numbers.presentation.di.Module_ProvideWrongAnswerSignalImplFactory;
 import com.multiplying_numbers.presentation.di.Module_ProvidesCheckRightAnswerUseCaseREFACTORFactory;
 import com.multiplying_numbers.presentation.di.Module_ProvidesGetHistoryFromStorageREFACTORFactory;
 import com.multiplying_numbers.presentation.multiple.fragment.history_fragment_.FragmentHistory;
@@ -594,6 +596,8 @@ public final class DaggerApp_HiltComponents_SingletonC {
 
     private final SingletonCImpl singletonCImpl = this;
 
+    private Provider<WrongAnswerSignal> provideWrongAnswerSignalImplProvider;
+
     private Provider<SingleTableInterface> provideGetListTablesImplREFACTORProvider;
 
     private Provider<SharedPreferences> provideSharedPrefProvider;
@@ -645,12 +649,13 @@ public final class DaggerApp_HiltComponents_SingletonC {
     @SuppressWarnings("unchecked")
     private void initialize(final ApplicationContextModule applicationContextModuleParam,
         final Module moduleParam) {
+      this.provideWrongAnswerSignalImplProvider = DoubleCheck.provider(new SwitchingProvider<WrongAnswerSignal>(singletonCImpl, 2));
       this.provideGetListTablesImplREFACTORProvider = DoubleCheck.provider(new SwitchingProvider<SingleTableInterface>(singletonCImpl, 1));
-      this.provideSharedPrefProvider = DoubleCheck.provider(new SwitchingProvider<SharedPreferences>(singletonCImpl, 3));
-      this.provideStorageSharedImplProvider = DoubleCheck.provider(new SwitchingProvider<StorageSharedPref>(singletonCImpl, 2));
+      this.provideSharedPrefProvider = DoubleCheck.provider(new SwitchingProvider<SharedPreferences>(singletonCImpl, 4));
+      this.provideStorageSharedImplProvider = DoubleCheck.provider(new SwitchingProvider<StorageSharedPref>(singletonCImpl, 3));
       this.provideRepositorySingleTableREFACTORImplProvider = DoubleCheck.provider(new SwitchingProvider<RepositorySingleTable>(singletonCImpl, 0));
-      this.provideRepositoryHistoryAnswerImplREFACTORProvider = DoubleCheck.provider(new SwitchingProvider<RepositoryHistoryAnswer>(singletonCImpl, 4));
-      this.provideRepositoryListTablesImplProvider = DoubleCheck.provider(new SwitchingProvider<RepositoryListTables>(singletonCImpl, 5));
+      this.provideRepositoryHistoryAnswerImplREFACTORProvider = DoubleCheck.provider(new SwitchingProvider<RepositoryHistoryAnswer>(singletonCImpl, 5));
+      this.provideRepositoryListTablesImplProvider = DoubleCheck.provider(new SwitchingProvider<RepositoryListTables>(singletonCImpl, 6));
     }
 
     @Override
@@ -690,18 +695,21 @@ public final class DaggerApp_HiltComponents_SingletonC {
           return (T) Module_ProvideRepositorySingleTableREFACTORImplFactory.provideRepositorySingleTableREFACTORImpl(singletonCImpl.module, singletonCImpl.provideGetListTablesImplREFACTORProvider.get(), singletonCImpl.provideStorageSharedImplProvider.get());
 
           case 1: // com.multiplying_numbers.data.multiple.SingleTableInterface 
-          return (T) Module_ProvideGetListTablesImplREFACTORFactory.provideGetListTablesImplREFACTOR(singletonCImpl.module);
+          return (T) Module_ProvideGetListTablesImplREFACTORFactory.provideGetListTablesImplREFACTOR(singletonCImpl.module, singletonCImpl.provideWrongAnswerSignalImplProvider.get());
 
-          case 2: // com.multiplying_numbers.data.multiple.storage.sharedPref.StorageSharedPref 
+          case 2: // com.multiplying_numbers.data.multiple.WrongAnswerSignal 
+          return (T) Module_ProvideWrongAnswerSignalImplFactory.provideWrongAnswerSignalImpl(singletonCImpl.module, ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
+
+          case 3: // com.multiplying_numbers.data.multiple.storage.sharedPref.StorageSharedPref 
           return (T) Module_ProvideStorageSharedImplFactory.provideStorageSharedImpl(singletonCImpl.module, singletonCImpl.provideSharedPrefProvider.get());
 
-          case 3: // android.content.SharedPreferences 
+          case 4: // android.content.SharedPreferences 
           return (T) Module_ProvideSharedPrefFactory.provideSharedPref(singletonCImpl.module, ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
 
-          case 4: // com.multiplying_numbers.domain.multiple.repository.RepositoryHistoryAnswer 
+          case 5: // com.multiplying_numbers.domain.multiple.repository.RepositoryHistoryAnswer 
           return (T) Module_ProvideRepositoryHistoryAnswerImplREFACTORFactory.provideRepositoryHistoryAnswerImplREFACTOR(singletonCImpl.module, singletonCImpl.provideStorageSharedImplProvider.get());
 
-          case 5: // com.multiplying_numbers.domain.multiple.repository.RepositoryListTables 
+          case 6: // com.multiplying_numbers.domain.multiple.repository.RepositoryListTables 
           return (T) Module_ProvideRepositoryListTablesImplFactory.provideRepositoryListTablesImpl(singletonCImpl.module, Module_ProvideGetListTablesImplFactory.provideGetListTablesImpl(singletonCImpl.module));
 
           default: throw new AssertionError(id);

@@ -2,10 +2,13 @@ package com.multiplying_numbers.data.multiple
 
 import com.multiplying_numbers.domain.multiple.models.ColorCountWrongAnswer
 import com.multiplying_numbers.domain.multiple.models.ColorQuestion
-import com.multiplying_numbers.domain.multiple.models.ModelSingleTab
 import com.multiplying_numbers.domain.multiple.models.ModelQuestions
+import com.multiplying_numbers.domain.multiple.models.ModelSingleTab
+import javax.inject.Inject
 
-class SingleTableInterfaceImpl : SingleTableInterface {
+class SingleTableInterfaceImpl @Inject constructor(
+    private val signal: WrongAnswerSignal
+) : SingleTableInterface {
     override fun getListTables(idTable: Int): ModelSingleTab {
 
         val listModelQuestions = (1..10).map { num ->
@@ -117,8 +120,10 @@ class SingleTableInterfaceImpl : SingleTableInterface {
                     modelQuestion.id == modelSingleTab.idQuestion && modelQuestion.answerValue == answer ->
                         setValueInModelIfAnswerCorrect(modelQuestion, answer)
                     // if answer is not correct change count wrong answer and color
-                    modelQuestion.id == modelSingleTab.idQuestion && modelQuestion.answerValue != answer ->
+                    modelQuestion.id == modelSingleTab.idQuestion && modelQuestion.answerValue != answer -> {
+                        signal.signal()
                         setValueInModelIfAnswerWrong(modelQuestion)
+                    }
 
                     else -> modelQuestion.copy(isAnimated = false)
                 }
