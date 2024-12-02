@@ -9,11 +9,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.multiplying_numbers.databinding.FragmentHistoryBinding
-import com.multiplying_numbers.data.multiple.storage.sharedPref.ModelHistory
+import com.multiplying_numbers.data.multiple.storage.sharedPref.ModelHistoryStorage
+import com.multiplying_numbers.domain.multiple.models.ModelHistory
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val TAG = "FragmentHistoryREFACTOR"
-// todo need color answer on recycler view
 @AndroidEntryPoint
 class FragmentHistory : Fragment() {
     private lateinit var binding: FragmentHistoryBinding
@@ -44,8 +44,8 @@ class FragmentHistory : Fragment() {
             when (state) {
                 HistoryViewModel.StateHistory.Initial -> {}
                 is HistoryViewModel.StateHistory.HistoryAnswer -> {
-                    val modelHistoryREFACTOR = state.modelHistory
-                    initRecyclerView(modelHistoryREFACTOR)
+                    val modelHistory = state.modelHistory
+                    initRecyclerView(modelHistory)
                 }
             }
         }
@@ -57,9 +57,9 @@ class FragmentHistory : Fragment() {
         }
     }
 
-    private fun initRecyclerView(modelHistoryREFACTOR: ModelHistory) {
+    private fun initRecyclerView(modelHistoryStorage: ModelHistory) {
         val adapter =
-            HistoryRecyclerView(modelHistory = modelHistoryREFACTOR)
+            HistoryRecyclerView(modelHistory = modelHistoryStorage)
         binding.recyclerViewResult.adapter = adapter
     }
 

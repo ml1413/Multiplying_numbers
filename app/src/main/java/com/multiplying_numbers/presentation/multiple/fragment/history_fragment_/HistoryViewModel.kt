@@ -3,7 +3,7 @@ package com.multiplying_numbers.presentation.multiple.fragment.history_fragment_
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.multiplying_numbers.data.multiple.storage.sharedPref.ModelHistory
+import com.multiplying_numbers.domain.multiple.models.ModelHistory
 import com.multiplying_numbers.domain.multiple.usecase.GetHistoryFromStorage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -16,9 +16,9 @@ class HistoryViewModel @Inject constructor(
     val history: LiveData<StateHistory> = _history
 
     fun getHistoryFromStorage(idTable: Int) {
-        val modelHistoryREFACTOR = getHistoryFromStorageREFACTOR(idTable = idTable)
-        modelHistoryREFACTOR?.apply {
-            _history.value = StateHistory.HistoryAnswer(modelHistory = modelHistoryREFACTOR)
+        val modelHistory = getHistoryFromStorageREFACTOR(idTable = idTable)
+        modelHistory?.apply {
+            _history.value = StateHistory.HistoryAnswer(modelHistory = modelHistory)
         }
     }
 

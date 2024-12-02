@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.multiplying_numbers.R
 import com.multiplying_numbers.databinding.IncludeTvAnswerItemForResultBinding
 import com.multiplying_numbers.databinding.ItemResultAnswerRefactorBinding
-import com.multiplying_numbers.data.multiple.storage.sharedPref.ItemHistory
-import com.multiplying_numbers.data.multiple.storage.sharedPref.ModelHistory
+import com.multiplying_numbers.data.multiple.storage.sharedPref.ItemHistoryStorage
+import com.multiplying_numbers.data.multiple.storage.sharedPref.ModelHistoryStorage
+import com.multiplying_numbers.domain.multiple.models.ItemHistory
+import com.multiplying_numbers.domain.multiple.models.ModelHistory
 import com.multiplying_numbers.domain.multiple.models.ModelQuestions
 import java.text.SimpleDateFormat
 import java.util.Date

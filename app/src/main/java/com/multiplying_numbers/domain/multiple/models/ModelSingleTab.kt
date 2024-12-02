@@ -36,7 +36,3 @@ enum class ColorCountWrongAnswer {
 enum class ColorQuestion {
     COLOR_DEFAULT, COLOR_WRONG, COLOR_CORRECT
 }
-
-enum class ColorQuestionHistory {
-    COLOR_WRONG, COLOR_CORRECT
-}

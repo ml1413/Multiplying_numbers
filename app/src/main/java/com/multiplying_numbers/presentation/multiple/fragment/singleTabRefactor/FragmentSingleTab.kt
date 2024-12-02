@@ -24,8 +24,6 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 private const val TAG = "FragmentSingleTabRAFECTOR"
-
-// todo Add history button if history exists
 @AndroidEntryPoint
 class FragmentSingleTab @Inject constructor() : Fragment() {
     @Inject

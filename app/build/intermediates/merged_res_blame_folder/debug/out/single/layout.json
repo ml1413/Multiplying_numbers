@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "com.multiplying_numbers.app-mergeDebugResources-47:/layout/fragment_list.xml",
+        "source": "com.multiplying_numbers.app-main-50:/layout/fragment_list.xml"
+    },
+    {
+        "merged": "com.multiplying_numbers.app-mergeDebugResources-47:/layout/item_result_answer_refactor.xml",
+        "source": "com.multiplying_numbers.app-main-50:/layout/item_result_answer_refactor.xml"
+    },
+    {
+        "merged": "com.multiplying_numbers.app-mergeDebugResources-47:/layout/include_tv_label_item_for_result.xml",
+        "source": "com.multiplying_numbers.app-main-50:/layout/include_tv_label_item_for_result.xml"
+    },
+    {
+        "merged": "com.multiplying_numbers.app-mergeDebugResources-47:/layout/item_result_answer.xml",
+        "source": "com.multiplying_numbers.app-main-50:/layout/item_result_answer.xml"
+    },
+    {
+        "merged": "com.multiplying_numbers.app-mergeDebugResources-47:/layout/fragment_history.xml",
+        "source": "com.multiplying_numbers.app-main-50:/layout/fragment_history.xml"
+    },
+    {
+        "merged": "com.multiplying_numbers.app-mergeDebugResources-47:/layout/item_for_table_rv.xml",
+        "source": "com.multiplying_numbers.app-main-50:/layout/item_for_table_rv.xml"
+    },
+    {
+        "merged": "com.multiplying_numbers.app-mergeDebugResources-47:/layout/item_for_rv_grid.xml",
+        "source": "com.multiplying_numbers.app-main-50:/layout/item_for_rv_grid.xml"
+    },
+    {
+        "merged": "com.multiplying_numbers.app-mergeDebugResources-47:/layout/activity_main.xml",
+        "source": "com.multiplying_numbers.app-main-50:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.multiplying_numbers.app-mergeDebugResources-47:/layout/include_tv_answer_item_for_result.xml",
+        "source": "com.multiplying_numbers.app-main-50:/layout/include_tv_answer_item_for_result.xml"
+    },
+    {
+        "merged": "com.multiplying_numbers.app-mergeDebugResources-47:/layout/item_model_result_answer.xml",
+        "source": "com.multiplying_numbers.app-main-50:/layout/item_model_result_answer.xml"
+    },
+    {
+        "merged": "com.multiplying_numbers.app-mergeDebugResources-47:/layout/fragment_single_tab.xml",
+        "source": "com.multiplying_numbers.app-main-50:/layout/fragment_single_tab.xml"
+    }
+]
