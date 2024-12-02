@@ -3,7 +3,7 @@ package com.multiplying_numbers.presentation.app;
 import com.multiplying_numbers.presentation.MainActivity_GeneratedInjector;
 import com.multiplying_numbers.presentation.multiple.fragment.history_fragment_.FragmentHistory_GeneratedInjector;
 import com.multiplying_numbers.presentation.multiple.fragment.history_fragment_.HistoryViewModel_HiltModules;
-import com.multiplying_numbers.presentation.multiple.fragment.list_fragment.FragmentList_GeneratedInjector;
+import com.multiplying_numbers.presentation.multiple.fragment.list_fragment.FragmentListTables_GeneratedInjector;
 import com.multiplying_numbers.presentation.multiple.fragment.list_fragment.ListTablesViewModel_HiltModules;
 import com.multiplying_numbers.presentation.multiple.fragment.singleTabRefactor.FragmentSingleTab_GeneratedInjector;
 import com.multiplying_numbers.presentation.multiple.fragment.singleTabRefactor.SingleTabViewModel_HiltModules;
@@ -218,7 +218,7 @@ public final class App_HiltComponents {
   )
   @FragmentScoped
   public abstract static class FragmentC implements FragmentHistory_GeneratedInjector,
-      FragmentList_GeneratedInjector,
+      FragmentListTables_GeneratedInjector,
       FragmentSingleTab_GeneratedInjector,
       FragmentComponent,
       DefaultViewModelFactories.FragmentEntryPoint,

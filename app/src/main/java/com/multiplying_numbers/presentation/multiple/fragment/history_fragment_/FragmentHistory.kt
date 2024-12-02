@@ -35,7 +35,6 @@ class FragmentHistory : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        clickOnBackButton()
         observeViewModel()
     }
 
@@ -51,11 +50,7 @@ class FragmentHistory : Fragment() {
         }
     }
 
-    private fun clickOnBackButton() {
-        binding.buttonBack.setOnClickListener {
-            Navigation.findNavController(binding.root).popBackStack()
-        }
-    }
+
 
     private fun initRecyclerView(modelHistoryStorage: ModelHistory) {
         val adapter =

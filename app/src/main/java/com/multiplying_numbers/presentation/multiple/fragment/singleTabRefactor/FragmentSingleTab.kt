@@ -24,6 +24,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 private const val TAG = "FragmentSingleTabRAFECTOR"
+
 @AndroidEntryPoint
 class FragmentSingleTab @Inject constructor() : Fragment() {
     @Inject
@@ -50,7 +51,6 @@ class FragmentSingleTab @Inject constructor() : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         clickOnLeftButton()
         clickOnRightButton()
-        clickOnBackButton()
         observeViewModel()
     }
 
@@ -172,10 +172,5 @@ class FragmentSingleTab @Inject constructor() : Fragment() {
             RecyclerViewSingleTab(modelSingleTab = modelSingleTab)
     }
 
-    private fun clickOnBackButton() {
-        binding.buttonBack.setOnClickListener {
-            Navigation.findNavController(binding.root).popBackStack()
-        }
-    }
 
 }

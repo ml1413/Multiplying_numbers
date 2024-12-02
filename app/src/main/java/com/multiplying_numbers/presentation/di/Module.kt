@@ -2,13 +2,15 @@ package com.multiplying_numbers.presentation.di
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.multiplying_numbers.data.multiple.repository.RepositoryHistoryAnswerImpl
-import com.multiplying_numbers.data.multiple.repository.RepositoryListTablesImpl
-import com.multiplying_numbers.data.multiple.repository.RepositorySingleTableImpl
 import com.multiplying_numbers.data.multiple.GetStartedListTables
 import com.multiplying_numbers.data.multiple.GetStartedListTablesImpl
 import com.multiplying_numbers.data.multiple.SingleTableInterface
 import com.multiplying_numbers.data.multiple.SingleTableInterfaceImpl
+import com.multiplying_numbers.data.multiple.WrongAnswerSignal
+import com.multiplying_numbers.data.multiple.WrongAnswerSignalImpl
+import com.multiplying_numbers.data.multiple.repository.RepositoryHistoryAnswerImpl
+import com.multiplying_numbers.data.multiple.repository.RepositoryListTablesImpl
+import com.multiplying_numbers.data.multiple.repository.RepositorySingleTableImpl
 import com.multiplying_numbers.data.multiple.storage.sharedPref.StorageSharedPref
 import com.multiplying_numbers.data.multiple.storage.sharedPref.StorageSharedPrefImpl
 import com.multiplying_numbers.domain.multiple.repository.RepositoryHistoryAnswer
@@ -58,8 +60,14 @@ class Module {
 
     @Provides
     @Singleton
-    fun provideGetListTablesImplREFACTOR(): SingleTableInterface {
-        return SingleTableInterfaceImpl()
+    fun provideWrongAnswerSignalImpl(@ApplicationContext context: Context): WrongAnswerSignal {
+        return WrongAnswerSignalImpl(context = context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetListTablesImplREFACTOR(wrongAnswerSignal: WrongAnswerSignal): SingleTableInterface {
+        return SingleTableInterfaceImpl(signal = wrongAnswerSignal)
     }
 
     @Provides

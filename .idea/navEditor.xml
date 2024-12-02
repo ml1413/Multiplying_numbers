@@ -51,19 +51,19 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="fragmentHistoryREFACTOR">
+                  <entry key="fragmentHistory">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="493" />
-                            <option name="y" value="13" />
+                            <option name="x" value="512" />
+                            <option name="y" value="41" />
                           </Point>
                         </option>
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="listFragment">
+                  <entry key="listTablesFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
@@ -74,7 +74,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_listFragment_to_singleTabRAFECTOR">
+                            <entry key="action_listFragment_to_singleTab">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -95,7 +95,28 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_singleTabRAFECTOR_to_fragmentHistoryREFACTOR">
+                            <entry key="action_singleTab_to_fragmentHistory">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="startedFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-258" />
+                            <option name="y" value="97" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_startedFragment_to_listFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

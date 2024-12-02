@@ -53,8 +53,12 @@ class HistoryRecyclerView(
             modelQuestions: ModelQuestions,
             include: IncludeTvAnswerItemForResultBinding
         ) {
+
             val question = modelQuestions.answerString
-            include.tvQuestion.text = question
+            include.tvQuestion.apply {
+                text = question
+                setTextColor(getWrongOrCorrectColor(modelQuestions = modelQuestions))
+            }
         }
 
         private fun setAnswer(
@@ -65,14 +69,15 @@ class HistoryRecyclerView(
                 view.context.getString(R.string.wrong_answer) + " ${modelQuestions.countWrongAnswer}"
             include.tvWrongAnswer.apply {
                 text = wrongAnswer
-                setTextColor(
-                    view.context.getColor(
-                        if (modelQuestions.hasErrors) android.R.color.holo_red_dark
-                        else android.R.color.holo_green_dark
-                    )
-                )
+                setTextColor(getWrongOrCorrectColor(modelQuestions))
             }
         }
+
+        private fun getWrongOrCorrectColor(modelQuestions: ModelQuestions) =
+            view.context.getColor(
+                if (modelQuestions.hasErrors) android.R.color.holo_red_dark
+                else android.R.color.holo_green_dark
+            )
 
         private fun setLabel(modelHistory: ItemHistory) {
             var label = ""
