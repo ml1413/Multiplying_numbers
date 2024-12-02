@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.multiplying_numbers.presentation.fragment.list_fragment.FragmentList"
+        android:name="com.multiplying_numbers.presentation.multiple.fragment.list_fragment.FragmentList"
         android:label="fragment_table"
         tools:layout="@layout/fragment_list">
 
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/singleTabRAFECTOR"
-        android:name="com.multiplying_numbers.presentation.fragment.singleTabRefactor.FragmentSingleTab"
+        android:name="com.multiplying_numbers.presentation.multiple.fragment.singleTabRefactor.FragmentSingleTab"
         android:label="fragment_single_tab_r_a_f_e_c_t_o_r"
         tools:layout="@layout/fragment_single_tab" >
         <argument
@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentHistoryREFACTOR"
-        android:name="com.multiplying_numbers.presentation.history_fragment_.FragmentHistory"
+        android:name="com.multiplying_numbers.presentation.multiple.fragment.history_fragment_.FragmentHistory"
         android:label="fragment_history_r_e_f_a_c_t_o_r"
         tools:layout="@layout/fragment_history" >
         <argument

@@ -2,24 +2,24 @@ package com.multiplying_numbers.presentation.di
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.multiplying_numbers.data.repository.RepositoryHistoryAnswerImpl
-import com.multiplying_numbers.data.repository.RepositoryListTablesImpl
-import com.multiplying_numbers.data.repository.RepositorySingleTableImpl
-import com.multiplying_numbers.data.storage.GetListTables
-import com.multiplying_numbers.data.storage.GetListTablesImpl
-import com.multiplying_numbers.data.storage.MultipleNum
-import com.multiplying_numbers.data.storage.MultipleNumImpl
-import com.multiplying_numbers.data.storage.sharedPref.StorageSharedPref
-import com.multiplying_numbers.data.storage.sharedPref.StorageSharedPrefImpl
-import com.multiplying_numbers.domain.repository.RepositoryHistoryAnswer
-import com.multiplying_numbers.domain.repository.RepositoryListTables
-import com.multiplying_numbers.domain.repository.RepositorySingleTable
-import com.multiplying_numbers.domain.usecase.CheckLeftAnswerUseCase
-import com.multiplying_numbers.domain.usecase.CheckRightAnswerUseCase
-import com.multiplying_numbers.domain.usecase.GetHistoryFromStorage
-import com.multiplying_numbers.domain.usecase.GetListTablesUseCase
-import com.multiplying_numbers.domain.usecase.GetSingleTableUseCase
-import com.multiplying_numbers.domain.usecase.SaveInStorageUseCase
+import com.multiplying_numbers.data.multiple.repository.RepositoryHistoryAnswerImpl
+import com.multiplying_numbers.data.multiple.repository.RepositoryListTablesImpl
+import com.multiplying_numbers.data.multiple.repository.RepositorySingleTableImpl
+import com.multiplying_numbers.data.multiple.GetStartedListTables
+import com.multiplying_numbers.data.multiple.GetStartedListTablesImpl
+import com.multiplying_numbers.data.multiple.SingleTableInterface
+import com.multiplying_numbers.data.multiple.SingleTableInterfaceImpl
+import com.multiplying_numbers.data.multiple.storage.sharedPref.StorageSharedPref
+import com.multiplying_numbers.data.multiple.storage.sharedPref.StorageSharedPrefImpl
+import com.multiplying_numbers.domain.multiple.repository.RepositoryHistoryAnswer
+import com.multiplying_numbers.domain.multiple.repository.RepositoryListTables
+import com.multiplying_numbers.domain.multiple.repository.RepositorySingleTable
+import com.multiplying_numbers.domain.multiple.usecase.CheckLeftAnswerUseCase
+import com.multiplying_numbers.domain.multiple.usecase.CheckRightAnswerUseCase
+import com.multiplying_numbers.domain.multiple.usecase.GetHistoryFromStorage
+import com.multiplying_numbers.domain.multiple.usecase.GetListTablesUseCase
+import com.multiplying_numbers.domain.multiple.usecase.GetSingleTableUseCase
+import com.multiplying_numbers.domain.multiple.usecase.SaveInStorageUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,7 +32,7 @@ import javax.inject.Singleton
 class Module {
 
     @Provides
-    fun provideGetListTablesImpl(): GetListTables = GetListTablesImpl()
+    fun provideGetListTablesImpl(): GetStartedListTables = GetStartedListTablesImpl()
 
     @Provides
     @Singleton
@@ -51,23 +51,23 @@ class Module {
 
     @Provides
     @Singleton
-    fun provideRepositoryListTablesImpl(getListTables: GetListTables): RepositoryListTables {
-        return RepositoryListTablesImpl(getListTables = getListTables)
+    fun provideRepositoryListTablesImpl(getStartedListTables: GetStartedListTables): RepositoryListTables {
+        return RepositoryListTablesImpl(getStartedListTables = getStartedListTables)
     }
 
     @Provides
     @Singleton
-    fun provideGetListTablesImplREFACTOR(): MultipleNum {
-        return MultipleNumImpl()
+    fun provideGetListTablesImplREFACTOR(): SingleTableInterface {
+        return SingleTableInterfaceImpl()
     }
 
     @Provides
     @Singleton
     fun provideRepositorySingleTableREFACTORImpl(
-        multipleNum: MultipleNum, storageSharedPref: StorageSharedPref
+        singleTableInterface: SingleTableInterface, storageSharedPref: StorageSharedPref
     ): RepositorySingleTable {
         return RepositorySingleTableImpl(
-            multipleNum = multipleNum,
+            singleTableInterface = singleTableInterface,
             storageSharedPref = storageSharedPref
         )
     }

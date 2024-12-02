@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".presentation.history_fragment_.FragmentHistory">
+    tools:context=".presentation.multiple.fragment.history_fragment_.FragmentHistory">
 
     <ImageView
         android:id="@+id/button_back"
