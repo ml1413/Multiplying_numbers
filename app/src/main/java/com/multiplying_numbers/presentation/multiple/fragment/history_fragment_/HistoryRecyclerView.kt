@@ -1,18 +1,14 @@
 package com.multiplying_numbers.presentation.multiple.fragment.history_fragment_
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.multiplying_numbers.R
 import com.multiplying_numbers.databinding.IncludeTvAnswerItemForResultBinding
 import com.multiplying_numbers.databinding.ItemResultAnswerRefactorBinding
-import com.multiplying_numbers.domain.multiple.models.ColorCountWrongAnswer
-import com.multiplying_numbers.domain.multiple.models.ColorQuestion
-import com.multiplying_numbers.domain.multiple.models.ItemHistory
-import com.multiplying_numbers.domain.multiple.models.ModelHistory
+import com.multiplying_numbers.data.multiple.storage.sharedPref.ItemHistory
+import com.multiplying_numbers.data.multiple.storage.sharedPref.ModelHistory
 import com.multiplying_numbers.domain.multiple.models.ModelQuestions
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -49,6 +45,7 @@ class HistoryRecyclerView(
                 setAnswer(modelQuestions, include)
             }
         }
+
         /** otherfun _____________________________________________________________________________*/
         private fun setQuestion(
             modelQuestions: ModelQuestions,
@@ -68,11 +65,8 @@ class HistoryRecyclerView(
                 text = wrongAnswer
                 setTextColor(
                     view.context.getColor(
-                        when (modelQuestions.colorQuestion) {
-                            ColorQuestion.COLOR_DEFAULT -> android.R.color.black
-                            ColorQuestion.COLOR_WRONG -> android.R.color.holo_red_dark
-                            ColorQuestion.COLOR_CORRECT -> android.R.color.holo_green_dark
-                        }
+                        if (modelQuestions.hasErrors) android.R.color.holo_red_dark
+                        else android.R.color.holo_green_dark
                     )
                 )
             }

@@ -1,4 +1,7 @@
-package com.multiplying_numbers.domain.multiple.models
+package com.multiplying_numbers.data.multiple.storage.sharedPref
+
+import com.multiplying_numbers.domain.multiple.models.ColorCountWrongAnswer
+import com.multiplying_numbers.domain.multiple.models.ModelQuestions
 
 data class ModelHistory(
     val listHistory: List<ItemHistory> = emptyList()

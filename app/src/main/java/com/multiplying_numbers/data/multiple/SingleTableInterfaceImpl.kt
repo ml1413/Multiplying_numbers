@@ -61,38 +61,30 @@ class SingleTableInterfaceImpl : SingleTableInterface {
         answer: Int
     ): ModelSingleTab {
 
-        val listModelQuestions = modelSingleTab.listModelQuestions
-            .map { modelQuestion ->
-                when {
-                    // change item  answer and color if answer is correct
-                    modelQuestion.id == modelSingleTab.idQuestion && modelQuestion.answerValue == answer ->
-                        modelQuestion.copy(
-                            questionsString = modelQuestion.questionsString
-                                .replace("?", "$answer"),
-                            isCorrectAnswer = true,
-                            isAnimated = true,
-                            colorQuestion = ColorQuestion.COLOR_CORRECT
-                        )
-                    // if answer is not correct change count wrong answer and color
-                    modelQuestion.id == modelSingleTab.idQuestion && modelQuestion.answerValue != answer ->
-                        modelQuestion.copy(
-                            countWrongAnswer = modelQuestion.countWrongAnswer + 1,
-                            isAnimated = true,
-                            colorQuestion = ColorQuestion.COLOR_WRONG
-                        )
+        val listModelQuestions =
+            setAnswerInModelAndgetListModelQuestions(
+                modelSingleTab = modelSingleTab,
+                answer = answer
+            )
 
-                    else -> modelQuestion.copy(isAnimated = false)
-                }
-            }
+        val modelForQuestions =
+            getRandomModelForNextQuestion(listModelQuestions = listModelQuestions)
 
-        val modelForQuestions = listModelQuestions
-            .filterNot { it.isCorrectAnswer }
-            .shuffled()
-            .firstOrNull()
+        return getSingleTabModel(
+            modelSingleTab = modelSingleTab,
+            listModelQuestions = listModelQuestions,
+            modelForQuestions = modelForQuestions
+        )
+    }
 
-        return modelSingleTab.let { modelTable ->
+    private fun getSingleTabModel(
+        modelSingleTab: ModelSingleTab,
+        listModelQuestions: List<ModelQuestions>,
+        modelForQuestions: ModelQuestions?
+    ): ModelSingleTab {
+        modelSingleTab.let { modelTable ->
             val sumCountWrongAnswer = listModelQuestions.sumOf { it.countWrongAnswer }
-            modelTable.copy(
+            return modelTable.copy(
                 idQuestion = modelForQuestions?.id ?: modelTable.idQuestion,
                 listModelQuestions = listModelQuestions,
                 hasWrongAnswer = sumCountWrongAnswer > 0,
@@ -113,4 +105,51 @@ class SingleTableInterfaceImpl : SingleTableInterface {
             )
         }
     }
+
+    private fun setAnswerInModelAndgetListModelQuestions(
+        modelSingleTab: ModelSingleTab,
+        answer: Int
+    ): List<ModelQuestions> {
+        val listModelQuestions = modelSingleTab.listModelQuestions
+            .map { modelQuestion ->
+                when {
+                    // change item  answer and color if answer is correct
+                    modelQuestion.id == modelSingleTab.idQuestion && modelQuestion.answerValue == answer ->
+                        setValueInModelIfAnswerCorrect(modelQuestion, answer)
+                    // if answer is not correct change count wrong answer and color
+                    modelQuestion.id == modelSingleTab.idQuestion && modelQuestion.answerValue != answer ->
+                        setValueInModelIfAnswerWrong(modelQuestion)
+
+                    else -> modelQuestion.copy(isAnimated = false)
+                }
+            }
+        return listModelQuestions
+    }
+
+    private fun getRandomModelForNextQuestion(listModelQuestions: List<ModelQuestions>): ModelQuestions? {
+        val modelForQuestions = listModelQuestions
+            .filterNot { it.isCorrectAnswer }
+            .shuffled()
+            .firstOrNull()
+        return modelForQuestions
+    }
+
+    private fun setValueInModelIfAnswerCorrect(
+        modelQuestion: ModelQuestions,
+        answer: Int
+    ) = modelQuestion.copy(
+        questionsString = modelQuestion.questionsString
+            .replace("?", "$answer"),
+        isCorrectAnswer = true,
+        isAnimated = true,
+        colorQuestion = ColorQuestion.COLOR_CORRECT,
+    )
+
+    private fun setValueInModelIfAnswerWrong(modelQuestion: ModelQuestions) =
+        modelQuestion.copy(
+            countWrongAnswer = modelQuestion.countWrongAnswer + 1,
+            isAnimated = true,
+            colorQuestion = ColorQuestion.COLOR_WRONG,
+            hasErrors = true
+        )
 }

@@ -3,7 +3,7 @@ package com.multiplying_numbers.domain.multiple.models
 data class ModelSingleTab(
     val idTable: Int,
     val idQuestion: Int,
-    val hasWrongAnswer: Boolean=false,
+    val hasWrongAnswer: Boolean = false,
     val isAllAnswerCorrect: Boolean = false,
     val listModelQuestions: List<ModelQuestions>,
     val colorCountWrongAnswer: ColorCountWrongAnswer = ColorCountWrongAnswer.COLOR_DEFAULT,
@@ -25,6 +25,7 @@ data class ModelQuestions(
     val isCorrectAnswer: Boolean = false,
     val textForLeftButton: Int,
     val textForRightButton: Int,
+    val hasErrors: Boolean = false,
     val colorQuestion: ColorQuestion = ColorQuestion.COLOR_DEFAULT
 )
 
@@ -34,4 +35,8 @@ enum class ColorCountWrongAnswer {
 
 enum class ColorQuestion {
     COLOR_DEFAULT, COLOR_WRONG, COLOR_CORRECT
+}
+
+enum class ColorQuestionHistory {
+    COLOR_WRONG, COLOR_CORRECT
 }

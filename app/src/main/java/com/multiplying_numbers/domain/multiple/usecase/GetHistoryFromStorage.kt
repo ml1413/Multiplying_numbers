@@ -1,6 +1,6 @@
 package com.multiplying_numbers.domain.multiple.usecase
 
-import com.multiplying_numbers.domain.multiple.models.ModelHistory
+import com.multiplying_numbers.data.multiple.storage.sharedPref.ModelHistory
 import com.multiplying_numbers.domain.multiple.repository.RepositoryHistoryAnswer
 import javax.inject.Inject
 

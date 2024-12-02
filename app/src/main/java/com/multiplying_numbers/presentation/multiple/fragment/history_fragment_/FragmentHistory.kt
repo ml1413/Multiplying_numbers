@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.multiplying_numbers.databinding.FragmentHistoryBinding
-import com.multiplying_numbers.domain.multiple.models.ModelHistory
+import com.multiplying_numbers.data.multiple.storage.sharedPref.ModelHistory
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val TAG = "FragmentHistoryREFACTOR"
