@@ -7,23 +7,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".presentation.multiple.fragment.history_fragment_.FragmentHistory">
+    tools:context=".presentation.multiple.fragment.list_fragment.FragmentListTables">
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_result"
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:paddingBottom="@dimen/padding_128dp"
+        android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:reverseLayout="true"
-        app:stackFromEnd="true"
-        tools:listitem="@layout/item_result_answer_refactor" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/item_for_rv_grid" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

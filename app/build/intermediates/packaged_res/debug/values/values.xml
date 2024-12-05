@@ -14,11 +14,11 @@
     <dimen name="size_answer_button_56dp">56dp</dimen>
     <dimen name="text_size_18sp">18sp</dimen>
     <string name="app_name">Multiplying numbers</string>
+    <string name="check_self">Check self</string>
     <string name="choice_table">Choice table</string>
     <string name="count_wrong_answer">Count wrong answer = 0 </string>
     <string name="error">Error</string>
     <string name="fragment_result_label">Result</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="label_all_answer_is_correct">All Answer Is Correct</string>
     <string name="label_wrong_answer">Has Wrong Answer</string>
     <string name="no_answer">No answer history</string>
@@ -27,7 +27,7 @@
     <string name="text_is_table_bottom">Victory</string>
     <string name="time">Time</string>
     <string name="wrong_answer">wrong answer</string>
-    <style name="Base.Theme.MultiplyingNumbers" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Base.Theme.MultiplyingNumbers" parent="Theme.Material3.Light">
         
         
         <item name="android:statusBarColor">@color/white</item>

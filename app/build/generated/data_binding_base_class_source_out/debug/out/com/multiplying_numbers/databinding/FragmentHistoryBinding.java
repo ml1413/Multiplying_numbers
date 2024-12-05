@@ -4,8 +4,6 @@ package com.multiplying_numbers.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -22,20 +20,12 @@ public final class FragmentHistoryBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final ImageView buttonBack;
-
-  @NonNull
   public final RecyclerView recyclerViewResult;
 
-  @NonNull
-  public final TextView textView;
-
-  private FragmentHistoryBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView buttonBack,
-      @NonNull RecyclerView recyclerViewResult, @NonNull TextView textView) {
+  private FragmentHistoryBinding(@NonNull ConstraintLayout rootView,
+      @NonNull RecyclerView recyclerViewResult) {
     this.rootView = rootView;
-    this.buttonBack = buttonBack;
     this.recyclerViewResult = recyclerViewResult;
-    this.textView = textView;
   }
 
   @Override
@@ -65,26 +55,13 @@ public final class FragmentHistoryBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.button_back;
-      ImageView buttonBack = ViewBindings.findChildViewById(rootView, id);
-      if (buttonBack == null) {
-        break missingId;
-      }
-
       id = R.id.recycler_view_result;
       RecyclerView recyclerViewResult = ViewBindings.findChildViewById(rootView, id);
       if (recyclerViewResult == null) {
         break missingId;
       }
 
-      id = R.id.textView;
-      TextView textView = ViewBindings.findChildViewById(rootView, id);
-      if (textView == null) {
-        break missingId;
-      }
-
-      return new FragmentHistoryBinding((ConstraintLayout) rootView, buttonBack, recyclerViewResult,
-          textView);
+      return new FragmentHistoryBinding((ConstraintLayout) rootView, recyclerViewResult);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

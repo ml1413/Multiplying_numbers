@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_grapf_fragment"
-    app:startDestination="@id/listFragment">
+    app:startDestination="@id/startedFragment">
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.multiplying_numbers.presentation.multiple.fragment.list_fragment.FragmentList"
+        android:name="com.multiplying_numbers.presentation.multiple.fragment.list_fragment.FragmentListTables"
         android:label="fragment_table"
-        tools:layout="@layout/fragment_list">
+        tools:layout="@layout/fragment_list_tables">
 
         <action
             android:id="@+id/action_listFragment_to_singleTab"
@@ -39,5 +39,14 @@
             android:name="idTable"
             app:argType="integer"
             android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/startedFragment"
+        android:name="com.multiplying_numbers.presentation.StartedFragment"
+        android:label="fragment_started"
+        tools:layout="@layout/fragment_started" >
+        <action
+            android:id="@+id/action_startedFragment_to_listFragment"
+            app:destination="@id/listFragment" />
     </fragment>
 </navigation>

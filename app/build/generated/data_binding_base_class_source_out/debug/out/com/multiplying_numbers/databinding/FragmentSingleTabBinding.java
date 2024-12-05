@@ -23,9 +23,6 @@ public final class FragmentSingleTabBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final ImageView buttonBack;
-
-  @NonNull
   public final ImageView buttonResultHistory;
 
   @NonNull
@@ -46,17 +43,12 @@ public final class FragmentSingleTabBinding implements ViewBinding {
   @NonNull
   public final TextView tvQuestion;
 
-  @NonNull
-  public final TextView tvWrongAnswerLabel;
-
   private FragmentSingleTabBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ImageView buttonBack, @NonNull ImageView buttonResultHistory,
-      @NonNull CardView cardLeft, @NonNull CardView cardRight,
-      @NonNull RecyclerView recyclerViewTable, @NonNull TextView tvAnswerLeft,
-      @NonNull TextView tvAnswerRight, @NonNull TextView tvQuestion,
-      @NonNull TextView tvWrongAnswerLabel) {
+      @NonNull ImageView buttonResultHistory, @NonNull CardView cardLeft,
+      @NonNull CardView cardRight, @NonNull RecyclerView recyclerViewTable,
+      @NonNull TextView tvAnswerLeft, @NonNull TextView tvAnswerRight,
+      @NonNull TextView tvQuestion) {
     this.rootView = rootView;
-    this.buttonBack = buttonBack;
     this.buttonResultHistory = buttonResultHistory;
     this.cardLeft = cardLeft;
     this.cardRight = cardRight;
@@ -64,7 +56,6 @@ public final class FragmentSingleTabBinding implements ViewBinding {
     this.tvAnswerLeft = tvAnswerLeft;
     this.tvAnswerRight = tvAnswerRight;
     this.tvQuestion = tvQuestion;
-    this.tvWrongAnswerLabel = tvWrongAnswerLabel;
   }
 
   @Override
@@ -94,12 +85,6 @@ public final class FragmentSingleTabBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.button_back;
-      ImageView buttonBack = ViewBindings.findChildViewById(rootView, id);
-      if (buttonBack == null) {
-        break missingId;
-      }
-
       id = R.id.button_result_history;
       ImageView buttonResultHistory = ViewBindings.findChildViewById(rootView, id);
       if (buttonResultHistory == null) {
@@ -142,15 +127,8 @@ public final class FragmentSingleTabBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.tv_wrong_answer_label;
-      TextView tvWrongAnswerLabel = ViewBindings.findChildViewById(rootView, id);
-      if (tvWrongAnswerLabel == null) {
-        break missingId;
-      }
-
-      return new FragmentSingleTabBinding((ConstraintLayout) rootView, buttonBack,
-          buttonResultHistory, cardLeft, cardRight, recyclerViewTable, tvAnswerLeft, tvAnswerRight,
-          tvQuestion, tvWrongAnswerLabel);
+      return new FragmentSingleTabBinding((ConstraintLayout) rootView, buttonResultHistory,
+          cardLeft, cardRight, recyclerViewTable, tvAnswerLeft, tvAnswerRight, tvQuestion);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -42,7 +42,7 @@ import com.multiplying_numbers.presentation.di.Module_ProvidesGetHistoryFromStor
 import com.multiplying_numbers.presentation.multiple.fragment.history_fragment_.FragmentHistory;
 import com.multiplying_numbers.presentation.multiple.fragment.history_fragment_.HistoryViewModel;
 import com.multiplying_numbers.presentation.multiple.fragment.history_fragment_.HistoryViewModel_HiltModules_KeyModule_ProvideFactory;
-import com.multiplying_numbers.presentation.multiple.fragment.list_fragment.FragmentList;
+import com.multiplying_numbers.presentation.multiple.fragment.list_fragment.FragmentListTables;
 import com.multiplying_numbers.presentation.multiple.fragment.list_fragment.ListTablesViewModel;
 import com.multiplying_numbers.presentation.multiple.fragment.list_fragment.ListTablesViewModel_HiltModules_KeyModule_ProvideFactory;
 import com.multiplying_numbers.presentation.multiple.fragment.singleTabRefactor.FragmentSingleTab;
@@ -360,7 +360,7 @@ public final class DaggerApp_HiltComponents_SingletonC {
     }
 
     @Override
-    public void injectFragmentList(FragmentList arg0) {
+    public void injectFragmentListTables(FragmentListTables arg0) {
     }
 
     @Override
