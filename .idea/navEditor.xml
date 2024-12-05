@@ -57,7 +57,19 @@
                         <option name="myPosition">
                           <Point>
                             <option name="x" value="512" />
-                            <option name="y" value="41" />
+                            <option name="y" value="-1" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="fragmentLogicsQuestions">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="19" />
+                            <option name="y" value="354" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -84,13 +96,13 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="singleTabRAFECTOR">
+                  <entry key="singleTabFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="243" />
-                            <option name="y" value="11" />
+                            <option name="x" value="262" />
+                            <option name="y" value="6" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -110,12 +122,17 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-258" />
-                            <option name="y" value="97" />
+                            <option name="x" value="-226" />
+                            <option name="y" value="7" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_startedFragment_to_fragmentLogicsQuestions">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_startedFragment_to_listFragment">
                               <value>
                                 <LayoutPositions />

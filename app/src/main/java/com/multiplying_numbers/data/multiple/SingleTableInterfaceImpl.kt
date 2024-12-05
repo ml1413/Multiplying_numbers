@@ -18,8 +18,6 @@ class SingleTableInterfaceImpl @Inject constructor(
 
             val questions = "$idTable  *  $num  =  ?"
             val answerString = "$idTable  *  $num  = $answer"
-
-
             ModelQuestions(
                 id = num,
                 answerValue = answer,
@@ -143,8 +141,7 @@ class SingleTableInterfaceImpl @Inject constructor(
         modelQuestion: ModelQuestions,
         answer: Int
     ) = modelQuestion.copy(
-        questionsString = modelQuestion.questionsString
-            .replace("?", "$answer"),
+        questionsString = modelQuestion.answerString,
         isCorrectAnswer = true,
         isAnimated = true,
         colorQuestion = ColorQuestion.COLOR_CORRECT,

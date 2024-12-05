@@ -6,8 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".presentation.multiple.fragments.singleTabRefactor.FragmentSingleTab">
+    tools:context=".presentation.additions.fragments.FragmentAdditionQuestions">
 
 
     <ImageView
@@ -31,11 +30,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_view_single_tab"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_view_logics"
         tools:text="XXXXX" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_single_tab"
+        android:id="@+id/recycler_view_logics"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
@@ -97,6 +96,5 @@
             android:textStyle="bold"
             tools:text="X" />
     </androidx.cardview.widget.CardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
