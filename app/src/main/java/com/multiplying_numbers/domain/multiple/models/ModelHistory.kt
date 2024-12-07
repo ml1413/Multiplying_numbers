@@ -9,7 +9,6 @@ data class ModelHistory(
 
 data class ItemHistory(
     val hasWrongAnswer: Boolean,
-    val label: Int,
     val date: Long,
     val listAnswer: List<ModelQuestions>,
     val colorCountWrongAnswer: ColorCountWrongAnswer = ColorCountWrongAnswer.COLOR_DEFAULT

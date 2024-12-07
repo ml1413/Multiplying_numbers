@@ -29,7 +29,6 @@ class GetStartedListTablesImpl : GetStartedListTables {
             )
         }
         return TableParams(
-            idTable = idTable,
             keyStorage = KEY_FOR_STORAGE + idTable,
             paramsList = list
         )

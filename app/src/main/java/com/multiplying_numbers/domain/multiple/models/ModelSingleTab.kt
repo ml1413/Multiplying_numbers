@@ -1,7 +1,6 @@
 package com.multiplying_numbers.domain.multiple.models
 
 data class ModelSingleTab(
-    val idTable: Int,
     val idQuestion: Int,
     val hasWrongAnswer: Boolean = false,
     val isAllAnswerCorrect: Boolean = false,

@@ -6,7 +6,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class TableParams(
     val paramsList: List<Params>,
-    val idTable: Int,
     val keyStorage: String,
 ) : Parcelable
 

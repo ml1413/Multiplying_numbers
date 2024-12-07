@@ -6,7 +6,6 @@ data class ModelHistoryStorage(
 
 data class ItemHistoryStorage(
     val hasWrongAnswer: Boolean,
-    val label: Int,
     val date: Long,
     val listAnswer: List<ModelQuestionsStorage>,
     val colorCountWrongAnswer: ColorCountWrongAnswerStorage = ColorCountWrongAnswerStorage.COLOR_DEFAULT

@@ -17,7 +17,6 @@ fun ModelHistoryStorage.mapToModel(): ModelHistory {
 private fun ItemHistoryStorage.mapToModel(): ItemHistory {
     return ItemHistory(
         hasWrongAnswer = hasWrongAnswer,
-        label = label,
         date = date,
         listAnswer = listAnswer.map { it.mapToModel() }
     )

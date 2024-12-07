@@ -8,7 +8,6 @@ import com.multiplying_numbers.domain.multiple.models.ModelSingleTab
 fun ModelSingleTab.mapToModelStorage(): ItemHistoryStorage {
     val data = System.currentTimeMillis()
     return ItemHistoryStorage(
-        label = idTable,
         date = data,
         listAnswer = listModelQuestions.map { it.mapToStorage() },
         hasWrongAnswer = hasWrongAnswer,
