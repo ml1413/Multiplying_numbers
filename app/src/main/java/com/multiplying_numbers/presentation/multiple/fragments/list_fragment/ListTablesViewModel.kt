@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ListTablesViewModel @Inject constructor(
-    private val getListTablesUseCase: GetListTablesUseCase
+    private val getListTablesUseCase: GetListTablesUseCase,
 ) : ViewModel() {
     private val _listsTables = MutableLiveData<StateLists>(StateLists.Initial)
     val listsTables: LiveData<StateLists> = _listsTables

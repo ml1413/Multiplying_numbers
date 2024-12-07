@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.multiplying_numbers.data.multiple.GetStartedListTables
 import com.multiplying_numbers.data.multiple.GetStartedListTablesImpl
-import com.multiplying_numbers.data.multiple.RepositoryMultipleImpl
 import com.multiplying_numbers.data.multiple.SingleTableInterface
 import com.multiplying_numbers.data.multiple.SingleTableInterfaceImpl
 import com.multiplying_numbers.data.multiple.WrongAnswerSignal
@@ -16,12 +15,11 @@ import com.multiplying_numbers.data.multiple.storage.sharedPref.StorageSharedPre
 import com.multiplying_numbers.data.multiple.storage.sharedPref.StorageSharedPrefImpl
 import com.multiplying_numbers.domain.multiple.repository.RepositoryHistoryAnswer
 import com.multiplying_numbers.domain.multiple.repository.RepositoryListTables
-import com.multiplying_numbers.domain.multiple.repository.RepositoryMultiple
 import com.multiplying_numbers.domain.multiple.repository.RepositorySingleTable
 import com.multiplying_numbers.domain.multiple.usecase.CheckHistoryUseCase
 import com.multiplying_numbers.domain.multiple.usecase.CheckLeftAnswerUseCase
 import com.multiplying_numbers.domain.multiple.usecase.CheckRightAnswerUseCase
-import com.multiplying_numbers.domain.multiple.usecase.GenerateParamsMultipleUseCase
+import com.multiplying_numbers.domain.multiple.usecase.GenerateTableParamMultipleUseCase
 import com.multiplying_numbers.domain.multiple.usecase.GetHistoryFromStorage
 import com.multiplying_numbers.domain.multiple.usecase.GetListTablesUseCase
 import com.multiplying_numbers.domain.multiple.usecase.GetSingleTableUseCase
@@ -35,7 +33,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class ModuleMultiple {
+class Module {
 
     @Provides
     fun provideGetListTablesImpl(): GetStartedListTables = GetStartedListTablesImpl()
@@ -96,11 +94,6 @@ class ModuleMultiple {
         return StorageSharedPrefImpl(sharedPreferences = sharedPreferences)
     }
 
-    @Provides
-    @Singleton
-    fun provideRepositoryMultipleImpl(): RepositoryMultiple {
-        return RepositoryMultipleImpl()
-    }
 
     @Provides
     fun provideGetSingleTableUseCaseREFACTOR(repositorySingleTable: RepositorySingleTable): GetSingleTableUseCase {
@@ -133,8 +126,8 @@ class ModuleMultiple {
     }
 
     @Provides
-    fun provideGenerateParamsMultipleUseCase(repositoryMultiple: RepositoryMultiple): GenerateParamsMultipleUseCase {
-        return GenerateParamsMultipleUseCase(repositoryMultiple = repositoryMultiple)
+    fun provideGenerateTableParamMultipleUseCase(repositoryListTables: RepositoryListTables): GenerateTableParamMultipleUseCase {
+        return GenerateTableParamMultipleUseCase(repositoryListTables = repositoryListTables)
     }
 
 }

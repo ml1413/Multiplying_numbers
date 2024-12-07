@@ -2,6 +2,7 @@ package com.multiplying_numbers.data.multiple.repository
 
 import com.multiplying_numbers.data.multiple.GetStartedListTables
 import com.multiplying_numbers.domain.multiple.models.ModelTabForCard
+import com.multiplying_numbers.domain.multiple.models.TableParams
 import com.multiplying_numbers.domain.multiple.repository.RepositoryListTables
 import javax.inject.Inject
 
@@ -10,5 +11,9 @@ class RepositoryListTablesImpl @Inject constructor(
 ) : RepositoryListTables {
     override fun getListTables(): List<ModelTabForCard> {
         return getStartedListTables.getListTables()
+    }
+
+    override fun generateTableParams(idTable: Int): TableParams {
+        return getStartedListTables.generateTableParams(idTable = idTable)
     }
 }

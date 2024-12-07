@@ -56,20 +56,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="512" />
-                            <option name="y" value="-1" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="fragmentLogicsQuestions">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="19" />
-                            <option name="y" value="354" />
+                            <option name="x" value="459" />
+                            <option name="y" value="8" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -80,8 +68,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
+                            <option name="x" value="10" />
+                            <option name="y" value="-189" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -128,11 +116,6 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_startedFragment_to_fragmentLogicsQuestions">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
                             <entry key="action_startedFragment_to_listFragment">
                               <value>
                                 <LayoutPositions />

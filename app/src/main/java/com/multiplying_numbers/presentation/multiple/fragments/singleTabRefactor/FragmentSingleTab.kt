@@ -25,7 +25,6 @@ import com.multiplying_numbers.databinding.FragmentSingleTabBinding
 import com.multiplying_numbers.domain.multiple.models.ColorCountWrongAnswer
 import com.multiplying_numbers.domain.multiple.models.ModelSingleTab
 import com.multiplying_numbers.domain.multiple.usecase.CheckHistoryUseCase
-import com.multiplying_numbers.domain.multiple.usecase.GenerateParamsMultipleUseCase
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -40,8 +39,7 @@ class FragmentSingleTab @Inject constructor() : Fragment() {
     @Inject
     lateinit var checkHistoryUseCase: CheckHistoryUseCase
 
-    @Inject
-    lateinit var generateParamsMultipleUseCase: GenerateParamsMultipleUseCase
+
     private lateinit var binding: FragmentSingleTabBinding
     private val singleTabViewModel: SingleTabViewModel by viewModels()
     private val args by navArgs<FragmentSingleTabArgs>()
@@ -58,8 +56,10 @@ class FragmentSingleTab @Inject constructor() : Fragment() {
     private var idTable = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val tableParams = generateParamsMultipleUseCase(idTable = args.idTable)
-        singleTabViewModel.getTable(tableParams = tableParams)
+        args.tableParams?.let { tableParams ->
+            singleTabViewModel.getTable(tableParams = tableParams)
+            idTable = tableParams.idTable
+        }
     }
 
     override fun onCreateView(

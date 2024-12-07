@@ -13,7 +13,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.multiplying_numbers.databinding.FragmentListTablesBinding
+import com.multiplying_numbers.domain.multiple.models.TableParams
+import com.multiplying_numbers.domain.multiple.usecase.GenerateTableParamMultipleUseCase
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 private const val KEY_INDEX = "key index"
 
@@ -22,6 +25,9 @@ class FragmentListTables : Fragment() {
     private lateinit var binding: FragmentListTablesBinding
     private var index = 0
     private val listTablesViewModel: ListTablesViewModel by viewModels()
+
+    @Inject
+    lateinit var generateTableParamMultipleUseCase: GenerateTableParamMultipleUseCase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +63,10 @@ class FragmentListTables : Fragment() {
                         adapter = RecyclerViewListsTables(
                             listsTables = state.listsTables,
                             onItemClickListener = { idTable ->
-                                openSingleTableFragment(idTable = idTable)
+                                val tableParams =
+                                    generateTableParamMultipleUseCase(idTable = idTable)
+
+                                openSingleTableFragment(tableParams = tableParams)
                             },
                             indexItem = { indexItem ->
                                 index = indexItem
@@ -76,11 +85,11 @@ class FragmentListTables : Fragment() {
 
 
     /** other fun ____________________________________________________________________________________*/
-    private fun openSingleTableFragment(idTable: Int) {
+    private fun openSingleTableFragment(tableParams: TableParams) {
         // put args in action
 
         val actionREFACTOR =
-            FragmentListTablesDirections.actionListFragmentToSingleTab(idTable = idTable)
+            FragmentListTablesDirections.actionListFragmentToSingleTab(tableParams = tableParams)
         // navigate to fragment
         Navigation.findNavController(binding.root)
             .navigate(actionREFACTOR)

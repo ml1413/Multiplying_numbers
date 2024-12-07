@@ -21,14 +21,15 @@
         android:name="com.multiplying_numbers.presentation.multiple.fragments.singleTabRefactor.FragmentSingleTab"
         android:label="fragment_single_tab_r_a_f_e_c_t_o_r"
         tools:layout="@layout/fragment_single_tab" >
-        <argument
-            android:name="idTable"
-            app:argType="integer"
-            android:defaultValue="-1" />
         <action
             android:id="@+id/action_singleTab_to_fragmentHistory"
             app:destination="@id/fragmentHistory"
             app:popUpTo="@id/listTablesFragment" />
+        <argument
+            android:name="tableParams"
+            app:argType="com.multiplying_numbers.domain.multiple.models.TableParams"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/fragmentHistory"
