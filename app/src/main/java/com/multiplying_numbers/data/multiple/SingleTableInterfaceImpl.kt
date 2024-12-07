@@ -4,32 +4,32 @@ import com.multiplying_numbers.domain.multiple.models.ColorCountWrongAnswer
 import com.multiplying_numbers.domain.multiple.models.ColorQuestion
 import com.multiplying_numbers.domain.multiple.models.ModelQuestions
 import com.multiplying_numbers.domain.multiple.models.ModelSingleTab
+import com.multiplying_numbers.domain.multiple.models.TableParams
 import javax.inject.Inject
+
 
 class SingleTableInterfaceImpl @Inject constructor(
     private val signal: WrongAnswerSignal
 ) : SingleTableInterface {
-    override fun getListTables(idTable: Int): ModelSingleTab {
+    override fun getListTables(tableParams: TableParams): ModelSingleTab {
 
-        val listModelQuestions = (1..10).map { num ->
-            val answer = idTable * num
+        val listModelQuestions = tableParams.paramsList.map { params ->
+            val leftAndRightAnswer = listOf(
+                params.answerValue, params.answerValue + (1..3).random()
+            ).shuffled()
 
-            val leftAndRightAnswer = listOf(answer, answer + (1..3).random()).shuffled()
-
-            val questions = "$idTable  *  $num  =  ?"
-            val answerString = "$idTable  *  $num  = $answer"
             ModelQuestions(
-                id = num,
-                answerValue = answer,
-                questionsString = questions,
-                answerString = answerString,
+                id = params.id,
+                answerValue = params.answerValue,
+                questionsString = params.questionString,
+                answerString = params.answerString,
                 textForLeftButton = leftAndRightAnswer[0],
                 textForRightButton = leftAndRightAnswer[1]
             )
         }
         val randomModelQuestion = listModelQuestions.random()
         return ModelSingleTab(
-            idTable = idTable,
+            idTable = tableParams.idTable,
             idQuestion = randomModelQuestion.id,
             listModelQuestions = listModelQuestions,
             answerValue = randomModelQuestion.answerValue,

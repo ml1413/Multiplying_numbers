@@ -89,22 +89,14 @@
     <list default="true" id="e3470ae9-095c-42d8-8055-40c5faf730a1" name="Changes" comment="add history button">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/logics/AdditionClass.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/logics/AdditionClassImpl.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/logics/repository/RepositoryAdditionImpl.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/SingleTableInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/SingleTableInterface.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/SingleTableInterfaceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/SingleTableInterfaceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/logics/model/ModelAddition.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/logics/repository/RepositoryAddition.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/logics/usecase/GetListAdditionUseCase.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/di/ModuleAddition.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/logics/fragments/AdditionViewModel.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/logics/fragments/FragmentAdditionQuestions.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/logics/fragments/RecyclerViewListLogics.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/repository/RepositorySingleTableImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/repository/RepositorySingleTableImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/repository/RepositorySingleTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/repository/RepositorySingleTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/usecase/GetSingleTableUseCase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/usecase/GetSingleTableUseCase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/di/ModuleMultiple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/di/ModuleMultiple.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/multiple/fragments/singleTabRefactor/FragmentSingleTab.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/multiple/fragments/singleTabRefactor/FragmentSingleTab.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_division_questions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_division_questions.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/drawer_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/drawer_menu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph_fragment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/multiple/fragments/singleTabRefactor/SingleTabViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/multiple/fragments/singleTabRefactor/SingleTabViewModel.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,8 +143,8 @@
         <option value="Kotlin Enum" />
         <option value="resourceFile" />
         <option value="Kotlin Data Class" />
-        <option value="Kotlin Class" />
         <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -214,7 +206,7 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;com.android.tools.idea.streaming.emulator.frame.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;add-plus&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;refactro&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/IT/allProjectAddroid/Multiplyingnumbers/app/src/main/res/layout&quot;,
@@ -247,11 +239,11 @@
       <recent name="D:\IT\allProjectAddroid\Multiplyingnumbers\app\src\main\java\com\multiplying_numbers\data\multiple" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.multiplying_numbers.domain.multiple.repository" />
       <recent name="com.multiplying_numbers.presentation.di" />
       <recent name="com.multiplying_numbers.presentation.di.multiple" />
       <recent name="com.multiplying_numbers.data.logics.repository" />
       <recent name="com.multiplying_numbers.data.multiple" />
-      <recent name="com.multiplying_numbers.data" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="com.multiplying_numbers.data.storage" />
@@ -392,14 +384,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719569607416</updated>
-    </task>
-    <task id="LOCAL-00010" summary="refactor add victory">
-      <option name="closed" value="true" />
-      <created>1720560240629</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1720560240630</updated>
     </task>
     <task id="LOCAL-00011" summary="refactor add victory">
       <option name="closed" value="true" />
@@ -785,7 +769,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733475248569</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="add history button">
+      <option name="closed" value="true" />
+      <created>1733513061155</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1733513061155</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.multiplying_numbers.domain.multiple.models.ModelSingleTab
+import com.multiplying_numbers.domain.multiple.models.TableParams
 import com.multiplying_numbers.domain.multiple.usecase.CheckLeftAnswerUseCase
 import com.multiplying_numbers.domain.multiple.usecase.CheckRightAnswerUseCase
 import com.multiplying_numbers.domain.multiple.usecase.GetSingleTableUseCase
@@ -27,8 +28,8 @@ class SingleTabViewModel @Inject constructor(
     private val _table = MutableLiveData<StateTable>(StateTable.Initial)
     val table: LiveData<StateTable> = _table
 
-    fun getTable(idTable: Int) {
-        val modelSingleTab = getSingleTableUseCase(idTable = idTable)
+    fun getTable(tableParams: TableParams) {
+        val modelSingleTab = getSingleTableUseCase.invoke(tableParams = tableParams)
         _table.value = StateTable.ResumeGame(modelSingleTab = modelSingleTab)
     }
 
