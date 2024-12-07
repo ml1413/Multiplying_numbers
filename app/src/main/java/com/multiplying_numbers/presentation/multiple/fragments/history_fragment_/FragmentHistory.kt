@@ -20,8 +20,9 @@ class FragmentHistory : Fragment() {
     private val historyViewModel by viewModels<HistoryViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val idTable = args.idTable
-        historyViewModel.getHistoryFromStorage(idTable = idTable)
+        args.keyStorage?.let { keyStorage ->
+            historyViewModel.getHistoryFromStorage(keyStorage = keyStorage)
+        }
     }
 
     override fun onCreateView(

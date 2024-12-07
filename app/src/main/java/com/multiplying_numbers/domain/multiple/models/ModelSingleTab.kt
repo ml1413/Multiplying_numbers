@@ -12,7 +12,8 @@ data class ModelSingleTab(
     val answerValue: Int,
     val textForLeftButton: Int,
     val textForRightButton: Int,
-    val countWrongAnswer: Int = 0
+    val countWrongAnswer: Int = 0,
+    val keyStorage: String
 )
 
 data class ModelQuestions(

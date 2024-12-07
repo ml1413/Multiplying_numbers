@@ -37,9 +37,9 @@
         android:label="fragment_history_r_e_f_a_c_t_o_r"
         tools:layout="@layout/fragment_history" >
         <argument
-            android:name="idTable"
-            app:argType="integer"
-            android:defaultValue="0" />
+            android:name="keyStorage"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/startedFragment"

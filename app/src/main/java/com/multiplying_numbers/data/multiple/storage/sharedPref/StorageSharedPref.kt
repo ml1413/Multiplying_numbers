@@ -5,6 +5,6 @@ import com.multiplying_numbers.domain.multiple.models.ModelSingleTab
 
 interface StorageSharedPref {
     fun saveInStorage(modelSingleTab: ModelSingleTab)
-    fun getHistoryFromStorage(idTable: Int): ModelHistory?
-    fun checkHistory(idTable: Int): Boolean
+    fun getHistoryFromStorage(keyStorage: String): ModelHistory?
+    fun checkHistory(keyStorage: String): Boolean
 }

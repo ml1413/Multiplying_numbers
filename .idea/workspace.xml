@@ -15,11 +15,6 @@
           <theme>@style/Theme.MultiplyingNumbers</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_division_questions.xml">
-        <config>
-          <theme>@style/Theme.MultiplyingNumbers</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_history.xml">
         <config>
           <theme>@style/Theme.MultiplyingNumbers</theme>
@@ -92,20 +87,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e3470ae9-095c-42d8-8055-40c5faf730a1" name="Changes" comment="add tabParams">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/GetStartedListTables.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/GetStartedListTables.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/GetStartedListTablesImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/GetStartedListTablesImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/RepositoryMultipleImpl.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/repository/RepositoryListTablesImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/repository/RepositoryListTablesImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/SingleTableInterfaceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/SingleTableInterfaceImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/repository/RepositoryHistoryAnswerImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/repository/RepositoryHistoryAnswerImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/repository/RepositorySingleTableImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/repository/RepositorySingleTableImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/storage/sharedPref/StorageSharedPref.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/storage/sharedPref/StorageSharedPref.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/storage/sharedPref/StorageSharedPrefImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/storage/sharedPref/StorageSharedPrefImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/models/ModelSingleTab.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/models/ModelSingleTab.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/models/TableParams.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/models/TableParams.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/repository/RepositoryListTables.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/repository/RepositoryListTables.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/repository/RepositoryMultiple.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/usecase/GenerateParamsMultipleUseCase.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/di/ModuleMultiple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/di/Module.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/multiple/fragments/list_fragment/FragmentListTables.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/multiple/fragments/list_fragment/FragmentListTables.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/multiple/fragments/list_fragment/ListTablesViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/multiple/fragments/list_fragment/ListTablesViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/repository/RepositoryHistoryAnswer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/repository/RepositoryHistoryAnswer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/repository/RepositorySingleTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/repository/RepositorySingleTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/usecase/CheckHistoryUseCase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/usecase/CheckHistoryUseCase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/usecase/GetHistoryFromStorage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/multiple/usecase/GetHistoryFromStorage.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/multiple/fragments/history_fragment_/FragmentHistory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/multiple/fragments/history_fragment_/FragmentHistory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/multiple/fragments/history_fragment_/HistoryViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/multiple/fragments/history_fragment_/HistoryViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/multiple/fragments/singleTabRefactor/FragmentSingleTab.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/multiple/fragments/singleTabRefactor/FragmentSingleTab.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_division_questions.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph_fragment.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -216,7 +213,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.android.tools.idea.streaming.emulator.frame.visible": "false",
-    "git-widget-placeholder": "refactro2",
+    "git-widget-placeholder": "refactro",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/IT/allProjectAddroid/Multiplyingnumbers/app/src/main/res/layout",

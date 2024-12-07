@@ -27,7 +27,7 @@ class RepositorySingleTableImpl @Inject constructor(
         storageSharedPref.saveInStorage(modelSingleTab = modelSingleTab)
     }
 
-    override fun checkHistory(idTable: Int): Boolean {
-      return  storageSharedPref.checkHistory(idTable = idTable)
+    override fun checkHistory(keyStorage: String): Boolean {
+      return  storageSharedPref.checkHistory(keyStorage = keyStorage)
     }
 }

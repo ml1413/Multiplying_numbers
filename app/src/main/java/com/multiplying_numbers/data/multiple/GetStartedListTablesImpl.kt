@@ -30,8 +30,13 @@ class GetStartedListTablesImpl : GetStartedListTables {
         }
         return TableParams(
             idTable = idTable,
+            keyStorage = KEY_FOR_STORAGE + idTable,
             paramsList = list
         )
+    }
+
+    companion object {
+        private const val KEY_FOR_STORAGE = "multiple"
     }
 
 }

@@ -15,8 +15,8 @@ class HistoryViewModel @Inject constructor(
     private val _history = MutableLiveData<StateHistory>(StateHistory.Initial)
     val history: LiveData<StateHistory> = _history
 
-    fun getHistoryFromStorage(idTable: Int) {
-        val modelHistory = getHistoryFromStorageREFACTOR(idTable = idTable)
+    fun getHistoryFromStorage(keyStorage: String) {
+        val modelHistory = getHistoryFromStorageREFACTOR(keyStorage=keyStorage)
         modelHistory?.apply {
             _history.value = StateHistory.HistoryAnswer(modelHistory = modelHistory)
         }

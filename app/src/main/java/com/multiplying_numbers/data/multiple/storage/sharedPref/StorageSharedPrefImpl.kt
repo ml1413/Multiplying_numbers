@@ -19,7 +19,7 @@ class StorageSharedPrefImpl @Inject constructor(
     }
 
     override fun saveInStorage(modelSingleTab: ModelSingleTab) {
-        val key = modelSingleTab.idTable.toString()
+        val key = modelSingleTab.keyStorage
 
         val modelForSaveInStorage =
             getModelForSaveInStorage(modelSingleTab = modelSingleTab, key = key)
@@ -34,14 +34,14 @@ class StorageSharedPrefImpl @Inject constructor(
 
     }
 
-    override fun getHistoryFromStorage(idTable: Int): ModelHistory? {
-        val key = idTable.toString()
-        val modelHistory =  getModelFromStorage(key = key)?.mapToModel()
+    override fun getHistoryFromStorage(keyStorage: String): ModelHistory? {
+        val key = keyStorage
+        val modelHistory = getModelFromStorage(key = key)?.mapToModel()
         return modelHistory
     }
 
-    override fun checkHistory(idTable: Int): Boolean {
-        return sharedPreferences.contains(idTable.toString())
+    override fun checkHistory(keyStorage: String): Boolean {
+        return sharedPreferences.contains(keyStorage)
     }
 
     /** other method _________________________________________________________________________________*/

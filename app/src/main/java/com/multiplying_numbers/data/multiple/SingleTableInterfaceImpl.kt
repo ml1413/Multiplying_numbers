@@ -30,6 +30,7 @@ class SingleTableInterfaceImpl @Inject constructor(
         val randomModelQuestion = listModelQuestions.random()
         return ModelSingleTab(
             idTable = tableParams.idTable,
+            keyStorage = tableParams.keyStorage,
             idQuestion = randomModelQuestion.id,
             listModelQuestions = listModelQuestions,
             answerValue = randomModelQuestion.answerValue,

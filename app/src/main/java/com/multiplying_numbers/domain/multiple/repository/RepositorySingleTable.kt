@@ -8,5 +8,5 @@ interface RepositorySingleTable {
     fun checkLeftAnswer(modelSingleTab: ModelSingleTab): ModelSingleTab
     fun checkRightAnswer(modelSingleTab: ModelSingleTab): ModelSingleTab
     fun saveInStorage(modelSingleTab: ModelSingleTab)
-    fun checkHistory(idTable: Int): Boolean
+    fun checkHistory(keyStorage: String): Boolean
 }

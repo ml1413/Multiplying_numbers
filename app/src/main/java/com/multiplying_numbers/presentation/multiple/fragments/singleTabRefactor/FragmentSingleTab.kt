@@ -53,12 +53,12 @@ class FragmentSingleTab @Inject constructor() : Fragment() {
 
     //history
     private var isHistoryExist: Boolean = false
-    private var idTable = 0
+    private var keyStorage: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         args.tableParams?.let { tableParams ->
             singleTabViewModel.getTable(tableParams = tableParams)
-            idTable = tableParams.idTable
+            keyStorage = tableParams.keyStorage
         }
     }
 
@@ -93,7 +93,7 @@ class FragmentSingleTab @Inject constructor() : Fragment() {
                 override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                     return when (menuItem.itemId) {
                         R.id.item_history -> {
-                            openFragmentHistory(idTable = idTable)
+                            openFragmentHistory(keyStorage = keyStorage)
                             true
                         }
 
@@ -123,8 +123,8 @@ class FragmentSingleTab @Inject constructor() : Fragment() {
 
                 is SingleTabViewModel.StateTable.Victory -> {
                     singleTabViewModel.saveInStorage()
-                    val idTable = state.modelSingleTab.idTable
-                    openFragmentHistory(idTable)
+                    val keyStorage = state.modelSingleTab.keyStorage
+                    openFragmentHistory(keyStorage = keyStorage)
                 }
 
                 SingleTabViewModel.StateTable.DisableButton -> {
@@ -137,14 +137,14 @@ class FragmentSingleTab @Inject constructor() : Fragment() {
 
     //observeViewModel
     private fun checkHistory(modelSingleTab: ModelSingleTab) {
-        idTable = modelSingleTab.idTable
-        isHistoryExist = checkHistoryUseCase(idTable = idTable)
+        keyStorage = modelSingleTab.keyStorage
+        isHistoryExist = checkHistoryUseCase(keyStorage=keyStorage)
     }
 
     //observeViewModel
-    private fun openFragmentHistory(idTable: Int) {
+    private fun openFragmentHistory(keyStorage: String) {
         val action = FragmentSingleTabDirections
-            .actionSingleTabToFragmentHistory(idTable = idTable)
+            .actionSingleTabToFragmentHistory(keyStorage = keyStorage)
         Navigation.findNavController(binding.root).navigate(action)
     }
 
