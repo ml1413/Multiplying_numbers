@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".presentation.multiple.fragments.singleTabRefactor.FragmentSingleTab">
+    tools:context=".presentation.fragments.singleTabRefactor.FragmentSingleTab">
 
 
     <ImageView
@@ -25,7 +25,7 @@
         android:id="@+id/tv_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/question_size_32sp"
+        android:textAppearance="?attr/textAppearanceHeadline4"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/card_left"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +67,7 @@
             android:layout_height="@dimen/size_answer_button_56dp"
             android:gravity="center"
             android:padding="@dimen/padding_16dp"
-            android:textSize="@dimen/text_size_18sp"
+            android:textAppearance="?attr/textAppearanceHeadline6"
             android:textStyle="bold"
             tools:text="X" />
     </androidx.cardview.widget.CardView>
@@ -93,7 +93,7 @@
             android:layout_height="@dimen/size_answer_button_56dp"
             android:gravity="center"
             android:padding="@dimen/padding_16dp"
-            android:textSize="@dimen/text_size_18sp"
+            android:textAppearance="?attr/textAppearanceHeadline6"
             android:textStyle="bold"
             tools:text="X" />
     </androidx.cardview.widget.CardView>

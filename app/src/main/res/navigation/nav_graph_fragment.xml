@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listTablesFragment"
-        android:name="com.multiplying_numbers.presentation.multiple.fragments.list_fragment.FragmentListTables"
+        android:name="com.multiplying_numbers.presentation.fragments.multiple.list_fragment.FragmentListTables"
         android:label="fragment_table"
         tools:layout="@layout/fragment_list_tables">
 
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/singleTabFragment"
-        android:name="com.multiplying_numbers.presentation.multiple.fragments.singleTabRefactor.FragmentSingleTab"
+        android:name="com.multiplying_numbers.presentation.fragments.singleTabRefactor.FragmentSingleTab"
         android:label="fragment_single_tab_r_a_f_e_c_t_o_r"
         tools:layout="@layout/fragment_single_tab" >
         <action
@@ -27,13 +27,13 @@
             app:popUpTo="@id/listTablesFragment" />
         <argument
             android:name="tableParams"
-            app:argType="com.multiplying_numbers.domain.multiple.models.TableParams"
+            app:argType="com.multiplying_numbers.domain.models.TableParams"
             app:nullable="true"
             android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/fragmentHistory"
-        android:name="com.multiplying_numbers.presentation.multiple.fragments.history_fragment_.FragmentHistory"
+        android:name="com.multiplying_numbers.presentation.fragments.history_fragment_.FragmentHistory"
         android:label="fragment_history_r_e_f_a_c_t_o_r"
         tools:layout="@layout/fragment_history" >
         <argument

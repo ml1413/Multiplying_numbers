@@ -1,0 +1,19 @@
+package com.multiplying_numbers.domain.models
+
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class TableParams(
+    val paramsList: List<Params>,
+    val keyStorage: String,
+) : Parcelable
+
+@Parcelize
+data class Params(
+    val answerValue: Int,
+    val questionString: String,
+    val answerString: String,
+    val id: Int,
+
+) : Parcelable
