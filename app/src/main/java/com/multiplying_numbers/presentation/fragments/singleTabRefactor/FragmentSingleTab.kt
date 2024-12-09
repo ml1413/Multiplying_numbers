@@ -138,7 +138,7 @@ class FragmentSingleTab @Inject constructor() : Fragment() {
     //observeViewModel
     private fun checkHistory(modelSingleTab: ModelSingleTab) {
         keyStorage = modelSingleTab.keyStorage
-        isHistoryExist = checkHistoryUseCase(keyStorage=keyStorage)
+        isHistoryExist = checkHistoryUseCase(keyStorage = keyStorage)
     }
 
     //observeViewModel
@@ -240,7 +240,7 @@ class FragmentSingleTab @Inject constructor() : Fragment() {
                 launch {
                     modelSingleTab.questionString.printString(
                         10,
-                        stringForPrint = { append(it) })
+                        stringForPrint = { append(it.replace("\\s".toRegex(), "")) })
                     cancelQuestionCoroutine()
                 }
             }

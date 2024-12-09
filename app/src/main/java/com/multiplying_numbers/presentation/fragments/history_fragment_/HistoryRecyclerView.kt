@@ -78,14 +78,15 @@ class HistoryRecyclerView(
             )
 
         private fun setLabel(modelHistory: ItemHistory) {
+            val countWrongAnswer = modelHistory.listAnswer.sumOf { it.countWrongAnswer }
             var label = ""
-            var color: Int? = null
-            if (modelHistory.hasWrongAnswer) {
-                label = view.context.getString(R.string.label_wrong_answer)
-                color = view.context.getColor(android.R.color.holo_red_dark)
+
+            val color = if (modelHistory.hasWrongAnswer) {
+                label = view.context.getString(R.string.label_wrong_answer) + " $countWrongAnswer"
+                view.context.getColor(android.R.color.holo_red_dark)
             } else {
                 label = view.context.getString(R.string.label_all_answer_is_correct)
-                color = view.context.getColor(android.R.color.holo_green_dark)
+                view.context.getColor(android.R.color.holo_green_dark)
             }
             binding.label.tvLabel.apply {
                 text = label

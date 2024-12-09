@@ -7,13 +7,17 @@
 
     <fragment
         android:id="@+id/listTablesFragment"
-        android:name="com.multiplying_numbers.presentation.fragments.multiple.list_fragment.FragmentListTables"
+        android:name="com.multiplying_numbers.presentation.fragments.list_fragment.FragmentListTables"
         android:label="fragment_table"
         tools:layout="@layout/fragment_list_tables">
 
         <action
             android:id="@+id/action_listFragment_to_singleTab"
             app:destination="@id/singleTabFragment" />
+        <argument
+            android:name="typeTable"
+            app:argType="com.multiplying_numbers.domain.TypeTable"
+            app:nullable="true" />
 
     </fragment>
     <fragment
@@ -43,7 +47,7 @@
     </fragment>
     <fragment
         android:id="@+id/startedFragment"
-        android:name="com.multiplying_numbers.presentation.StartedFragment"
+        android:name="com.multiplying_numbers.presentation.fragments.StartedFragment"
         android:label="fragment_started"
         tools:layout="@layout/fragment_started" >
         <action

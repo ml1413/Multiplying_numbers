@@ -48,11 +48,11 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_left"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_16dp"
         android:clickable="true"
         android:focusable="true"
+        app:layout_constraintDimensionRatio="1:1"
         android:foreground="?attr/selectableItemBackground"
         app:cardCornerRadius="@dimen/radius_card_view_8dp"
         app:cardElevation="@dimen/cardElevation_8dp"
@@ -63,22 +63,22 @@
 
         <TextView
             android:id="@+id/tv_answer_left"
-            android:layout_width="@dimen/size_answer_button_56dp"
-            android:layout_height="@dimen/size_answer_button_56dp"
-            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:padding="@dimen/padding_16dp"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textStyle="bold"
-            tools:text="X" />
+            tools:text="1" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_right"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_16dp"
         android:clickable="true"
         android:focusable="true"
+        app:layout_constraintDimensionRatio="1:1"
         android:foreground="?attr/selectableItemBackground"
         app:cardCornerRadius="@dimen/radius_card_view_8dp"
         app:cardElevation="@dimen/cardElevation_8dp"
@@ -89,13 +89,13 @@
 
         <TextView
             android:id="@+id/tv_answer_right"
-            android:layout_width="@dimen/size_answer_button_56dp"
-            android:layout_height="@dimen/size_answer_button_56dp"
-            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:padding="@dimen/padding_16dp"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textStyle="bold"
-            tools:text="X" />
+            tools:text="12" />
     </androidx.cardview.widget.CardView>
 
 

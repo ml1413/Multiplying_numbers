@@ -1,4 +1,4 @@
-package com.multiplying_numbers.presentation.fragments.multiple.list_fragment
+package com.multiplying_numbers.presentation.fragments.list_fragment
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.multiplying_numbers.R
 import com.multiplying_numbers.databinding.ItemForRvGridBinding
-import com.multiplying_numbers.domain.models.multiple.ModelTabForCard
+import com.multiplying_numbers.domain.models.ModelTabForCard
 
 class RecyclerViewListsTables(
     private val listsTables: List<ModelTabForCard>,

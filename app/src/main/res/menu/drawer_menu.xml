@@ -2,11 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-    <group>
+    <group android:id="@+id/multiply">
         <item
-            android:id="@+id/listTablesFragment"
+            android:id="@+id/item_multiple"
             android:icon="@drawable/baseline_circle_24"
             android:title="@string/_2_2_4" />
+        <item
+            android:id="@+id/item_division"
+            android:icon="@drawable/baseline_circle_24"
+            android:title="@string/_4_2_2" />
+
     </group>
+
+
 
 </menu>

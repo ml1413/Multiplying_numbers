@@ -1,8 +1,9 @@
-package com.multiplying_numbers.presentation.fragments.multiple.list_fragment
+package com.multiplying_numbers.presentation.fragments.list_fragment
 
 import android.content.Context
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,28 +12,34 @@ import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.multiplying_numbers.databinding.FragmentListTablesBinding
+import com.multiplying_numbers.domain.TypeTable
 import com.multiplying_numbers.domain.models.TableParams
-import com.multiplying_numbers.domain.usecase.multiple.GenerateTableParamMultipleUseCase
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 private const val KEY_INDEX = "key index"
+private const val TAG = "FragmentListTables"
 
 @AndroidEntryPoint
 class FragmentListTables : Fragment() {
     private lateinit var binding: FragmentListTablesBinding
     private var index = 0
     private val listTablesViewModel: ListTablesViewModel by viewModels()
-
-    @Inject
-    lateinit var generateTableParamMultipleUseCase: GenerateTableParamMultipleUseCase
-
+    private val tableParamsViewModel: TableParamsViewModel by viewModels()
+    private val args by navArgs<FragmentListTablesArgs>()
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i(TAG, "onCreate: $this")
         super.onCreate(savedInstanceState)
+        args.typeTable?.let {
+            when (it) {
+                TypeTable.MULTIPLE -> listTablesViewModel.getListMultiple()
+                TypeTable.DIVISION -> listTablesViewModel.getListDivision()
+            }
+        }
         savedInstanceState?.getInt(KEY_INDEX)?.let { index = it }
-        listTablesViewModel.getData()
+
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -51,6 +58,17 @@ class FragmentListTables : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeListTablesViewModel()
+        tableParamsViewModel.tableState.observe(requireActivity()) { state ->
+            when (state) {
+                TableParamsViewModel.TableState.Initial -> {}
+                is TableParamsViewModel.TableState.ParamsForOpenSingleTable -> {
+                    val tableParams = state.tableParams
+                    openSingleTableFragment(tableParams = tableParams)
+                    tableParamsViewModel.setInitial()
+                }
+            }
+
+        }
     }
 
     // observe view model ______________________________________________________________________________
@@ -58,27 +76,33 @@ class FragmentListTables : Fragment() {
         listTablesViewModel.listsTables.observe(requireActivity()) { state ->
             when (state) {
                 ListTablesViewModel.StateLists.Initial -> {}
-                is ListTablesViewModel.StateLists.Result -> {
+                is ListTablesViewModel.StateLists.ListTables -> {
                     binding.recyclerView.apply {
                         adapter = RecyclerViewListsTables(
                             listsTables = state.listsTables,
                             onItemClickListener = { idTable ->
-                                val tableParams =
-                                    generateTableParamMultipleUseCase(idTable = idTable)
+                                args.typeTable?.apply {
+                                    when (this) {
+                                        TypeTable.MULTIPLE ->
+                                            tableParamsViewModel.generateTableParamMultiple(idTable = idTable)
 
-                                openSingleTableFragment(tableParams = tableParams)
+                                        TypeTable.DIVISION ->
+                                            tableParamsViewModel.generateTableParamDivision(idTable = idTable)
+
+                                    }
+                                }
                             },
                             indexItem = { indexItem ->
                                 index = indexItem
                             })
                     }
                     PagerSnapHelper().apply { attachToRecyclerView(binding.recyclerView) }
-
                     setPaddingOnItemRecyclerview { padding ->
                         binding.recyclerView.setPadding(padding, 0, padding, 0)
                         binding.recyclerView.smoothScrollToPosition(index)
                     }
                 }
+
             }
         }
     }

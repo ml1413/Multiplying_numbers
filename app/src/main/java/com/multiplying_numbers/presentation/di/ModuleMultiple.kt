@@ -1,11 +1,10 @@
 package com.multiplying_numbers.presentation.di
 
-import com.multiplying_numbers.data.multiole.GetStartedListTables
-import com.multiplying_numbers.data.multiole.GetStartedListTablesImpl
-import com.multiplying_numbers.data.repository.multiple.RepositoryListTablesImpl
-import com.multiplying_numbers.domain.repository.multiple.RepositoryListTables
+import com.multiplying_numbers.data.multiole.GetStartedListTablesMultiple
+import com.multiplying_numbers.data.multiole.GetStartedListTablesMultipleImpl
+import com.multiplying_numbers.domain.repository.RepositoryListTablesMultiple
 import com.multiplying_numbers.domain.usecase.multiple.GenerateTableParamMultipleUseCase
-import com.multiplying_numbers.domain.usecase.multiple.GetListTablesUseCase
+import com.multiplying_numbers.domain.usecase.multiple.GetListTablesMultipleUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,22 +16,17 @@ import javax.inject.Singleton
 class ModuleMultiple {
     @Singleton
     @Provides
-    fun provideGetListTablesImpl(): GetStartedListTables = GetStartedListTablesImpl()
+    fun provideGetListTablesImpl(): GetStartedListTablesMultiple = GetStartedListTablesMultipleImpl()
+
 
     @Provides
-    @Singleton
-    fun provideRepositoryListTablesImpl(getStartedListTables: GetStartedListTables): RepositoryListTables {
-        return RepositoryListTablesImpl(getStartedListTables = getStartedListTables)
+    fun provideGetListTablesUseCase(repositoryListTablesMultiple: RepositoryListTablesMultiple): GetListTablesMultipleUseCase {
+        return GetListTablesMultipleUseCase(repositoryListTablesMultiple = repositoryListTablesMultiple)
     }
 
     @Provides
-    fun provideGetListTablesUseCase(repositoryListTables: RepositoryListTables): GetListTablesUseCase {
-        return GetListTablesUseCase(repositoryListTables = repositoryListTables)
-    }
-
-    @Provides
-    fun provideGenerateTableParamMultipleUseCase(repositoryListTables: RepositoryListTables): GenerateTableParamMultipleUseCase {
-        return GenerateTableParamMultipleUseCase(repositoryListTables = repositoryListTables)
+    fun provideGenerateTableParamMultipleUseCase(repositoryListTablesMultiple: RepositoryListTablesMultiple): GenerateTableParamMultipleUseCase {
+        return GenerateTableParamMultipleUseCase(repositoryListTablesMultiple = repositoryListTablesMultiple)
     }
 
 }

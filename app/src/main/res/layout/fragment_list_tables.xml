@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".presentation.fragments.multiple.list_fragment.FragmentListTables">
+    tools:context=".presentation.fragments.list_fragment.FragmentListTables">
 
 
     <androidx.recyclerview.widget.RecyclerView

@@ -1,4 +1,4 @@
-package com.multiplying_numbers.domain.models.multiple
+package com.multiplying_numbers.domain.models
 
 data class ModelTabForCard(
     val idTable: Int,
