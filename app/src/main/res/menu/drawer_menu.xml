@@ -10,10 +10,13 @@
         <item
             android:id="@+id/item_division"
             android:icon="@drawable/baseline_circle_24"
-            android:title="@string/_4_2_2" />
+            android:title="@string/_2_2_2" />
+        <item
+            android:id="@+id/item_addition"
+            android:icon="@drawable/baseline_circle_24"
+            android:title="@string/_2_2" />
 
     </group>
-
 
 
 </menu>

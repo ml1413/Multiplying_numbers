@@ -5,5 +5,5 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 enum class TypeTable : Parcelable {
-    MULTIPLE, DIVISION
+    MULTIPLE, DIVISION,ADDITION
 }

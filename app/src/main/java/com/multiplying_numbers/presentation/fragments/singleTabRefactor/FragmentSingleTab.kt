@@ -82,7 +82,6 @@ class FragmentSingleTab @Inject constructor() : Fragment() {
     /**___OTHER FUN______________________________________________________________________________*/
     //onViewCreated
     private fun initialButtonHistory() {
-        //todo set padding button menu
         requireActivity().addMenuProvider(
             object : MenuProvider {
                 override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -176,7 +175,6 @@ class FragmentSingleTab @Inject constructor() : Fragment() {
                     val color = getColorForTitle(modelSingleTab = modelSingleTab)
                     launch {
                         spannableString.apply {
-                            // todo need fix bag
                             clear()
                             title = this
                             label.printString(10,

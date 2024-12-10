@@ -36,6 +36,7 @@ class FragmentListTables : Fragment() {
             when (it) {
                 TypeTable.MULTIPLE -> listTablesViewModel.getListMultiple()
                 TypeTable.DIVISION -> listTablesViewModel.getListDivision()
+                TypeTable.ADDITION -> listTablesViewModel.getListAddition()
             }
         }
         savedInstanceState?.getInt(KEY_INDEX)?.let { index = it }
@@ -58,6 +59,11 @@ class FragmentListTables : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeListTablesViewModel()
+        observeTableParamsViewModel()
+    }
+
+    // onViewCreated ______________________________________________________________________________
+    private fun observeTableParamsViewModel() {
         tableParamsViewModel.tableState.observe(requireActivity()) { state ->
             when (state) {
                 TableParamsViewModel.TableState.Initial -> {}
@@ -71,7 +77,7 @@ class FragmentListTables : Fragment() {
         }
     }
 
-    // observe view model ______________________________________________________________________________
+    // onViewCreated ______________________________________________________________________________
     private fun observeListTablesViewModel() {
         listTablesViewModel.listsTables.observe(requireActivity()) { state ->
             when (state) {
@@ -89,6 +95,9 @@ class FragmentListTables : Fragment() {
                                         TypeTable.DIVISION ->
                                             tableParamsViewModel.generateTableParamDivision(idTable = idTable)
 
+                                        TypeTable.ADDITION -> {
+
+                                        }
                                     }
                                 }
                             },

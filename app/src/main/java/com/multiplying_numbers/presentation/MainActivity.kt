@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
             when (menu.itemId) {
                 R.id.item_multiple -> openFragmentListTab(typeTable = TypeTable.MULTIPLE)
                 R.id.item_division -> openFragmentListTab(typeTable = TypeTable.DIVISION)
+                R.id.item_addition -> openFragmentListTab(typeTable = TypeTable.ADDITION)
                 else -> isHandled = false
 
             }
@@ -61,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.listTablesFragment -> setTitleFromStringResurge(idString = R.string.select_table)
 
-                R.id.singleTabFragment -> setTitleFromStringResurge(idString = R.string.hoose_answer)
+                R.id.singleTabFragment -> setTitleFromStringResurge(idString = R.string.choose_answer)
 
                 R.id.fragmentHistory -> setTitleFromStringResurge(idString = R.string.history)
             }
