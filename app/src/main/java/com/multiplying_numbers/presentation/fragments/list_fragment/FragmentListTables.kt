@@ -71,17 +71,7 @@ class FragmentListTables : Fragment() {
                             listsTables = state.listsTables,
                             onItemClickListener = { tableParams ->
                                 args.typeTable?.apply {
-                                    when (this) {
-                                        TypeTable.MULTIPLE ->
-                                            openSingleTableFragment(tableParams = tableParams)
-
-                                        TypeTable.DIVISION ->
-                                            openSingleTableFragment(tableParams = tableParams)
-
-                                        TypeTable.ADDITION -> {
-
-                                        }
-                                    }
+                                    openSingleTableFragment(tableParams = tableParams)
                                 }
                             },
                             indexItem = { indexItem ->

@@ -23,9 +23,4 @@ class ModuleMultiple {
         return GetListTablesMultipleUseCase(repositoryListTablesMultiple = repositoryListTablesMultiple)
     }
 
-    @Provides
-    fun provideGenerateTableParamMultipleUseCase(repositoryListTablesMultiple: RepositoryListTablesMultiple): GenerateTableParamMultipleUseCase {
-        return GenerateTableParamMultipleUseCase(repositoryListTablesMultiple = repositoryListTablesMultiple)
-    }
-
 }

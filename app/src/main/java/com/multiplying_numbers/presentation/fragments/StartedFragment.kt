@@ -49,10 +49,9 @@ class StartedFragment : Fragment() {
                 val listSymbol = listOf("+", "-", "×", "÷")
                 repeatOnLifecycle(Lifecycle.State.RESUMED) {
                     repeat(100) {
-                        Log.i(TAG, "setAnimationOnTextView: ")
-                        delay(2000)
                         text = listSymbol.random()
                         scale.start()
+                        delay(2000)
                     }
                 }
             }

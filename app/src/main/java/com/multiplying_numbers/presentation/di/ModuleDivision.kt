@@ -30,9 +30,6 @@ class ModuleDivision {
         return GetListTableDivisionUseCase(repositoryListTablesDivision = repositoryListTablesDivision)
     }
 
-    @Provides
-    fun provideGenerateTableParamDivisionUseCase(repositoryListTablesDivision: RepositoryListTablesDivision): GenerateTableParamDivisionUseCase {
-        return GenerateTableParamDivisionUseCase(repositoryListTablesDivision = repositoryListTablesDivision)
-    }
+
 
 }
