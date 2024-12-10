@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.item_multiple -> openFragmentListTab(typeTable = TypeTable.MULTIPLE)
                 R.id.item_division -> openFragmentListTab(typeTable = TypeTable.DIVISION)
                 R.id.item_addition -> openFragmentListTab(typeTable = TypeTable.ADDITION)
+                R.id.item_subtraction -> openFragmentListTab(typeTable = TypeTable.SUBTRACTION)
                 else -> isHandled = false
 
             }

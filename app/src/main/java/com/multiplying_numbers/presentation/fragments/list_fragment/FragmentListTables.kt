@@ -36,6 +36,7 @@ class FragmentListTables : Fragment() {
                 TypeTable.MULTIPLE -> listTablesViewModel.getListMultiple()
                 TypeTable.DIVISION -> listTablesViewModel.getListDivision()
                 TypeTable.ADDITION -> listTablesViewModel.getListAddition()
+                TypeTable.SUBTRACTION -> listTablesViewModel.getListSubtraction()
             }
         }
         savedInstanceState?.getInt(KEY_INDEX)?.let { index = it }
