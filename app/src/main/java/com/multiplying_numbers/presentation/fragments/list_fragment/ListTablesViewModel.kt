@@ -14,7 +14,7 @@ import javax.inject.Inject
 class ListTablesViewModel @Inject constructor(
     private val getListTablesMultipleUseCase: GetListTablesMultipleUseCase,
     private val getListTableDivisionUseCase: GetListTableDivisionUseCase,
-    private val getListTableAdditionUseCase : GetListTableAdditionUseCase
+    private val getListTableAdditionUseCase: GetListTableAdditionUseCase
 ) : ViewModel() {
     private val _listsTables = MutableLiveData<StateLists>(StateLists.Initial)
     val listsTables: LiveData<StateLists> = _listsTables
@@ -25,14 +25,13 @@ class ListTablesViewModel @Inject constructor(
     }
 
 
-
     fun getListDivision() {
         val listsTables = getListTableDivisionUseCase()
         _listsTables.value = StateLists.ListTables(listsTables = listsTables)
     }
 
     fun getListAddition() {
-       val listsTables = getListTableAdditionUseCase()
+        val listsTables = getListTableAdditionUseCase()
         _listsTables.value = StateLists.ListTables(listsTables = listsTables)
 
     }

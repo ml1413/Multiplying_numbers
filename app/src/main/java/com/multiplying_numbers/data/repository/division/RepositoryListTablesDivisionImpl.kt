@@ -12,7 +12,4 @@ class RepositoryListTablesDivisionImpl @Inject constructor(private val getStarte
         return getStartedListTablesDivision.getListTablesDivision()
     }
 
-    override fun generateTableParamDivision(idTable: Int): TableParams {
-        return getStartedListTablesDivision.generateTableParamDivision(idTable = idTable)
-    }
 }

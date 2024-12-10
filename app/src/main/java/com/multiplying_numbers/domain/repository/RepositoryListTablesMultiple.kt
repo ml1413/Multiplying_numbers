@@ -6,5 +6,4 @@ import com.multiplying_numbers.domain.models.TableParams
 
 interface RepositoryListTablesMultiple {
     fun getListTablesMultiple(): List<ModelTabForCard>
-    fun generateTableParamsMultiple(idTable: Int): TableParams
 }

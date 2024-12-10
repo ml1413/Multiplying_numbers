@@ -5,5 +5,4 @@ import com.multiplying_numbers.domain.models.TableParams
 
 interface GetStartedListTablesMultiple {
     fun getListTables(): List<ModelTabForCard>
-    fun generateTableParams(idTable: Int): TableParams
 }

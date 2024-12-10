@@ -86,17 +86,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e3470ae9-095c-42d8-8055-40c5faf730a1" name="Changes" comment="add animation started fragment">
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/TypeTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/TypeTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/usecase/division/GetListTableDivisionUseCase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/usecase/division/GetListTableDivisionUseCase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/MainActivity.kt" afterDir="false" />
+    <list default="true" id="e3470ae9-095c-42d8-8055-40c5faf730a1" name="Changes" comment="add tables additions">
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/addition/GetStartedListTablesAdditionImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/addition/GetStartedListTablesAdditionImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/division/GetStartedListTablesDivisionImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/division/GetStartedListTablesDivisionImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiole/GetStartedListTablesMultipleImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiole/GetStartedListTablesMultipleImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/models/ModelTabForCard.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/models/ModelTabForCard.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/fragments/list_fragment/FragmentListTables.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/fragments/list_fragment/FragmentListTables.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/fragments/list_fragment/ListTablesViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/fragments/list_fragment/ListTablesViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/fragments/singleTabRefactor/FragmentSingleTab.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/fragments/singleTabRefactor/FragmentSingleTab.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/drawer_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/drawer_menu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/fragments/list_fragment/RecyclerViewListsTables.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/fragments/list_fragment/RecyclerViewListsTables.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +153,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="add-addition" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -206,7 +202,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.android.tools.idea.streaming.emulator.frame.visible": "false",
-    "git-widget-placeholder": "add-addition",
+    "git-widget-placeholder": "refactor",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/IT/allProjectAddroid/UchobaCourseKiev/24LesonAnimation",
@@ -384,22 +380,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719569607416</updated>
-    </task>
-    <task id="LOCAL-00012" summary="add count wrong answer view model">
-      <option name="closed" value="true" />
-      <created>1720731161928</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1720731161928</updated>
-    </task>
-    <task id="LOCAL-00013" summary="add count wrong answer view model">
-      <option name="closed" value="true" />
-      <created>1720731166567</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1720731166567</updated>
     </task>
     <task id="LOCAL-00014" summary="refactor done">
       <option name="closed" value="true" />
@@ -777,7 +757,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733822053913</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="add tables additions">
+      <option name="closed" value="true" />
+      <created>1733839468396</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1733839468396</updated>
+    </task>
+    <task id="LOCAL-00062" summary="add tables additions">
+      <option name="closed" value="true" />
+      <created>1733839482440</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1733839482440</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -804,7 +800,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor done" />
     <MESSAGE value="refactor  count wrong answer" />
     <MESSAGE value="add multiRecyclerView" />
     <MESSAGE value="add multiRecyclerView done" />
@@ -829,7 +824,8 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="add division" />
     <MESSAGE value="add animation started fragment" />
-    <option name="LAST_COMMIT_MESSAGE" value="add animation started fragment" />
+    <MESSAGE value="add tables additions" />
+    <option name="LAST_COMMIT_MESSAGE" value="add tables additions" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
 </project>

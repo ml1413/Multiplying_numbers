@@ -12,13 +12,14 @@ class GetStartedListTablesMultipleImpl : GetStartedListTablesMultiple {
                 idTable = table,
                 listQuestions = (1..10).map { num ->
                     "%2d ×%2d = ? ".format(table, num)
-                }
+                },
+                tableParams = generateTableParams(idTable = table)
             )
         }
         return list
     }
 
-    override fun generateTableParams(idTable: Int): TableParams {
+    private fun generateTableParams(idTable: Int): TableParams {
         val list = (1..10).map { num ->
             val answer = idTable * num
             val questionString = "%2d ×%2d = ? ".format(idTable, num)

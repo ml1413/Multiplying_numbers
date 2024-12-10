@@ -27,7 +27,6 @@ class FragmentListTables : Fragment() {
     private lateinit var binding: FragmentListTablesBinding
     private var index = 0
     private val listTablesViewModel: ListTablesViewModel by viewModels()
-    private val tableParamsViewModel: TableParamsViewModel by viewModels()
     private val args by navArgs<FragmentListTablesArgs>()
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.i(TAG, "onCreate: $this")
@@ -59,22 +58,6 @@ class FragmentListTables : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeListTablesViewModel()
-        observeTableParamsViewModel()
-    }
-
-    // onViewCreated ______________________________________________________________________________
-    private fun observeTableParamsViewModel() {
-        tableParamsViewModel.tableState.observe(requireActivity()) { state ->
-            when (state) {
-                TableParamsViewModel.TableState.Initial -> {}
-                is TableParamsViewModel.TableState.ParamsForOpenSingleTable -> {
-                    val tableParams = state.tableParams
-                    openSingleTableFragment(tableParams = tableParams)
-                    tableParamsViewModel.setInitial()
-                }
-            }
-
-        }
     }
 
     // onViewCreated ______________________________________________________________________________
@@ -86,14 +69,14 @@ class FragmentListTables : Fragment() {
                     binding.recyclerView.apply {
                         adapter = RecyclerViewListsTables(
                             listsTables = state.listsTables,
-                            onItemClickListener = { idTable ->
+                            onItemClickListener = { tableParams ->
                                 args.typeTable?.apply {
                                     when (this) {
                                         TypeTable.MULTIPLE ->
-                                            tableParamsViewModel.generateTableParamMultiple(idTable = idTable)
+                                            openSingleTableFragment(tableParams = tableParams)
 
                                         TypeTable.DIVISION ->
-                                            tableParamsViewModel.generateTableParamDivision(idTable = idTable)
+                                            openSingleTableFragment(tableParams = tableParams)
 
                                         TypeTable.ADDITION -> {
 

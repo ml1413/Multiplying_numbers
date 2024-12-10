@@ -4,7 +4,6 @@ import com.multiplying_numbers.data.division.GetStartedListTablesDivision
 import com.multiplying_numbers.data.division.GetStartedListTablesDivisionImpl
 import com.multiplying_numbers.data.repository.division.RepositoryListTablesDivisionImpl
 import com.multiplying_numbers.domain.repository.RepositoryListTablesDivision
-import com.multiplying_numbers.domain.usecase.division.GenerateTableParamDivisionUseCase
 import com.multiplying_numbers.domain.usecase.division.GetListTableDivisionUseCase
 import dagger.Module
 import dagger.Provides

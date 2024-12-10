@@ -7,10 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.multiplying_numbers.R
 import com.multiplying_numbers.databinding.ItemForRvGridBinding
 import com.multiplying_numbers.domain.models.ModelTabForCard
+import com.multiplying_numbers.domain.models.TableParams
 
 class RecyclerViewListsTables(
     private val listsTables: List<ModelTabForCard>,
-    val onItemClickListener: (Int) -> Unit = {},
+    val onItemClickListener: (TableParams) -> Unit = {},
     val indexItem: (Int) -> Unit = {}
 ) : RecyclerView.Adapter<RecyclerViewListsTables.MyTableHolder>() {
 
@@ -27,8 +28,8 @@ class RecyclerViewListsTables(
 
         holder.initView(
             modelTab = listsTables[position],
-            onItemClickListener = { idTable ->
-                onItemClickListener(idTable)
+            onItemClickListener = { tableParams ->
+                onItemClickListener(tableParams)
                 indexItem(position)
             })
     }
@@ -37,7 +38,7 @@ class RecyclerViewListsTables(
         private val binding = ItemForRvGridBinding.bind(view)
         fun initView(
             modelTab: ModelTabForCard,
-            onItemClickListener: (Int) -> Unit = {}
+            onItemClickListener: (TableParams) -> Unit = {}
         ) {
             var messageInTable = ""
             modelTab.listQuestions.forEach { messageInTable += it + "\n" }
@@ -47,7 +48,7 @@ class RecyclerViewListsTables(
             binding.tv.text = messageInTable
             binding.labeled.text = label
             binding.cardView.setOnClickListener {
-                onItemClickListener(modelTab.idTable)
+                onItemClickListener(modelTab.tableParams)
             }
 
         }

@@ -13,7 +13,5 @@ class RepositoryListTablesMultipleMultipleImpl @Inject constructor(
         return getStartedListTablesMultiple.getListTables()
     }
 
-    override fun generateTableParamsMultiple(idTable: Int): TableParams {
-        return getStartedListTablesMultiple.generateTableParams(idTable = idTable)
-    }
+
 }

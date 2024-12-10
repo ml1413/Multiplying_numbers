@@ -5,5 +5,4 @@ import com.multiplying_numbers.domain.models.TableParams
 
 interface GetStartedListTablesDivision {
     fun getListTablesDivision(): List<ModelTabForCard>
-    fun generateTableParamDivision(idTable: Int): TableParams
 }

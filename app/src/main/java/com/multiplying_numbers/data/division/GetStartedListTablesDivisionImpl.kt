@@ -14,17 +14,17 @@ class GetStartedListTablesDivisionImpl : GetStartedListTablesDivision {
                     val a = table * num
                     val b = table
                     "%2d ÷%2d = ?".format(a, b)
-                }
+                }, tableParams = generateTableParamDivision(idTable = table)
             )
         }
         return list
     }
 
-    override fun generateTableParamDivision(idTable: Int): TableParams {
+    private fun generateTableParamDivision(idTable: Int): TableParams {
         val list = (1..10).map { num ->
             val answer = (idTable * num) / idTable
             val questionString = "%2d ÷%2d = ? ".format((idTable * num), idTable)
-            val answerString = "%2d ÷%2d =%2d ".format((idTable * num),idTable,answer)
+            val answerString = "%2d ÷%2d =%2d ".format((idTable * num), idTable, answer)
             Params(
                 id = num,
                 answerValue = answer,
