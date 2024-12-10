@@ -11,7 +11,7 @@ class GetStartedListTablesMultipleImpl : GetStartedListTablesMultiple {
             ModelTabForCard(
                 idTable = table,
                 listQuestions = (1..10).map { num ->
-                    "%2d *%2d = ? ".format(table, num)
+                    "%2d ×%2d = ? ".format(table, num)
                 }
             )
         }
@@ -21,8 +21,8 @@ class GetStartedListTablesMultipleImpl : GetStartedListTablesMultiple {
     override fun generateTableParams(idTable: Int): TableParams {
         val list = (1..10).map { num ->
             val answer = idTable * num
-            val questionString = "%2d *%2d = ? ".format(idTable, num)
-            val answerString = "%2d *%2d =%2d ".format(idTable, num, answer)
+            val questionString = "%2d ×%2d = ? ".format(idTable, num)
+            val answerString = "%2d ×%2d =%2d ".format(idTable, num, answer)
             Params(
                 id = num,
                 answerValue = answer,
