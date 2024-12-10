@@ -25,7 +25,7 @@ class GetStartedListTablesAdditionImpl : GetStartedListTablesAddition {
             val a = ((idTable * 10) until (idTable * 10) + 10).random()
             val b = (1..(idTable * 10)).random()
             val answer = a + b
-            val questionString = "%2d +%3d = ?".format(a, b)
+            val questionString = "%2d +%3d = ? ".format(a, b)
             val answerString = "%2d +%3d =%3d".format(a, b, answer)
             Params(
                 id = num,

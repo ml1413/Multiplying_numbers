@@ -86,14 +86,17 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e3470ae9-095c-42d8-8055-40c5faf730a1" name="Changes" comment="fix size answer button">
+    <list default="true" id="e3470ae9-095c-42d8-8055-40c5faf730a1" name="Changes" comment="add subtraction">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/TypeTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/TypeTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/fragments/list_fragment/FragmentListTables.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/fragments/list_fragment/FragmentListTables.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/fragments/list_fragment/ListTablesViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/fragments/list_fragment/ListTablesViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/drawer_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/drawer_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/app/proguard-rules.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/app-release.aab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/app-release.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/output-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/output-metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/addition/GetStartedListTablesAdditionImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/addition/GetStartedListTablesAdditionImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/subtraction/GetStartedListTablesSubtractionImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/subtraction/GetStartedListTablesSubtractionImpl.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,10 +149,10 @@
     </option>
   </component>
   <component name="GenerateSignedApkSettings">
-    <option name="EXPORT_PRIVATE_KEY" value="false" />
     <option name="KEY_STORE_PATH" value="D:\IT\androidKey\Multiplying\multiplying.jks" />
     <option name="KEY_ALIAS" value="key0" />
     <option name="REMEMBER_PASSWORDS" value="true" />
+    <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -182,45 +185,46 @@
     <option name="sortByType" value="true" />
     <option name="sortKey" value="BY_TYPE" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Android App.app.executor": "Run",
-    "ApkExportedModule": "Multiplying_numbers.app",
-    "BundleExportedModule": "Multiplying_numbers.app",
-    "ExportApk.ApkPathForMultiplying_numbers.app": "D:\\IT\\allProjectAddroid\\Multiplyingnumbers\\app",
-    "ExportBundle.BundlePathForMultiplying_numbers.app": "D:\\IT\\allProjectAddroid\\Multiplyingnumbers\\app",
-    "ResourceManagerPrefKey.ResourceType": "FONT",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "ScreenRecorder.SavePath": "C:\\Users\\ml1413\\Desktop",
-    "ScreenshotViewer.SavePath": "C:/Users/ml1413/Desktop",
-    "android-custom-viewC:/Users/ml1413/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED": "RecyclerView",
-    "android-custom-viewC:/Users/ml1413/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.12.0/5583a9ff7f51bd568ac8b94496ec3d1ec787a015/material-1.12.0-sources.jar!/com/google/android/material/textfield/TextInputLayout.java_SELECTED": "TextInputLayout",
-    "android-custom-viewC:/Users/ml1413/AppData/Local/Android/Sdk/sources/android-34/android/view/View.java_SELECTED": "View",
-    "android-custom-viewC:/Users/ml1413/AppData/Local/Android/Sdk/sources/android-34/android/widget/TextView.java_SELECTED": "TextView",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.android.tools.idea.streaming.emulator.frame.visible": "false",
-    "git-widget-placeholder": "add-subtraction",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/IT/allProjectAddroid/UchobaCourseKiev/24LesonAnimation",
-    "project.structure.last.edited": "Build Variants",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.updates"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;AnalyzeApkAction.lastApkPath&quot;: &quot;D:/IT/allProjectAddroid/Multiplyingnumbers/app/build/intermediates/apk/debug/app-debug.apk&quot;,
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;ApkExportedModule&quot;: &quot;Multiplying_numbers.app&quot;,
+    &quot;BundleExportedModule&quot;: &quot;Multiplying_numbers.app&quot;,
+    &quot;ExportApk.ApkPathForMultiplying_numbers.app&quot;: &quot;D:\\IT\\allProjectAddroid\\Multiplyingnumbers\\app&quot;,
+    &quot;ExportBundle.BundlePathForMultiplying_numbers.app&quot;: &quot;D:\\IT\\allProjectAddroid\\Multiplyingnumbers\\app&quot;,
+    &quot;ResourceManagerPrefKey.ResourceType&quot;: &quot;FONT&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;ScreenRecorder.SavePath&quot;: &quot;C:\\Users\\ml1413\\Desktop&quot;,
+    &quot;ScreenshotViewer.SavePath&quot;: &quot;C:/Users/ml1413/Desktop&quot;,
+    &quot;android-custom-viewC:/Users/ml1413/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED&quot;: &quot;RecyclerView&quot;,
+    &quot;android-custom-viewC:/Users/ml1413/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.12.0/5583a9ff7f51bd568ac8b94496ec3d1ec787a015/material-1.12.0-sources.jar!/com/google/android/material/textfield/TextInputLayout.java_SELECTED&quot;: &quot;TextInputLayout&quot;,
+    &quot;android-custom-viewC:/Users/ml1413/AppData/Local/Android/Sdk/sources/android-34/android/view/View.java_SELECTED&quot;: &quot;View&quot;,
+    &quot;android-custom-viewC:/Users/ml1413/AppData/Local/Android/Sdk/sources/android-34/android/widget/TextView.java_SELECTED&quot;: &quot;TextView&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.android.tools.idea.streaming.emulator.frame.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/IT/allProjectAddroid/Multiplyingnumbers/app/build/intermediates/apk/debug/app-debug.apk&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Build Variants&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.updates&quot;
   },
-  "keyToStringList": {
-    "ExportApk.BuildVariants": [
-      "release"
+  &quot;keyToStringList&quot;: {
+    &quot;ExportApk.BuildVariants&quot;: [
+      &quot;release&quot;
     ],
-    "kotlin-gradle-user-dirs": [
-      "C:\\Users\\ml1413\\.gradle"
+    &quot;kotlin-gradle-user-dirs&quot;: [
+      &quot;C:\\Users\\ml1413\\.gradle&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="PsdUISettings">
     <option name="MODULE_TAB" value="Signing Configs" />
     <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
