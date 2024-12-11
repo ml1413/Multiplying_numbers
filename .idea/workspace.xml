@@ -86,14 +86,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e3470ae9-095c-42d8-8055-40c5faf730a1" name="Changes" comment="fix text subtraction question">
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/app/proguard-rules.pro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/app-release.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/baselineProfiles/0/app-release.dm" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/baselineProfiles/0/app-release.dm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/baselineProfiles/1/app-release.dm" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/baselineProfiles/1/app-release.dm" afterDir="false" />
+    <list default="true" id="e3470ae9-095c-42d8-8055-40c5faf730a1" name="Changes" comment="Merge remote-tracking branch 'origin/master'">
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/storage/sharedPref/StorageSharedPrefImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/storage/sharedPref/StorageSharedPrefImpl.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -160,6 +153,7 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -383,30 +377,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719569607416</updated>
-    </task>
-    <task id="LOCAL-00017" summary="add multiRecyclerView">
-      <option name="closed" value="true" />
-      <created>1721074604057</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1721074604057</updated>
-    </task>
-    <task id="LOCAL-00018" summary="add multiRecyclerView">
-      <option name="closed" value="true" />
-      <created>1721216676648</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1721216676649</updated>
-    </task>
-    <task id="LOCAL-00019" summary="add multiRecyclerView">
-      <option name="closed" value="true" />
-      <created>1721218036697</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1721218036697</updated>
     </task>
     <task id="LOCAL-00020" summary="add multiRecyclerView">
       <option name="closed" value="true" />
@@ -776,7 +746,31 @@
       <option name="project" value="LOCAL" />
       <updated>1733866104867</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="fix bag add rules proguard">
+      <option name="closed" value="true" />
+      <created>1733928548279</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1733928548279</updated>
+    </task>
+    <task id="LOCAL-00067" summary="fix bag add rules proguard">
+      <option name="closed" value="true" />
+      <created>1733928633985</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1733928633985</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Merge remote-tracking branch 'origin/master'">
+      <option name="closed" value="true" />
+      <created>1733928666177</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1733928666177</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -790,7 +784,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="refactor" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -803,8 +797,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor export result on result fragment" />
-    <MESSAGE value="ddd" />
     <MESSAGE value="refactor add save get from storage" />
     <MESSAGE value="refactor recycler result holder" />
     <MESSAGE value="add button open result" />
@@ -828,7 +820,9 @@
     <MESSAGE value="refactor generate table params" />
     <MESSAGE value="fix size answer button" />
     <MESSAGE value="fix text subtraction question" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix text subtraction question" />
+    <MESSAGE value="fix bag add rules proguard" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/master'" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
 </project>
