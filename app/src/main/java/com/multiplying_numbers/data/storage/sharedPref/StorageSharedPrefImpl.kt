@@ -36,7 +36,7 @@ class StorageSharedPrefImpl @Inject constructor(
 
     override fun getHistoryFromStorage(keyStorage: String): ModelHistory? {
         val key = keyStorage
-        val modelHistory = getModelFromStorage(key = key)?.mapToModel()
+        val modelHistory: ModelHistory? = getModelFromStorage(key = key)?.mapToModel()
         return modelHistory
     }
 
@@ -49,25 +49,24 @@ class StorageSharedPrefImpl @Inject constructor(
         modelSingleTab: ModelSingleTab,
         key: String
     ): ModelHistoryStorage {
+        // map mapToModelStorage
         val itemHistory = modelSingleTab.mapToModelStorage()
-
-        val modelHistoryFromStorage = getModelFromStorage(key = key)
-            ?.let { modelHistory ->
+        // get model from storage if result null set new ModelHistoryStorage
+        val modelHistoryFromStorage =
+            getModelFromStorage(key = key)?.let { modelHistory ->
                 modelHistory.copy(
                     listHistoryStorage = modelHistory.listHistoryStorage + itemHistory
                 )
-            }
-
-        val modelHistoryStorage = ModelHistoryStorage(listHistoryStorage = listOf(itemHistory))
-        return modelHistoryFromStorage ?: modelHistoryStorage
+            } ?: ModelHistoryStorage(listHistoryStorage = listOf(itemHistory))
+        return modelHistoryFromStorage
     }
 
     private fun getModelFromStorage(key: String): ModelHistoryStorage? {
 
-        val json = sharedPreferences.getString(key, null)
+        val json = sharedPreferences.getString(key, null) ?: return null
         val gson = Gson()
-        val type = object : TypeToken<ModelHistoryStorage>() {}.type
-        val modelHistoryStorage: ModelHistoryStorage? = gson.fromJson(json, type)
+        val modelHistoryStorage: ModelHistoryStorage? =
+            gson.fromJson(json, ModelHistoryStorage::class.java)
         return modelHistoryStorage
     }
 
