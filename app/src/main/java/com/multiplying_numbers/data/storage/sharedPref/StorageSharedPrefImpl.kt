@@ -62,6 +62,7 @@ class StorageSharedPrefImpl @Inject constructor(
     }
 
     private fun getModelFromStorage(key: String): ModelHistoryStorage? {
+        class ModelHistoryStorageTypeToken : TypeToken<ModelHistoryStorage>()
 
         val json = sharedPreferences.getString(key, null) ?: return null
         val gson = Gson()
