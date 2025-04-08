@@ -86,8 +86,19 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e3470ae9-095c-42d8-8055-40c5faf730a1" name="Changes" comment="Merge remote-tracking branch 'origin/master'">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/storage/sharedPref/StorageSharedPrefImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/storage/sharedPref/StorageSharedPrefImpl.kt" afterDir="false" />
+    <list default="true" id="e3470ae9-095c-42d8-8055-40c5faf730a1" name="Changes" comment="add with brackets">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/domain/models/QuestionAnswer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiole/GetStartedListTablesMultiple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/GetStartedListTablesMultiple.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiole/GetStartedListTablesMultipleImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/multiple/GetStartedListTablesMultipleImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/repository/multiple/RepositoryListTablesMultipleMultipleImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/repository/multiple/RepositoryListTablesMultipleMultipleImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/with_brackets/GetStartedListTablesWithBracketsImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/data/with_brackets/GetStartedListTablesWithBracketsImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/di/Module.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/di/Module.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/di/ModuleMultiple.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/di/ModuleMultiple.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/di/ModuleWithBrackets.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/multiplying_numbers/presentation/di/ModuleWithBrackets.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/include_tv_answer_item_for_result.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/include_tv_answer_item_for_result.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/drawer_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/drawer_menu.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,10 +143,11 @@
         <option value="layoutResourceFile" />
         <option value="valueResourceFile" />
         <option value="resourceFile" />
-        <option value="Kotlin Data Class" />
         <option value="Kotlin Enum" />
+        <option value="CMakeLists.txt" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Data Class" />
       </list>
     </option>
   </component>
@@ -148,7 +160,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -164,7 +176,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/ml1413/Multiplying_numbers.git&quot;,
-    &quot;accountId&quot;: &quot;bd8e1567-87f7-488b-8a20-94fc568d36da&quot;
+    &quot;accountId&quot;: &quot;3c20771c-2f72-4d6c-82d9-9e8d7441e63e&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -199,10 +211,10 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;com.android.tools.idea.streaming.emulator.frame.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;add-new-lewel&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/IT/allProjectAddroid/Multiplyingnumbers/app/build/intermediates/apk/debug/app-debug.apk&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/IT/allProjectAddroid/MyProjectApp/Multiplying_numbers&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Build Variants&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -211,9 +223,6 @@
   &quot;keyToStringList&quot;: {
     &quot;ExportApk.BuildVariants&quot;: [
       &quot;release&quot;
-    ],
-    &quot;kotlin-gradle-user-dirs&quot;: [
-      &quot;C:\\Users\\ml1413\\.gradle&quot;
     ]
   }
 }</component>
@@ -232,11 +241,11 @@
       <recent name="D:\IT\allProjectAddroid\Multiplyingnumbers\app\src\main\java\com\multiplying_numbers\data\multiple" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.multiplying_numbers.domain.usecase.gameUsecase" />
       <recent name="com.multiplying_numbers.domain.repository" />
       <recent name="com.multiplying_numbers.domain.models" />
       <recent name="com.multiplying_numbers.domain" />
       <recent name="com.multiplying_numbers.presentation.fragments" />
-      <recent name="com.multiplying_numbers.presentation.di" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="com.multiplying_numbers.data.storage" />
@@ -245,7 +254,8 @@
   </component>
   <component name="RunManager" selected="Android App.app">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
-      <module name="Multiplying_numbers.app.main" />
+      <module name="Multiplying_numbers.app" />
+      <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -253,10 +263,13 @@
       <option name="PM_INSTALL_OPTIONS" value="" />
       <option name="ALL_USERS" value="false" />
       <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="ALLOW_ASSUME_VERIFIED" value="false" />
       <option name="CLEAR_APP_STORAGE" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
+      <option name="RESTORE_ENABLED" value="false" />
+      <option name="RESTORE_FILE" value="" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
@@ -303,6 +316,7 @@
         <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
@@ -377,14 +391,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719569607416</updated>
-    </task>
-    <task id="LOCAL-00020" summary="add multiRecyclerView">
-      <option name="closed" value="true" />
-      <created>1721218042444</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1721218042444</updated>
     </task>
     <task id="LOCAL-00021" summary="add multiRecyclerView done">
       <option name="closed" value="true" />
@@ -770,7 +776,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733928666177</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="add with brackets">
+      <option name="closed" value="true" />
+      <created>1744186173710</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1744186173711</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -797,7 +811,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor add save get from storage" />
     <MESSAGE value="refactor recycler result holder" />
     <MESSAGE value="add button open result" />
     <MESSAGE value="refactor show result" />
@@ -822,7 +835,24 @@
     <MESSAGE value="fix text subtraction question" />
     <MESSAGE value="fix bag add rules proguard" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/master'" />
+    <MESSAGE value="add with brackets" />
+    <option name="LAST_COMMIT_MESSAGE" value="add with brackets" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
+  </component>
+  <component name="play_dynamic_filters_status">
+    <option name="appIdToCheckInfo">
+      <map>
+        <entry key="com.multiplying_numbers">
+          <value>
+            <CheckInfo lastCheckTimestamp="1744116947011" />
+          </value>
+        </entry>
+        <entry key="com.multiplying_numbers.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1744116947011" />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

@@ -4,7 +4,7 @@ import com.multiplying_numbers.data.repository.subtraction.RepositoryListTablesS
 import com.multiplying_numbers.data.subtraction.GetStartedListTablesSubtraction
 import com.multiplying_numbers.data.subtraction.GetStartedListTablesSubtractionImpl
 import com.multiplying_numbers.domain.repository.RepositoryListTablesSubtraction
-import com.multiplying_numbers.domain.usecase.subtraction.GetListTablesSubtractionUseCase
+import com.multiplying_numbers.domain.usecase.table_usecase.subtraction.GetListTablesSubtractionUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,6 +26,7 @@ class ModuleSubtraction {
         return RepositoryListTablesSubtractionImpl(getStartedListTablesSubtraction = getStartedListTablesSubtraction)
     }
 
+    @Provides
     fun provideGetListTablesSubtractionUseCase(repositoryListTablesSubtraction: RepositoryListTablesSubtraction): GetListTablesSubtractionUseCase {
         return GetListTablesSubtractionUseCase(repositoryListTablesSubtraction = repositoryListTablesSubtraction)
     }

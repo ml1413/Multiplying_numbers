@@ -1,8 +1,7 @@
 package com.multiplying_numbers.data.repository.multiple
 
-import com.multiplying_numbers.data.multiole.GetStartedListTablesMultiple
+import com.multiplying_numbers.data.multiple.GetStartedListTablesMultiple
 import com.multiplying_numbers.domain.models.ModelTabForCard
-import com.multiplying_numbers.domain.models.TableParams
 import com.multiplying_numbers.domain.repository.RepositoryListTablesMultiple
 import javax.inject.Inject
 

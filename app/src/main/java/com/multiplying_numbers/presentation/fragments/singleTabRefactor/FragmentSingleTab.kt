@@ -24,7 +24,7 @@ import com.multiplying_numbers.Utils.printString
 import com.multiplying_numbers.databinding.FragmentSingleTabBinding
 import com.multiplying_numbers.domain.models.ColorCountWrongAnswer
 import com.multiplying_numbers.domain.models.ModelSingleTab
-import com.multiplying_numbers.domain.usecase.CheckHistoryUseCase
+import com.multiplying_numbers.domain.usecase.game_usecase.CheckHistoryUseCase
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

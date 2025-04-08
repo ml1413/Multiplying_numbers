@@ -4,7 +4,7 @@ import com.multiplying_numbers.data.addition.GetStartedListTablesAddition
 import com.multiplying_numbers.data.addition.GetStartedListTablesAdditionImpl
 import com.multiplying_numbers.data.repository.addition.RepositoryListTablesAdditionImpl
 import com.multiplying_numbers.domain.repository.RepositoryListTablesAddition
-import com.multiplying_numbers.domain.usecase.addition.GetListTableAdditionUseCase
+import com.multiplying_numbers.domain.usecase.table_usecase.addition.GetListTableAdditionUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,9 +1,10 @@
 package com.multiplying_numbers.presentation.di
 
-import com.multiplying_numbers.data.multiole.GetStartedListTablesMultiple
-import com.multiplying_numbers.data.multiole.GetStartedListTablesMultipleImpl
+import com.multiplying_numbers.data.multiple.GetStartedListTablesMultiple
+import com.multiplying_numbers.data.multiple.GetStartedListTablesMultipleImpl
+import com.multiplying_numbers.data.repository.multiple.RepositoryListTablesMultipleMultipleImpl
 import com.multiplying_numbers.domain.repository.RepositoryListTablesMultiple
-import com.multiplying_numbers.domain.usecase.multiple.GetListTablesMultipleUseCase
+import com.multiplying_numbers.domain.usecase.table_usecase.multiple.GetListTablesMultipleUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,12 +16,19 @@ import javax.inject.Singleton
 class ModuleMultiple {
     @Singleton
     @Provides
-    fun provideGetListTablesImpl(): GetStartedListTablesMultiple = GetStartedListTablesMultipleImpl()
+    fun provideGetListTablesImpl(): GetStartedListTablesMultiple =
+        GetStartedListTablesMultipleImpl()
 
+    @Singleton
+    @Provides
+    fun provideRepositoryListTablesMultiple(getStartedListTablesMultiple: GetStartedListTablesMultiple): RepositoryListTablesMultiple {
+        return RepositoryListTablesMultipleMultipleImpl(getStartedListTablesMultiple = getStartedListTablesMultiple)
+    }
 
     @Provides
     fun provideGetListTablesUseCase(repositoryListTablesMultiple: RepositoryListTablesMultiple): GetListTablesMultipleUseCase {
         return GetListTablesMultipleUseCase(repositoryListTablesMultiple = repositoryListTablesMultiple)
     }
+
 
 }

@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.multiplying_numbers.domain.models.ModelSingleTab
 import com.multiplying_numbers.domain.models.TableParams
-import com.multiplying_numbers.domain.usecase.CheckLeftAnswerUseCase
-import com.multiplying_numbers.domain.usecase.CheckRightAnswerUseCase
-import com.multiplying_numbers.domain.usecase.GetSingleTableUseCase
-import com.multiplying_numbers.domain.usecase.SaveInStorageUseCase
+import com.multiplying_numbers.domain.usecase.game_usecase.CheckLeftAnswerUseCase
+import com.multiplying_numbers.domain.usecase.game_usecase.CheckRightAnswerUseCase
+import com.multiplying_numbers.domain.usecase.game_usecase.GetSingleTableUseCase
+import com.multiplying_numbers.domain.usecase.game_usecase.SaveInStorageUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.multiplying_numbers.domain.models.ModelHistory
-import com.multiplying_numbers.domain.usecase.GetHistoryFromStorage
+import com.multiplying_numbers.domain.usecase.game_usecase.GetHistoryFromStorage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
