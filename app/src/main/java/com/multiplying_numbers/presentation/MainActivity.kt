@@ -88,6 +88,12 @@ class MainActivity : AppCompatActivity() {
     /** otherFun _________________________________________________________________________________*/
     //selectedItemDrawListener
     private fun openFragmentListTab(typeTable: TypeTable) {
+        // if destination != started popBackStack to tarted destination____________________________
+        val startDesignation = navController.graph.startDestinationId
+        if (navController.currentDestination?.id != startDesignation) {
+            navController.popBackStack(startDesignation, false)
+        } //_______________________________________________________________________________________
+
         val action =
             StartedFragmentDirections.actionStartedFragmentToListFragment(typeTable = typeTable)
         navController.navigate(action)
