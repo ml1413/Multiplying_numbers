@@ -16,6 +16,15 @@ class GetStartedListTablesWithBracketsImpl : GetStartedListTablesWithBrackets {
         VARIANT7,
         VARIANT8,
         VARIANT9,
+        VARIANT10,
+        VARIANT11,
+        VARIANT12,
+        VARIANT13,
+        VARIANT14,
+        VARIANT15,
+        VARIANT16,
+        VARIANT17,
+        VARIANT18,
     }
 
     override fun getTablesWithBrackets(): List<ModelTabForCard> {
@@ -33,6 +42,15 @@ class GetStartedListTablesWithBracketsImpl : GetStartedListTablesWithBrackets {
                         Variant.VARIANT7 -> getVariant7(table = table, num = num).stringQuestion
                         Variant.VARIANT8 -> getVariant8(table = table, num = num).stringQuestion
                         Variant.VARIANT9 -> getVariant9(table = table, num = num).stringQuestion
+                        Variant.VARIANT10 -> getVariant10(table = table, num = num).stringQuestion
+                        Variant.VARIANT11 -> getVariant11(table = table, num = num).stringQuestion
+                        Variant.VARIANT12 -> getVariant12(table = table, num = num).stringQuestion
+                        Variant.VARIANT13 -> getVariant13(table = table, num = num).stringQuestion
+                        Variant.VARIANT14 -> getVariant14(table = table, num = num).stringQuestion
+                        Variant.VARIANT15 -> getVariant15(table = table, num = num).stringQuestion
+                        Variant.VARIANT16 -> getVariant16(table = table, num = num).stringQuestion
+                        Variant.VARIANT17 -> getVariant17(table = table, num = num).stringQuestion
+                        Variant.VARIANT18 -> getVariant18(table = table, num = num).stringQuestion
                     }
 
                 },
@@ -55,6 +73,15 @@ class GetStartedListTablesWithBracketsImpl : GetStartedListTablesWithBrackets {
                 Variant.VARIANT7 -> getVariant7(table = idTable, num = num)
                 Variant.VARIANT8 -> getVariant8(table = idTable, num = num)
                 Variant.VARIANT9 -> getVariant9(table = idTable, num = num)
+                Variant.VARIANT10 -> getVariant10(table = idTable, num = num)
+                Variant.VARIANT11 -> getVariant11(table = idTable, num = num)
+                Variant.VARIANT12 -> getVariant12(table = idTable, num = num)
+                Variant.VARIANT13 -> getVariant13(table = idTable, num = num)
+                Variant.VARIANT14 -> getVariant14(table = idTable, num = num)
+                Variant.VARIANT15 -> getVariant15(table = idTable, num = num)
+                Variant.VARIANT16 -> getVariant16(table = idTable, num = num)
+                Variant.VARIANT17 -> getVariant17(table = idTable, num = num)
+                Variant.VARIANT18 -> getVariant18(table = idTable, num = num)
             }
 
             Params(
@@ -206,6 +233,150 @@ class GetStartedListTablesWithBracketsImpl : GetStartedListTablesWithBrackets {
         val strungInstruction = if (b > 9) "-" else " -"
         val question = "%2d ×(%1d$strungInstruction%2d)= ?".format(a, b, c)
         val answer = "%2d ×(%1d$strungInstruction%2d)= %2d".format(a, b, c, valueAnswer)
+        return QuestionAnswer(
+            stringQuestion = question,
+            valueAnswer = valueAnswer,
+            stringAnswer = answer
+        )
+    }
+
+    //__________________________________________________________________________________________________
+    private fun getVariant10(table: Int, num: Int): QuestionAnswer {
+        // 2 + 2 / 2 = ?
+        val a = ((table * 10) until (table * 10) + 10).random()
+        val b = table * num
+        val c = table
+        val valueAnswer = a + b / c
+        val question = "%2d +%2d ÷%2d = ?".format(a, b, c)
+        val answer = "%2d +%2d ÷%2d = %2d".format(a, b, c, valueAnswer)
+        return QuestionAnswer(
+            stringQuestion = question,
+            valueAnswer = valueAnswer,
+            stringAnswer = answer
+        )
+    }
+
+    private fun getVariant11(table: Int, num: Int): QuestionAnswer {
+        // 12 - 2 / 2 = ?
+        val a = ((table * 10) until (table * 10) + 10).random()
+        val b = table * num
+        val c = num
+        val valueAnswer = a - b / c
+        val question = "%2d -%2d ÷%2d = ?".format(a, b, c)
+        val answer = "%2d -%2d ÷%2d = %2d".format(a, b, c, valueAnswer)
+        return QuestionAnswer(
+            stringQuestion = question,
+            valueAnswer = valueAnswer,
+            stringAnswer = answer
+        )
+    }
+
+    private fun getVariant12(table: Int, num: Int): QuestionAnswer {
+        // (2 + 2) / 2 = ?
+        val randomSubtrahend = (0..table).random()
+        val a = table * num - randomSubtrahend
+        val b = randomSubtrahend
+        val c = table
+        val strungInstruction = if (a > 9) "+" else " +"
+        val valueAnswer = (a + b) / c
+        val question = "(%1d$strungInstruction%2d)÷%2d = ?".format(a, b, c)
+        val answer = "(%1d$strungInstruction%2d)÷%2d = %2d".format(a, b, c, valueAnswer)
+        return QuestionAnswer(
+            stringQuestion = question,
+            valueAnswer = valueAnswer,
+            stringAnswer = answer
+        )
+    }
+
+    private fun getVariant13(table: Int, num: Int): QuestionAnswer {
+        // (12 - 2) / 2 = ?
+        val randomAddend = (0..num).random()
+        val a = table * num + randomAddend
+        val b = randomAddend
+        val c = table
+        val valueAnswer = (a - b) / c
+        val strungInstruction = if (a > 9) "-" else " -"
+        val question = "(%1d$strungInstruction%2d)÷%2d = ?".format(a, b, c)
+        val answer = "(%1d$strungInstruction%2d)÷%2d = %2d".format(a, b, c, valueAnswer)
+        return QuestionAnswer(
+            stringQuestion = question,
+            valueAnswer = valueAnswer,
+            stringAnswer = answer
+        )
+    }
+
+    private fun getVariant14(table: Int, num: Int): QuestionAnswer {
+        // 2 / 2 + 12  = ?
+        val a = num * table
+        val b = table
+        val c = ((table * 10) until (table * 10) + 10).random()
+        val valueAnswer = a / b + c
+        val question = "%2d ÷%2d +%2d = ?".format(a, b, c)
+        val answer = "%2d ÷%2d +%2d = %2d".format(a, b, c, valueAnswer)
+        return QuestionAnswer(
+            stringQuestion = question,
+            valueAnswer = valueAnswer,
+            stringAnswer = answer
+        )
+    }
+
+    private fun getVariant15(table: Int, num: Int): QuestionAnswer {
+        // 2 / 2 - 2  = ?
+        val a = table * num
+        val b = table
+        val c = (0..num).random()
+        val valueAnswer = a / b - c
+        val question = "%2d ÷%2d -%2d = ?".format(a, b, c)
+        val answer = "%2d ÷%2d -%2d = %2d".format(a, b, c, valueAnswer)
+        return QuestionAnswer(
+            stringQuestion = question,
+            valueAnswer = valueAnswer,
+            stringAnswer = answer
+        )
+    }
+
+    private fun getVariant16(table: Int, num: Int): QuestionAnswer {
+        // 2 / 2 + 2  = ?
+        val a = table * num
+        val b = table
+        val c = (0..num).random()
+        val valueAnswer = a / b + c
+        val question = "%2d ÷%2d +%2d = ?".format(a, b, c)
+        val answer = "%2d ÷%2d +%2d = %2d".format(a, b, c, valueAnswer)
+        return QuestionAnswer(
+            stringQuestion = question,
+            valueAnswer = valueAnswer,
+            stringAnswer = answer
+        )
+    }
+
+    private fun getVariant17(table: Int, num: Int): QuestionAnswer {
+        // 2 / (2 + 2)  = ?
+        val randomSubtrahend = (0..table).random()
+        val a = table * num
+        val b = table - randomSubtrahend
+        val c = randomSubtrahend
+        val valueAnswer = a / (b + c)
+        val strungInstruction = if (b > 9) "+" else " +"
+        val question = "%2d ÷(%1d$strungInstruction%2d)= ?".format(a, b, c)
+        val answer = "%2d ÷(%1d$strungInstruction%2d)= %2d".format(a, b, c, valueAnswer)
+        return QuestionAnswer(
+            stringQuestion = question,
+            valueAnswer = valueAnswer,
+            stringAnswer = answer
+        )
+    }
+
+    private fun getVariant18(table: Int, num: Int): QuestionAnswer {
+        // 2 / (2 - 2)  = ?
+        val randomAddend = (0..num).random()
+        val a = table * num
+        val b = table + randomAddend
+        val c = randomAddend
+        val valueAnswer = a / (b - c)
+        val strungInstruction = if (b > 9) "-" else " -"
+        val question = "%2d ÷(%1d$strungInstruction%2d)= ?".format(a, b, c)
+        val answer = "%2d ÷(%1d$strungInstruction%2d)= %2d".format(a, b, c, valueAnswer)
         return QuestionAnswer(
             stringQuestion = question,
             valueAnswer = valueAnswer,
